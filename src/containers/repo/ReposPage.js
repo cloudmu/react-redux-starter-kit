@@ -179,14 +179,12 @@ class ReposPage extends Component {
               <Column
                 dataKey="owner"
                 cellRenderer={this.renderOwner}
-                fixed={true}
                 label="Owner"
                 width={200}
               />
 
               <Column
                 dataKey="stargazers_count"
-                fixed={true}
                 cellRenderer={this.renderStargazers}
                 label="Stargazers"
                 width={150}

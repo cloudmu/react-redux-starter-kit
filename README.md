@@ -1,14 +1,16 @@
 # [react-redux-starter-kit](https://github.com/cloudmu/react-redux-starter-kit)
 
 Yet another React and Redux based web application starter kit.
-### Usage
+### Install and Run the Dev Server
 
 ```
 npm install
 npm start
-open http://localhost:3000
 ```
+Then open http://localhost:3000
 
+### Demo
+A demo of this web application is running on an free [Amazon EC2 Micro Instance](http://ec2-52-89-200-19.us-west-2.compute.amazonaws.com/).
 
 ### Overview
 
