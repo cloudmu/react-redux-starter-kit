@@ -52,7 +52,7 @@ export default class Header extends Component {
                    
                     <li role="separator" className="divider"></li>                    
                     <li>
-                      <a href="https://github.com/cloudmu/react-redux-example"target="_blank" title="View on Github"><i className="fa fa-github header_fa"/>Github</a>
+                      <a href="https://github.com/cloudmu/react-redux-starter-kit"target="_blank" title="View on Github"><i className="fa fa-github header_fa"/>Github</a>
                     </li>
                   </ul>
                 </li>           

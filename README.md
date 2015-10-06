@@ -10,7 +10,7 @@ npm start
 Then open http://localhost:3000
 
 ### Demo
-A demo of this web application is running on an free [Amazon EC2 Micro Instance](http://ec2-52-89-200-19.us-west-2.compute.amazonaws.com/).
+A demo of this web application is running on a free [Amazon EC2 Micro Instance](http://ec2-52-89-200-19.us-west-2.compute.amazonaws.com/), with very limited resources.
 
 ### Overview
 
