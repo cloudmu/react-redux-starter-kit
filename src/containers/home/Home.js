@@ -137,10 +137,10 @@ export default class Home extends Component {
 
           <h3>Credits</h3>
             <p>
-              For a long-time backend developer (who enjoys writing obscure number-crunching "optimzation" algorithms in Java), I would never have thought of 
+              As a long-time backend developer (who enjoys writing obscure number-crunching "optimzation" algorithms in Java), I would never have thought of 
               developing (let alone posting) a web application using javascript on Github, were it not for the fateful summer 2015 when I stumbled upon   
               <a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank"> a 30 minutes video</a> by 
-              <a href="https://twitter.com/dan_abramov" target="_blank"> Dan Abramov</a>, and his subsequent inspiring work on 
+              <a href="https://twitter.com/dan_abramov" target="_blank"> Dan Abramov</a>, and his inspiring work on 
               <a href="https://github.com/rackt/redux" target="_blank"> Redux</a>. 
             </p>
             <p> Thank you! </p>
