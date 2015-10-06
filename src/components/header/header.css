@@ -1,0 +1,27 @@
+
+  .navbar-brand {
+    position:relative;
+    padding-left: 60;
+  }
+  .brand {
+    position:absolute;
+    top:5px;
+    left:15px;
+    display:inline-block;
+    background: #2d2d2d url('logo.png') no-repeat center center;
+    width: 40px;
+    height: 40px;
+    background-size: 80%;
+    margin: 0 10px 0 0;
+    border-radius:20px;
+  }
+  
+  .nav .header_fa {
+    font-size: 1em;
+    margin-right: 0.5em;
+  }
+
+  .navbar-default .navbar-nav>li>a:focus {
+    outline: none;
+  }
+

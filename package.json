@@ -1,0 +1,54 @@
+{
+  "name": "react-redux-starter-kit",
+  "version": "0.0.1",
+  "description": "Yet another React/Redux Starter Kit",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudmu/react-redux-starter-kit.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "redux",
+    "reduxjs",
+    "react-router",
+    "bootstrap",
+    "webpack"
+  ],
+  "author": "Yunjun Mu <yunjun.mu@gmail.com> (http://github.com/cloudmu)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
+  },
+  "homepage": "https://github.com/cloudmu/react-redux-starter-kit",
+  "dependencies": {
+    "isomorphic-fetch": "^2.1.1",
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
+    "react-redux": "^3.1.0",
+    "history": "^1.12.0",
+    "react-router": "^1.0.0-rc1",
+    "redux": "^3.0.2",
+    "redux-logger": "^1.0.9",
+    "redux-thunk": "^1.0.0",
+    "classnames": "^2.1.2",
+    "express": "^4.13.3",
+    "body-parser": "^1.14.0",
+    "http-proxy": "^1.10.1",
+    "fixed-data-table": "^0.4.6"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.18",
+    "babel-loader": "^5.1.4",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0",
+    "style-loader": "^0.12.4",
+    "raw-loader": "^0.5.1",
+    "file-loader": "^0.8.4",
+    "url-loader": "^0.5.6"
+  }
+}

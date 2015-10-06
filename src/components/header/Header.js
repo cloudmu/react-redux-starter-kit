@@ -1,0 +1,75 @@
+import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
+import styles from'./header.css';
+
+export default class Header extends Component {
+  onLogoutClick(event) {
+    event.preventDefault();
+    this.props.handleLogout();
+  }
+
+  render() {
+    const {user, handleLogout} = this.props;
+    const location= new String(document.location);
+    const isLoginPage = location.indexOf('login')>-1;
+    const isAboutPage = location.indexOf('about')>-1;
+    const isUsersPage = location.indexOf('users')>-1;
+    const isReposPage = location.indexOf('repos')>-1;
+    return (
+      !isLoginPage &&
+      <div>
+        <nav className="navbar navbar-default navbar-fixed-top">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+
+              <Link to="/" className="navbar-brand">
+                <div title="Home" className="brand"/>
+                Home
+              </Link>
+            </div>
+            
+            <div id="navbar" className="navbar-collapse collapse">
+              <ul className="nav navbar-nav">
+                <li title="Github Users with over 1000 Followers" className={isUsersPage?"active":""}><Link to="/users">Most Followed Users</Link></li>
+                <li title="Github Repos with over 10000 Stars" className={isReposPage?"active":""}><Link to="/repos">Most Starred Repos</Link></li>
+                <li title="About" className={isAboutPage?"active":""}><Link to="/about">About Us</Link></li>
+              </ul>
+              
+              <ul className="nav navbar-nav navbar-right">
+                
+                <li className="dropdown">
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span className='fa fa-user header_fa'></span>{user?user:'Anonymous'}<span className="caret"></span>
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li className="logout-link"><a href="#" onClick={e=>this.onLogoutClick(e)}><i className="fa fa-sign-out header_fa"/>Log out</a></li>
+                   
+                    <li role="separator" className="divider"></li>                    
+                    <li>
+                      <a href="https://github.com/cloudmu/react-redux-example"target="_blank" title="View on Github"><i className="fa fa-github header_fa"/>Github</a>
+                    </li>
+                  </ul>
+                </li>           
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
+}
+
+Header.propTypes = {
+    user: PropTypes.string,
+    handleLogout: PropTypes.func.isRequired
+};
+
+
+
