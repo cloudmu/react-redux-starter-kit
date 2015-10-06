@@ -41,9 +41,6 @@ app.use(bodyParser.json({ type: 'application/json' }))
 if (!isProduction) {
   app.post('/api/login', function(req, res) {
       const credentials = req.body;
-      console.log('credentials='+credentials);
-      console.log('user='+credentials.user);
-      console.log('password='+credentials.password);
       if(credentials.user==='admin' && credentials.password==='password'){
         res.json({'user': credentials.user, 'role': 'ADMIN'});   
       }else{

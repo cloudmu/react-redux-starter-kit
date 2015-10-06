@@ -31,12 +31,11 @@ export default class Home extends Component {
             </p>
 
             <div className="home-humility">
-              <a href="https://github.com/cloudmu/react-redux-example" target="_blank">
+              <a href="https://github.com/cloudmu/react-redux-starter-kit" target="_blank">
                 <i className="fa fa-github"/> View on Github
               </a>
-              {"  "}
               <a href="https://twitter.com/yunjun_mu" target="_blank">
-                @yunjun_mu
+                 <i className="fa fa-twitter home-fa-twitter"/>yunjun_mu
               </a>
             </div>
             
