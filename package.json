@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Yet another React/Redux Starter Kit",
   "scripts": {
-    "start": "node server.js",
+    "start": "babel-node server.js",
+    "build": "rimraf static && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "lint": "eslint src"
   },
   "repository": {
@@ -42,13 +43,17 @@
     "fixed-data-table": "^0.4.6"
   },
   "devDependencies": {
-    "babel-core": "^5.6.18",
-    "babel-loader": "^5.1.4",
-    "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0",
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.12.2",
     "style-loader": "^0.12.4",
     "raw-loader": "^0.5.1",
     "file-loader": "^0.8.4",
-    "url-loader": "^0.5.6"
+    "url-loader": "^0.5.6",
+    "rimraf": "^2.4.3",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.2.0",
+    "stats-webpack-plugin": "^0.2.1"
   }
 }

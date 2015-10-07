@@ -20,9 +20,6 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("Login: componentWillReceiveProps: "+nextProps);
-    console.log("user: "+this.props.user+"\tnextUser="+nextProps.user);
-
     if (nextProps.user) {
       // logged in, let's show home
       this.context.history.pushState(null, '/');

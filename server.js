@@ -1,45 +1,60 @@
-// webpack
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
-const webpackPort = 3001;
-new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
-  headers: {'Access-Control-Allow-Origin': '*'},
-}).listen(webpackPort, 'localhost', function (err, result) {
-  if (err) {
-    console.log(err);
-  }
+import express from 'express';
+import path from 'path';
+import httpProxy from 'http-proxy';
+import http from 'http';
+import bodyParser from 'body-parser';
+import config from './webpack.config';
 
-  console.log('WebpackDevServer listening at localhost:'+webpackPort);
+const isProduction = process.env.NODE_ENV === 'production';
+const isDeveloping = !isProduction;
 
-});
+const app = express();
+
+// Webpack dev server
+if (isDeveloping) {
+  const WEBPACK_PORT = 3001;
+  const compiler = webpack(config);
+
+  app.use(webpackMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    contentBase: 'src',
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
+    }
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
+  app.listen(WEBPACK_PORT, 'localhost', function (err, result) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log('WebpackDevServer listening at localhost:'+WEBPACK_PORT);
+  });
+}
 
 
-//  rest api
-var express = require('express');
-var path = require('path');
-var httpProxy = require('http-proxy');
-var http = require('http');
-var proxy = httpProxy.createProxyServer({
+//  RESTful API
+const proxy = httpProxy.createProxyServer({
   changeOrigin: true,
   ws: false
 }); 
-var app = express();
-var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
-var publicPath = path.resolve(__dirname, '');
 
-var bodyParser = require('body-parser');
+const port = isProduction ? (process.env.PORT||80) : 3000;
+const publicPath = path.resolve(__dirname, '');
+
 app.use(express.static(publicPath));
 app.use(bodyParser.json({ type: 'application/json' }))
-
-
-if (!isProduction) {
-  app.post('/api/login', function(req, res) {
+app.post('/api/login', function(req, res) {
       const credentials = req.body;
       if(credentials.user==='admin' && credentials.password==='password'){
         res.json({'user': credentials.user, 'role': 'ADMIN'});   
@@ -69,11 +84,3 @@ if (!isProduction) {
   server.listen(port, function () {
     console.log('Server running on port ' + port);
   }); 
-
-} else {
-  // And run the server
-  app.listen(port, function () {
-    console.log('Server running on port ' + port);
-  });
-
-}

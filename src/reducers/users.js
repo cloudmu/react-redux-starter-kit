@@ -31,7 +31,8 @@ function users(state = {
       isFetching: false,
       didInvalidate: false,
       totalCount: action.totalCount,
-      users: action.users
+      users: action.users,
+      error: null
     });
   case USERS_FAILURE:
     return Object.assign({}, state, {

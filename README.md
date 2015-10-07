@@ -14,6 +14,15 @@ npm start
 ```
 Then open http://localhost:3000
 
+### Build and Run the Production Server
+
+```
+npm run build
+npm NODE_ENV=production PORT=80 npm start
+```
+Then open http://localhost
+
+
 ### Demo
 A demo of this web application is running on a free [Amazon EC2 Micro Instance](http://ec2-52-10-209-45.us-west-2.compute.amazonaws.com/), with very limited resources.
 

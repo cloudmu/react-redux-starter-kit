@@ -1,24 +1,25 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
-var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'eval-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-hot-middleware/client?reload=true',
     './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/dist/'
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    devFlagPlugin
+    new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify('development')
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -27,15 +28,14 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel',
         exclude: /node_modules/,
         include: __dirname
       }, 
       {
-        test: /\.js$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, '..', '..', 'src')
-      }, 
+        test: /\.json?$/,
+        loader: 'json'
+      },
       {
         test: /\.css?$/,
         loaders: ['style', 'raw'],
