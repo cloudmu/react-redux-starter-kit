@@ -4,7 +4,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import express from 'express';
 import path from 'path';
-import httpProxy from 'http-proxy';
 import http from 'http';
 import bodyParser from 'body-parser';
 import config from './webpack.config';
@@ -14,11 +13,11 @@ const isDeveloping = !isProduction;
 
 const app = express();
 
+
 // Webpack dev server
 if (isDeveloping) {
   const WEBPACK_PORT = 3001;
   const compiler = webpack(config);
-
   app.use(webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
     contentBase: 'src',
@@ -42,18 +41,12 @@ if (isDeveloping) {
   });
 }
 
-
 //  RESTful API
-const proxy = httpProxy.createProxyServer({
-  changeOrigin: true,
-  ws: false
-}); 
-
-const port = isProduction ? (process.env.PORT||80) : 3000;
 const publicPath = path.resolve(__dirname, '');
-
-app.use(express.static(publicPath));
 app.use(bodyParser.json({ type: 'application/json' }))
+app.use(express.static(publicPath));
+
+const port = isProduction ? (process.env.PORT || 80) : 3000;
 app.post('/api/login', function(req, res) {
       const credentials = req.body;
       if(credentials.user==='admin' && credentials.password==='password'){
@@ -61,26 +54,16 @@ app.post('/api/login', function(req, res) {
       }else{
         res.status('500').send({'message' : 'Invalid user/password'});
       }
-  });
+});
 
-  app.post('/api/logout', function(req, res) {
-      res.json({'user': 'admin', 'role': 'ADMIN'});   
-  });
+app.post('/api/logout', function(req, res) {
+    res.json({'user': 'admin', 'role': 'ADMIN'});   
+});
 
-  app.all('/*', function (req, res) {
-    proxy.web(req, res, {
-        target: 'http://127.0.0.1:3001'
-    });
-  });
+// We need to use basic HTTP service to proxy
+// websocket requests from webpack
+const server = http.createServer(app);
 
-  proxy.on('error', function(e) {
-    console.log('error: '+e)
-  });
-
-  // We need to use basic HTTP service to proxy
-  // websocket requests from webpack
-  const server = http.createServer(app);
-
-  server.listen(port, function () {
-    console.log('Server running on port ' + port);
-  }); 
+server.listen(port, function () {
+  console.log('Server running on port ' + port);
+}); 

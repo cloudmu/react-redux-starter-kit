@@ -18,7 +18,10 @@
     "reduxjs",
     "react-router",
     "bootstrap",
-    "webpack"
+    "webpack",
+    "flux",
+    "dashboard",
+    "boilerplate"
   ],
   "author": "Yunjun Mu <yunjun.mu@gmail.com> (http://github.com/cloudmu)",
   "license": "MIT",
@@ -39,7 +42,6 @@
     "classnames": "^2.1.2",
     "express": "^4.13.3",
     "body-parser": "^1.14.0",
-    "http-proxy": "^1.10.1",
     "fixed-data-table": "^0.4.6"
   },
   "devDependencies": {

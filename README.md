@@ -18,7 +18,7 @@ Then open http://localhost:3000
 
 ```
 npm run build
-npm NODE_ENV=production PORT=80 npm start
+NODE_ENV=production PORT=80 npm start
 ```
 Then open http://localhost
 
