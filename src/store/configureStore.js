@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import loggerMiddleware from 'redux-logger';
+import createLogger from 'redux-logger';
 import auth from '../reducers/auth';
 import {selectedUsersPage, usersByPage} from '../reducers/users';
 import {selectedReposPage, reposByPage, repoTableSize} from '../reducers/repos';
 
+const logger = createLogger();
 const reducer = combineReducers(
   {
     auth, 
@@ -18,7 +19,7 @@ const reducer = combineReducers(
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  loggerMiddleware
+  logger
 )(createStore);
 
 /**

@@ -1,4 +1,4 @@
-import {Component, PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 class RestrictPage extends Component {
@@ -11,7 +11,12 @@ class RestrictPage extends Component {
   }
 
   render() {
-    return this.props.children;
+    const {user} = this.props;
+    if(user){
+      return this.props.children;
+    }else{
+      return null;
+    }
   }
 }
 

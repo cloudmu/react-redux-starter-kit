@@ -10,11 +10,11 @@ export default class Header extends Component {
 
   render() {
     const {user, handleLogout} = this.props;
-    const location= new String(document.location);
-    const isLoginPage = location.indexOf('login')>-1;
-    const isAboutPage = location.indexOf('about')>-1;
-    const isUsersPage = location.indexOf('users')>-1;
-    const isReposPage = location.indexOf('repos')>-1;
+    const pathname = this.context.location.pathname;
+    const isLoginPage = pathname.indexOf('login')>-1;
+    const isAboutPage = pathname.indexOf('about')>-1;
+    const isUsersPage = pathname.indexOf('users')>-1;
+    const isReposPage = pathname.indexOf('repos')>-1;
     return (
       !isLoginPage &&
       <div>
@@ -69,6 +69,10 @@ export default class Header extends Component {
 Header.propTypes = {
     user: PropTypes.string,
     handleLogout: PropTypes.func.isRequired
+};
+
+Header.contextTypes = {
+    location: React.PropTypes.object
 };
 
 

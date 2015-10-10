@@ -20,7 +20,6 @@ if (isDeveloping) {
   const compiler = webpack(config);
   app.use(webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
-    contentBase: 'src',
     stats: {
       colors: true,
       hash: false,
@@ -42,7 +41,7 @@ if (isDeveloping) {
 }
 
 //  RESTful API
-const publicPath = path.resolve(__dirname, '');
+const publicPath = path.resolve(__dirname);
 app.use(bodyParser.json({ type: 'application/json' }))
 app.use(express.static(publicPath));
 
@@ -64,6 +63,9 @@ app.post('/api/logout', function(req, res) {
 // websocket requests from webpack
 const server = http.createServer(app);
 
-server.listen(port, function () {
+server.listen(port, function (err, result) {
+  if(err){
+    console.log(err);
+  }
   console.log('Server running on port ' + port);
 }); 

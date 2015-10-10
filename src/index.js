@@ -3,7 +3,7 @@ import 'babel-core/polyfill';
 import React from 'react';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { Provider } from 'react-redux';
-import { Router, Route} from 'react-router';
+import { Router, Route, IndexRoute} from 'react-router';
 
 import configureStore from './store/configureStore';
 
@@ -25,17 +25,17 @@ React.render(
   <Provider store={store}>
     {() =>
       <Router history={history}>
-        <Route component={App}>
-        <Route path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-        <Route path="/login" component={Login}/>
-        
-        <Route component={RestrictPage}>
-        	<Route path="/users" component={UsersPage} />
-        	<Route path="/repos" component={ReposPage} />
-        </Route>
+        <Route path="/" component={App}>
+          <IndexRoute component={Home}/>
+          <Route path="/about" component={About}/>
+          <Route path="/login" component={Login}/>
+          
+          <Route component={RestrictPage}>
+          	<Route path="/users" component={UsersPage} />
+          	<Route path="/repos" component={ReposPage} />
+          </Route>
 
-        <Route path="*" component={NotFound}/>
+          <Route path="*" component={NotFound}/>
 	     </Route>
       </Router>
     }
