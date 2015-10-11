@@ -46,6 +46,12 @@ app.use(bodyParser.json({ type: 'application/json' }))
 app.use(express.static(publicPath));
 
 const port = isProduction ? (process.env.PORT || 80) : 3000;
+
+// this is necessary to handle URL correctly since client uses Browser History
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, '', 'index.html'))
+})
+
 app.post('/api/login', function(req, res) {
       const credentials = req.body;
       if(credentials.user==='admin' && credentials.password==='password'){
