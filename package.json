@@ -5,7 +5,8 @@
   "scripts": {
     "start": "babel-node server.js",
     "build": "rimraf static && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "lint": "eslint src"
+    "lint": "eslint src; exit 0",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,10 @@
     "rimraf": "^2.4.3",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.4.1",
-    "stats-webpack-plugin": "^0.2.2"
+    "stats-webpack-plugin": "^0.2.2",
+    "babel-eslint": "^4.1.1",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "0.1.0",
+    "eslint-plugin-react": "^3.5.1"
   }
 }

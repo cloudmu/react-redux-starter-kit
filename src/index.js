@@ -29,14 +29,13 @@ React.render(
           <IndexRoute component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/login" component={Login}/>
-          
           <Route component={RestrictPage}>
           	<Route path="/users" component={UsersPage} />
           	<Route path="/repos" component={ReposPage} />
           </Route>
 
           <Route path="*" component={NotFound}/>
-	     </Route>
+      </Route>
       </Router>
     }
   </Provider>,
