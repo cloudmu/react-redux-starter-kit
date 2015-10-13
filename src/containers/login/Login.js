@@ -12,8 +12,8 @@ class Login extends Component {
 
   handleLogin(event) {
     event.preventDefault();
-    const username = this.refs.username.getDOMNode();  // need for getDOMNode() call going away in React 0.14
-    const password = this.refs.password.getDOMNode();
+    const username = this.refs.username;
+    const password = this.refs.password;
     this.props.dispatch(login(username.value, password.value));
     username.value = '';
     password.value = '';
