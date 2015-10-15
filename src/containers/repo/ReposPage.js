@@ -213,15 +213,13 @@ class ReposPage extends Component {
 
 ReposPage.propTypes = {
   page: PropTypes.number.isRequired,
-  repoTabeSize: PropTypes.object.isRequired,
+  repoTableSize: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   left: PropTypes.number,
-  top: PropTypes.number,
-  repoTableSize: PropTypes.number
-
+  top: PropTypes.number
 };
 
 function mapStateToProps(state) {
