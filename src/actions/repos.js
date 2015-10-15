@@ -10,12 +10,12 @@ export const REPOS_FAILURE = 'REPOS_FAILURE';
 
 export const RESIZE_REPO_TABLE = 'RESIZE_REPO_TABLE';
 
-export function resizeRepoTable(width, height){
+export function resizeRepoTable(width, height) {
   return {
     type: RESIZE_REPO_TABLE,
     width,
     height
-  }
+  };
 }
 
 export function selectReposPage(page) {
@@ -59,23 +59,23 @@ function reposFailure(page, error) {
 const API_ROOT = 'https://api.github.com/';
 
 function fetchTopRepos(page) {
-  return dispatch => {  
+  return dispatch => {
     dispatch(reposRequest(page));
-    
-    return fetch(API_ROOT+'search/repositories?q=stars:>10000&order=desc&page='+page)
+
+    return fetch(API_ROOT + 'search/repositories?q=stars:>10000&order=desc&page=' + page)
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(reposSuccess(page, json)))
-      .catch(function (error){
-        const response=error.response;
-        if(response===undefined){
+      .catch(function(error) {
+        const response = error.response;
+        if (response === undefined) {
           dispatch(reposFailure(page, error));
-        }else{
+        } else {
           parseJSON(response)
-            .then(function(json){   
+            .then(function(json) {
               error.status = response.status;
-              error.statusText = response.statusText;     
-              error.message = json.message;     
+              error.statusText = response.statusText;
+              error.message = json.message;
               dispatch(reposFailure(page, error));
             });
         }
@@ -89,13 +89,15 @@ function shouldFetchRepos(state, page) {
   if (!repos) {
     // Not cached, should fetch
     return true;
-  } else if (repos.isFetching) {
+  }
+
+  if (repos.isFetching) {
     // Shouldn't fetch since fetching is running
     return false;
-  } else {
-    // Should fetch if cache was invalidate
-    return repos.didInvalidate;
   }
+
+  // Should fetch if cache was invalidate
+  return repos.didInvalidate;
 }
 
 export function fetchTopReposIfNeeded(page) {
@@ -105,8 +107,3 @@ export function fetchTopReposIfNeeded(page) {
     }
   };
 }
-
-
-
-
-

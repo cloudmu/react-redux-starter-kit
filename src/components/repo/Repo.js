@@ -8,15 +8,14 @@ export default class Repo extends Component {
     return (
 
       <div>
-        <div className='Repo'>
+        <div className="Repo">
           <a href={repo.html_url} target="_blank">{repo.name}</a>
-
            Stars: {repo.stargazers_count}
         </div>
 
-        <div className='User'>
+        <div className="User">
           <a href={owner.html_url} target="_blank">{owner.login}
-            <img src={owner.avatar_url} width='72' height='72' />
+            <img src={owner.avatar_url} width="72" height="72" />
           </a>
         </div>
       </div>

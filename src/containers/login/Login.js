@@ -5,9 +5,16 @@ import {login} from '../../actions/auth';
 import './login.css';
 
 class Login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user) {
+      // logged in, let's show home
+      this.context.history.pushState(null, '/');
+    }
   }
 
   handleLogin(event) {
@@ -19,16 +26,9 @@ class Login extends Component {
     password.value = '';
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user) {
-      // logged in, let's show home
-      this.context.history.pushState(null, '/');
-    }
-  }
-
-  render(){
+  render() {
     const {user, loginError} = this.props;
-    return(
+    return (
       <div className="container">
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
@@ -37,10 +37,9 @@ class Login extends Component {
                 <h3 className="panel-title">Please Log in</h3>
               </div>
               <form className="form-signin">
-                
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-user"/></span>
-                  <input type="text" ref="username" className="form-control" placeholder="Username" required autofocus/>
+                  <input type="text" ref="username" className="form-control" placeholder="Username" required autoFocus/>
                 </div>
 
                 <div className="input-group">
@@ -55,18 +54,18 @@ class Login extends Component {
                 </div>
 
                 {
-                  !user && loginError && 
-                  <div className="alert alert-danger">              
+                  !user && loginError &&
+                  <div className="alert alert-danger">
                     {loginError.message}. Hint: use admin/password to log in.
                   </div>
                 }
-       
+
                 <button className="btn btn-primary btn-block" onClick={this.handleLogin}><i className="fa fa-sign-in"/>{' '}Log in</button>
               </form>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     );
   }
 }
@@ -82,13 +81,13 @@ Login.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   const {auth} = state;
-  if(auth){
+  if (auth) {
     return {user: auth.user, loginError: auth.loginError};
-  }else{
-    return {user: null};
   }
+
+  return {user: null};
 }
 
 export default connect(mapStateToProps)(Login);

@@ -5,7 +5,7 @@ import './user.css';
 export default class User extends Component {
 
   render() {
-    const { login, avatar_url, url, html_url } = this.props.user;
+    const { login, avatar_url, html_url } = this.props.user;
 
     return (
       <div className="panel panel-info">
@@ -14,7 +14,7 @@ export default class User extends Component {
           <a href={html_url} target="_blank">
             <div className="row">
               <div className="col-xs-4">
-                  <img src={avatar_url} width='64' height='64'/>
+                  <img src={avatar_url} width="64" height="64"/>
               </div>
               <div className="col-xs-8">
                   <div className="pull-right user-name">{login}</div>
@@ -23,14 +23,13 @@ export default class User extends Component {
             </div>
           </a>
         </div>
-        
+
         <div className="panel-footer">
-            <a href={"http://github.com/"+login+"/followers"} target="_blank">
+            <a href={ 'http://github.com/' + login + '/followers'} target="_blank">
               <span className="label label-success pull-right">Followers</span>
             </a>
             <div className="clearfix"></div>
         </div>
-        
       </div>
     );
   }

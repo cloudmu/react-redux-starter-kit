@@ -8,9 +8,9 @@ export default class About extends Component {
           <h1>About Us</h1>
 
           <p>
-            Thanks for checking this out. This project was created by 
-            <a href="https://twitter.com/yunjun_mu" target="_blank"> @yunjun_mu</a>, 
-            as a playground to learn and experiment some of the exciting technologies such as 
+            Thanks for checking this out. This project was created by
+            <a href="https://twitter.com/yunjun_mu" target="_blank"> @yunjun_mu</a>,
+            as a playground to learn and experiment some of the exciting technologies such as
             <a href="https://github.com/facebook/react" target="_blank"> React</a> and
             <a href="https://github.com/rackt/redux" target="_blank"> Redux</a>.
           </p>
@@ -18,7 +18,7 @@ export default class About extends Component {
           <p>
             I believe these two libraries are cornerstones to build a modern web application on, each
             addressing an important aspect of web development: <a href="https://github.com/facebook/react" target="_blank">React </a>
-            as the V (view), and <a href="https://github.com/rackt/redux" target="_blank"> Redux </a> as the 
+            as the V (view), and <a href="https://github.com/rackt/redux" target="_blank"> Redux </a> as the
             predictable state container.
           </p>
 

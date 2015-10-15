@@ -39,14 +39,13 @@ function users(state = {
       isFetching: false,
       didInvalidate: false,
       error: action.error
-    });  
+    });
   default:
     return state;
   }
 }
 
 export function usersByPage(state = { }, action) {
-  //return state;
   switch (action.type) {
   case INVALIDATE_USERS_PAGE:
   case USERS_REQUEST:

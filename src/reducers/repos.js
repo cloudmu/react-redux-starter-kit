@@ -50,7 +50,7 @@ function repos(state = {
       isFetching: false,
       didInvalidate: false,
       error: action.error
-    });  
+    });
   default:
     return state;
   }

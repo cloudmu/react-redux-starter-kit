@@ -33,8 +33,7 @@ function loginFailure(user, error) {
 }
 
 export function login(user, password) {
-  return dispatch=> {
-    
+  return dispatch => {
     dispatch(loginRequest(user));
 
     return fetch('/api/login', {
@@ -43,7 +42,6 @@ export function login(user, password) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-  
       body: JSON.stringify({
         user: user,
         password: password,
@@ -51,16 +49,16 @@ export function login(user, password) {
     }).then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(loginSuccess(user, json)))
-      .catch(function (error){
-        const response=error.response;
-        if(response===undefined){
+      .catch(function(error) {
+        const response = error.response;
+        if (response === undefined) {
           dispatch(loginFailure(user, error));
-        }else{
+        }else {
           parseJSON(response)
-            .then(function(json){   
+            .then(function(json) {
               error.status = response.status;
-              error.statusText = response.statusText;     
-              error.message = json.message;     
+              error.statusText = response.statusText;
+              error.message = json.message;
               dispatch(loginFailure(user, error));
             });
         }
@@ -78,7 +76,8 @@ function logoutRequest(user) {
 function logoutSuccess(user, payload) {
   return {
     type: LOGOUT_SUCCESS,
-    user
+    user,
+    payload
   };
 }
 
@@ -92,7 +91,6 @@ function logoutFailure(user, error) {
 
 export function logout(user) {
   return dispatch => {
-    
     dispatch(logoutRequest(user));
 
     return fetch('/api/logout', {
@@ -101,23 +99,22 @@ export function logout(user) {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-  
       body: JSON.stringify({
         user: user
       })
     }).then(checkStatus)
       .then(parseJSON)
-      .then(json => dispatch(logoutSuccess(json)))
-      .catch(function (error){
-        const response=error.response;
-        if(response===undefined){
+      .then(json => dispatch(logoutSuccess(user, json)))
+      .catch(function(error) {
+        const response = error.response;
+        if (response === undefined) {
           dispatch(logoutFailure(user, error));
-        }else{
+        } else {
           parseJSON(response)
-            .then(function(json){   
+            .then(function(json) {
               error.status = response.status;
-              error.statusText = response.statusText;     
-              error.message = json.message;     
+              error.statusText = response.statusText;
+              error.message = json.message;
               dispatch(logout(user, error));
             });
         }

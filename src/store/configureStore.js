@@ -8,11 +8,11 @@ import {selectedReposPage, reposByPage, repoTableSize} from '../reducers/repos';
 const logger = createLogger();
 const reducer = combineReducers(
   {
-    auth, 
-  	selectedUsersPage, 
-  	usersByPage,
-  	selectedReposPage, 
-  	reposByPage,
+    auth,
+    selectedUsersPage,
+    usersByPage,
+    selectedReposPage,
+    reposByPage,
     repoTableSize,
   }
 );
@@ -22,9 +22,6 @@ const createStoreWithMiddleware = applyMiddleware(
   logger
 )(createStore);
 
-/**
- * Creates a preconfigured store for this example.
- */
 export default function configureStore(initialState) {
   return createStoreWithMiddleware(reducer, initialState);
 }

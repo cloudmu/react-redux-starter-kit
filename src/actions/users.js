@@ -50,23 +50,23 @@ function usersFailure(page, error) {
 const API_ROOT = 'https://api.github.com/';
 
 function fetchTopUsers(page) {
-  return dispatch => {  
+  return dispatch => {
     dispatch(usersRequest(page));
-    
-    return fetch(API_ROOT+'search/users?q=followers:>1000&order=desc&page='+page)
+
+    return fetch(API_ROOT + 'search/users?q=followers:>1000&order=desc&page=' + page)
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(usersSuccess(page, json)))
-      .catch(function (error){
-        const response=error.response;
-        if(response===undefined){
+      .catch(function(error) {
+        const response = error.response;
+        if (response === undefined) {
           dispatch(usersFailure(page, error));
-        }else{
+        } else {
           parseJSON(response)
-            .then(function(json){   
+            .then(function(json) {
               error.status = response.status;
-              error.statusText = response.statusText;     
-              error.message = json.message;     
+              error.statusText = response.statusText;
+              error.message = json.message;
               dispatch(usersFailure(page, error));
             });
         }
@@ -80,13 +80,15 @@ function shouldFetchUsers(state, page) {
   if (!users) {
     // Not cached, should fetch
     return true;
-  } else if (users.isFetching) {
+  }
+
+  if (users.isFetching) {
     // Shouldn't fetch since fetching is running
     return false;
-  } else {
-    // Should fetch if cache was invalidate
-    return users.didInvalidate;
   }
+
+  // Should fetch if cache was invalidate
+  return users.didInvalidate;
 }
 
 export function fetchTopUsersIfNeeded(page) {
@@ -96,8 +98,3 @@ export function fetchTopUsersIfNeeded(page) {
     }
   };
 }
-
-
-
-
-

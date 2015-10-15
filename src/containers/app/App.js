@@ -8,22 +8,23 @@ import {logout} from '../../actions/auth';
 import './app.css';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  } 
+  }
 
-  handleLogout(){
-      this.props.dispatch(logout());
-      this.context.history.pushState(null, '/login');
+  handleLogout() {
+    const { user } = this.props;
+    this.props.dispatch(logout(user));
+    this.context.history.pushState(null, '/login');
   }
 
   render() {
     const {user} = this.props;
     return (
-      <div className='container-fluid'>
+      <div className="container-fluid">
 
         <Header user={user} handleLogout={()=>this.handleLogout()}/>
-        <div className='appContent'>
+        <div className="appContent">
           {this.props.children}
         </div>
 
@@ -44,16 +45,13 @@ App.contextTypes = {
   store: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   const {auth} = state;
   return {
-    user: auth?auth.user:null
+    user: auth ? auth.user : null
   };
 }
 
 export default connect(
   mapStateToProps
 )(App);
-
-
-
