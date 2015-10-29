@@ -5,7 +5,7 @@ class RestrictPage extends Component {
   componentWillMount() {
     const {history, user} = this.props;
     if (!user) {
-      history.replaceState(null, '/login');
+      history.pushState(null, '/login');
     }
   }
 

@@ -13,7 +13,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
       // logged in, let's show home
-      this.context.history.pushState(null, '/');
+      this.context.history.replaceState(null, '/');
     }
   }
 

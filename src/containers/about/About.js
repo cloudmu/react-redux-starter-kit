@@ -16,7 +16,7 @@ export default class About extends Component {
           </p>
 
           <p>
-            I believe these two libraries are cornerstones to build a modern web application on, each
+            I believe these two libraries can serve as cornerstones to build a modern web application on, each
             addressing an important aspect of web development: <a href="https://github.com/facebook/react" target="_blank">React </a>
             as the V (view), and <a href="https://github.com/rackt/redux" target="_blank"> Redux </a> as the
             predictable state container.

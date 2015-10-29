@@ -54,7 +54,7 @@ class ReposPage extends Component {
 
   getTableWidth() {
     try {
-      const node = this.refs.TABLE_DIV.getDOMNode();
+      const node = this.refs.TABLE_DIV;
       return node.clientWidth;
     } catch (err) {
       return 2000;
