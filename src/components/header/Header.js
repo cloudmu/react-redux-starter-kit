@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
+import {Link, IndexLink} from 'react-router';
 import './header.css';
 
 export default class Header extends Component {
@@ -16,6 +16,8 @@ export default class Header extends Component {
     const isUsersPage = pathname.indexOf('users') > -1;
     const isReposPage = pathname.indexOf('repos') > -1;
 
+    const activeColor = {color: '#61dafb'};
+
     return (
       !isLoginPage &&
       <div>
@@ -29,10 +31,10 @@ export default class Header extends Component {
                 <span className="icon-bar"></span>
               </button>
 
-              <Link to="/" className="navbar-brand">
+              <IndexLink to="/" className="navbar-brand" activeStyle={activeColor}>
                 <div title="Home" className="brand"/>
                 Home
-              </Link>
+              </IndexLink>
             </div>
 
             <div id="navbar" className="navbar-collapse collapse">
