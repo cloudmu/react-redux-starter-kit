@@ -33,8 +33,8 @@
   "dependencies": {
     "isomorphic-fetch": "^2.1.1",
     "lodash": "^3.10.1",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "history": "^1.13.0",
     "react-router": "^1.0.0",

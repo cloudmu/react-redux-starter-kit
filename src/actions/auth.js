@@ -49,13 +49,13 @@ export function login(user, password) {
     }).then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(loginSuccess(user, json)))
-      .catch(function(error) {
+      .catch((error) => {
         const response = error.response;
         if (response === undefined) {
           dispatch(loginFailure(user, error));
-        }else {
+        } else {
           parseJSON(response)
-            .then(function(json) {
+            .then( (json) => {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;
@@ -105,13 +105,13 @@ export function logout(user) {
     }).then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(logoutSuccess(user, json)))
-      .catch(function(error) {
+      .catch((error) => {
         const response = error.response;
         if (response === undefined) {
           dispatch(logoutFailure(user, error));
         } else {
           parseJSON(response)
-            .then(function(json) {
+            .then((json) => {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+
 import {connect} from 'react-redux';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
@@ -27,7 +28,6 @@ class App extends Component {
         <div className="appContent">
           {this.props.children}
         </div>
-
         <Footer/>
       </div>
     );
@@ -45,12 +45,12 @@ App.contextTypes = {
   store: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const {auth} = state;
   return {
     user: auth ? auth.user : null
   };
-}
+};
 
 export default connect(
   mapStateToProps
