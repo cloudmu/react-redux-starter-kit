@@ -76,7 +76,7 @@ class UsersPage extends Component {
         {users.length > 0 &&
           <div className="row" style={{ opacity: isFetching ? 0.5 : 1 }}>
               {users.map(user =>
-                <div className="col-lg-2 col-md-4 col-sm-6 col-sm-xs-12">
+                <div key={user.login} className="col-lg-2 col-md-4 col-sm-6 col-sm-xs-12">
                   <User key={user.login} user={user} />
                 </div>
               )}
@@ -92,7 +92,7 @@ UsersPage.propTypes = {
   users: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  error: PropTypes.object.isRequired
+  error: PropTypes.object
 };
 
 function mapStateToProps(state) {

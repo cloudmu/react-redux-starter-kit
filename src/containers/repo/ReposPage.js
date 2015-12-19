@@ -216,7 +216,7 @@ ReposPage.propTypes = {
   repoTableSize: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   left: PropTypes.number,
   top: PropTypes.number
