@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import {Table, Column} from 'fixed-data-table';
+import {Table, Column, Cell} from 'fixed-data-table';
 
 
 import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded, resizeRepoTable } from '../../actions/repos';
@@ -10,13 +10,41 @@ import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded, resizeRepo
 import './fixed-data-table.css';
 import './repo.css';
 
+const TextCell = ({rowIndex, data, col, ...props}) => (
+  <Cell {...props}>
+    {data[rowIndex][col]}
+  </Cell>
+);
+
+const LinkCell = ({rowIndex, data, col, ...props}) => (
+  <Cell {...props}>
+    <a href={data[rowIndex][col]} target="_blank">{data[rowIndex][col]}</a>
+  </Cell>
+);
+
+const OwnerCell = ({rowIndex, data, col, ...props}) => (
+  <Cell {...props}>
+    <div>
+      <a href={data[rowIndex][col].html_url} target="_blank">
+        <img src={data[rowIndex][col].avatar_url} width="32" height="32"/>
+        <span className="repo_owner">{data[rowIndex][col].login}</span>
+      </a>
+    </div>
+  </Cell>
+);
+
+const StargazersCell = ({rowIndex, data, col, ...props}) => (
+  <Cell {...props}>
+    <span className="pull-right">{data[rowIndex][col].toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>
+  </Cell>
+);
+
 class ReposPage extends Component {
   constructor(props) {
     super(props);
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
     this.handlePreviousPageClick = this.handlePreviousPageClick.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
-    this.rowGetter = this.rowGetter.bind(this);
     this.handleWindowResize = this.handleWindowResize.bind(this);
   }
 
@@ -97,27 +125,6 @@ class ReposPage extends Component {
     dispatch(invalidateReposPage(page));
   }
 
-  rowGetter(index) {
-    return this.props.repos[index];
-  }
-
-  renderLink(link) {
-    return <a href={link} target="_blank">{link}</a>;
-  }
-
-  renderOwner(owner) {
-    return (<div>
-              <a href={owner.html_url} target="_blank">
-                <img src={owner.avatar_url} width="32" height="32"/>
-                <span className="repo_owner">{owner.login}</span>
-              </a>
-            </div>);
-  }
-
-  renderStargazers(stargazersCount) {
-    return <span className="pull-right">{stargazersCount.toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>;
-  }
-
   render() {
     const controlledScrolling =
       this.props.left !== undefined || this.props.top !== undefined;
@@ -158,48 +165,46 @@ class ReposPage extends Component {
               width = {repoTableSize.width}
               height = {repoTableSize.height}
 
-              rowGetter={this.rowGetter}
               rowsCount={repos.length}
               overflowX={controlledScrolling ? 'hidden' : 'auto'}
-              overflowY={controlledScrolling ? 'hidden' : 'auto'}>
+              overflowY={controlledScrolling ? 'hidden' : 'auto'}
+              
+              {...this.props}>
 
               <Column
-                dataKey="name"
-                fixed
-                label="Repository"
+                header={<Cell>Repository</Cell>}
+                cell={<TextCell data={repos} col="name"/>}
+                fixed={true}
                 width={200}
               />
 
               <Column
-                dataKey="owner"
-                cellRenderer={this.renderOwner}
-                label="Owner"
+                header={<Cell>Owner</Cell>}
+                cell={<OwnerCell data={repos} col="owner"/>}
                 width={200}
               />
 
               <Column
-                dataKey="stargazers_count"
-                cellRenderer={this.renderStargazers}
-                label="Stargazers"
+                header={<Cell>Stargazers</Cell>}
+                cell={<StargazersCell data={repos} col="stargazers_count"/>}
                 width={150}
               />
 
               <Column
-                dataKey="full_name"
-                label="Full Name"
+                header={<Cell>Full Name</Cell>}
+                cell={<TextCell data={repos} col="full_name"/>}
                 width={300}
               />
 
-              <Column
-                cellRenderer={this.renderLink}
-                label="Repository URL"
+               <Column
+                header={<Cell>Repository URL</Cell>}
+                cell={<LinkCell data={repos} col="html_url"/>}
                 width={400}
-                dataKey="html_url"
               />
 
               <Column
-                dataKey="description"
-                label="Description"
+                header={<Cell>Description</Cell>}
+                cell={<TextCell data={repos} col="description"/>}
                 width={500}
               />
 

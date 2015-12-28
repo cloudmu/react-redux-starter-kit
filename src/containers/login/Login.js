@@ -39,12 +39,12 @@ class Login extends Component {
               <form className="form-signin">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-user"/></span>
-                  <input type="text" ref="username" className="form-control" placeholder="Username" required autoFocus/>
+                  <input type="text" ref="username" className="form-control" placeholder="Username (hint: admin)" required autoFocus/>
                 </div>
 
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-lock"/></span>
-                  <input type="password" ref="password" className="form-control" placeholder="Password" required/>
+                  <input type="password" ref="password" className="form-control" placeholder="Password (hint: password)" required/>
                 </div>
 
                 <div className="checkbox">
