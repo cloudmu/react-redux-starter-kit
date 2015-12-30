@@ -6,6 +6,7 @@ var StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     path.join(__dirname, 'src/index.js')
   ],
   output: {
@@ -31,9 +32,14 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js?$/,
+        test: /\.js$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel'
+        include: __dirname,
+        query: {
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'stage-0', 'react'],
+        }
       }, 
       {
         test: /\.json?$/,
