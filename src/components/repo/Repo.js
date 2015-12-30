@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Repo = ({repo, owner}) => {
+const Repo = ({ repo, owner }) => {
   return (
     <div>
       <div className="Repo">

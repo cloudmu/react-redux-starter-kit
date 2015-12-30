@@ -9,14 +9,14 @@ export default class Header extends Component {
   }
 
   render() {
-    const {user} = this.props;
+    const { user } = this.props;
     const pathname = this.context.location.pathname;
     const isLoginPage = pathname.indexOf('login') > -1;
     const isAboutPage = pathname.indexOf('about') > -1;
     const isUsersPage = pathname.indexOf('users') > -1;
     const isReposPage = pathname.indexOf('repos') > -1;
 
-    const activeColor = {color: '#61dafb'};
+    const activeColor = { color: '#61dafb' };
 
     return (
       !isLoginPage &&
@@ -50,7 +50,7 @@ export default class Header extends Component {
                     <span className="fa fa-user header_fa"></span>{user ? user : 'Anonymous'}<span className="caret"></span>
                   </a>
                   <ul className="dropdown-menu">
-                    <li className="logout-link"><a href="#" onClick={ event=>this.onLogoutClick(event)}><i className="fa fa-sign-out header_fa"/>Log out</a></li>
+                    <li className="logout-link"><a href="#" onClick={ event => this.onLogoutClick(event)}><i className="fa fa-sign-out header_fa"/>Log out</a></li>
                     <li role="separator" className="divider"></li>
                     <li>
                       <a href="https://github.com/cloudmu/react-redux-starter-kit"target="_blank" title="View on Github"><i className="fa fa-github header_fa"/>Github</a>

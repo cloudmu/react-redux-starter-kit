@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 
-import {logout} from '../../actions/auth';
+import { logout } from '../../actions/auth';
 
 import './app.css';
 
@@ -20,11 +20,11 @@ class App extends Component {
   }
 
   render() {
-    const {user} = this.props;
+    const { user } = this.props;
     return (
       <div className="container-fluid">
 
-        <Header user={user} handleLogout={()=>this.handleLogout()}/>
+        <Header user={user} handleLogout={() => this.handleLogout()}/>
         <div className="appContent">
           {this.props.children}
         </div>
@@ -46,7 +46,7 @@ App.contextTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const {auth} = state;
+  const { auth } = state;
   return {
     user: auth ? auth.user : null
   };

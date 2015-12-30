@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import {checkStatus, parseJSON} from './utils';
+import { checkStatus, parseJSON } from './utils';
 
 export const SELECT_USERS_PAGE = 'SELECT_USERS_PAGE';
 export const INVALIDATE_USERS_PAGE = 'INVALIDATE_USERS_PAGE';
@@ -33,7 +33,7 @@ function usersRequest(page) {
 function usersSuccess(page, payload) {
   return {
     type: USERS_SUCCESS,
-    page: page,
+    page,
     users: payload.items,
     totalCount: payload.total_count
   };
@@ -57,13 +57,13 @@ function fetchTopUsers(page) {
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(usersSuccess(page, json)))
-      .catch(function(error) {
+      .catch(error => {
         const response = error.response;
         if (response === undefined) {
           dispatch(usersFailure(page, error));
         } else {
           parseJSON(response)
-            .then(function(json) {
+            .then(json => {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;

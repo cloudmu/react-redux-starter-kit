@@ -1,16 +1,16 @@
-import {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 class RestrictPage extends Component {
   componentWillMount() {
-    const {history, user} = this.props;
+    const { history, user } = this.props;
     if (!user) {
       history.pushState(null, '/login');
     }
   }
 
   render() {
-    const {user} = this.props;
+    const { user } = this.props;
     if (user) {
       return this.props.children;
     }
@@ -26,7 +26,7 @@ RestrictPage.propTypes = {
 };
 
 function mapStateToProps(state) {
-  return {user: state.auth.user};
+  return { user: state.auth.user };
 }
 
 export default connect(mapStateToProps)(RestrictPage);

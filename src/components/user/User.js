@@ -2,16 +2,16 @@ import React, { PropTypes } from 'react';
 
 import './user.css';
 
-const User = ({user}) => {
+const User = ({ user }) => {
   const { login, avatar_url, html_url } = user;
   return (
     <div className="panel panel-info">
       <div className="panel-heading">
 
-        <a href={html_url} target="_blank">
+        <a href={ html_url } target="_blank">
           <div className="row">
             <div className="col-xs-4">
-                <img src={avatar_url} width="64" height="64"/>
+                <img src={ avatar_url } width="64" height="64"/>
             </div>
             <div className="col-xs-8">
                 <div className="pull-right user-name">{login}</div>

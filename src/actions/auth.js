@@ -1,5 +1,6 @@
+'use strict';
 import 'isomorphic-fetch';
-import {checkStatus, parseJSON} from './utils';
+import { checkStatus, parseJSON } from './utils';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -12,7 +13,7 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 function loginRequest(user) {
   return {
     type: LOGIN_REQUEST,
-    user: user
+    user
   };
 }
 
@@ -27,8 +28,8 @@ function loginSuccess(user, payload) {
 function loginFailure(user, error) {
   return {
     type: LOGIN_FAILURE,
-    user: user,
-    error: error
+    user,
+    error
   };
 }
 
@@ -43,8 +44,8 @@ export function login(user, password) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: user,
-        password: password,
+        user,
+        password,
       })
     }).then(checkStatus)
       .then(parseJSON)
@@ -55,7 +56,7 @@ export function login(user, password) {
           dispatch(loginFailure(user, error));
         } else {
           parseJSON(response)
-            .then( (json) => {
+            .then((json) => {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;

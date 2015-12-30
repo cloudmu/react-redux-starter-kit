@@ -1,5 +1,6 @@
+'use strict';
 import 'isomorphic-fetch';
-import {checkStatus, parseJSON} from './utils';
+import { checkStatus, parseJSON } from './utils';
 
 export const SELECT_REPOS_PAGE = 'SELECT_REPOS_PAGE';
 export const INVALIDATE_REPOS_PAGE = 'INVALIDATE_REPOS_PAGE';
@@ -42,7 +43,7 @@ function reposRequest(page) {
 function reposSuccess(page, payload) {
   return {
     type: REPOS_SUCCESS,
-    page: page,
+    page,
     repos: payload.items,
     totalCount: payload.total_count
   };
@@ -66,13 +67,13 @@ function fetchTopRepos(page) {
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(reposSuccess(page, json)))
-      .catch(function(error) {
+      .catch(error => {
         const response = error.response;
         if (response === undefined) {
           dispatch(reposFailure(page, error));
         } else {
           parseJSON(response)
-            .then(function(json) {
+            .then(json => {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;

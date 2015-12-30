@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {login} from '../../actions/auth';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
 
 import './login.css';
 
@@ -27,7 +27,7 @@ class Login extends Component {
   }
 
   render() {
-    const {user, loginError} = this.props;
+    const { user, loginError } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -82,14 +82,12 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const {auth} = state;
+  const { auth } = state;
   if (auth) {
-    return {user: auth.user, loginError: auth.loginError};
+    return { user: auth.user, loginError: auth.loginError };
   }
 
-  return {user: null};
+  return { user: null };
 }
 
 export default connect(mapStateToProps)(Login);
-
-
