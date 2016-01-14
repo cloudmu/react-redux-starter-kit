@@ -1,18 +1,17 @@
 
   .navbar-brand {
     position:relative;
-    padding-left: 60;
+    padding-left: 50;
   }
   .brand {
     position:absolute;
-    top:5px;
-    left:15px;
+    top:0px;
+    left:5px;
     display:inline-block;
     background: #2d2d2d url('logo.png') no-repeat center center;
     width: 40px;
     height: 40px;
-    background-size: 80%;
-    margin: 0 10px 0 0;
+    background-size: 90%;
     border-radius:20px;
   }
   

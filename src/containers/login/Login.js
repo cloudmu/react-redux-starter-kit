@@ -32,11 +32,9 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-4 col-md-offset-4">
-            <div className="panel panel-default panel-signin">
-              <div className="panel-heading">
-                <h3 className="panel-title">Please Log in</h3>
-              </div>
-              <form className="form-signin">
+            <div className="card">
+              <div className="card-header">Please Log in</div>
+              <form className="card-block">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-user"/></span>
                   <input type="text" ref="username" className="form-control" placeholder="Username (hint: admin)" required autoFocus/>

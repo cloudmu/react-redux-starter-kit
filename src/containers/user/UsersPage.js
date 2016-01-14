@@ -51,14 +51,14 @@ class UsersPage extends Component {
       <div className="container-fluid">
         <nav>
           <ul className="pager">
-            <li className={'previous' + (page > 1 ? '' : ' disabled')}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
+            <li className={'pager-prev' + (page > 1 ? '' : ' disabled')}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
             {!isFetching &&
               <li><a href="#" onClick={this.handleRefreshClick}>Refresh page {page}</a></li>
             }
             {isFetching &&
               <span><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span>
             }
-            <li className={'next' + (users.length > 0 ? '' : ' disabled')}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
+            <li className={'pager-next' + (users.length > 0 ? '' : ' disabled')}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
           </ul>
         </nav>
 

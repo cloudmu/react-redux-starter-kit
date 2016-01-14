@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import './home.css';
 
@@ -6,10 +6,10 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className="jumbotron home-jumbotron">
+        <div className="jumbotron">
           <div className="container">
-            <h1>Yet Another Web App Starter Kit</h1>
-            <p>
+            <h1 className="display-3">Yet Another Web App Starter Kit</h1>
+            <p className="lead">
             This is yet another React based web application starter kit.
             However, this one attempts to go beyond the typical simple boilerplates, by showcasing several great
             technologies (such as

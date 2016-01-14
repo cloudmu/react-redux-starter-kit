@@ -5,27 +5,25 @@ import './user.css';
 const User = ({ user }) => {
   const { login, avatar_url, html_url } = user;
   return (
-    <div className="panel panel-info">
-      <div className="panel-heading">
-
-        <a href={ html_url } target="_blank">
+    <div className="card">
+      <div className="card-block">
           <div className="row">
-            <div className="col-xs-4">
-                <img src={ avatar_url } width="64" height="64"/>
+            <div className="col-xs-6">
+              <a href={ html_url } target="_blank">
+                <img src={ avatar_url } width="96" height="96"/>
+              </a>
             </div>
-            <div className="col-xs-8">
-                <div className="pull-right user-name">{login}</div>
-
+            <div className="col-xs-6">
+              <ul className="list-unstyled">
+                <a href={ html_url } target="_blank">
+                  <li className="user-name m-t-10">{login}</li>
+                </a>
+                <a href={ 'http://github.com/' + login + '/followers'} target="_blank">
+                  <li className="label label-success m-t-20">Followers</li>
+                </a>
+              </ul>
             </div>
           </div>
-        </a>
-      </div>
-
-      <div className="panel-footer">
-          <a href={ 'http://github.com/' + login + '/followers'} target="_blank">
-            <span className="label label-success pull-right">Followers</span>
-          </a>
-          <div className="clearfix"></div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import './footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-       <p className="small text-center text-muted">
+       <p className="text-xs-center text-muted">
         Have questions or suggestions? Please file them on the
         <a href="https://github.com/cloudmu/react-redux-starter-kit/issues" target="_blank"> Github </a>
         or tweet
@@ -16,4 +16,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
