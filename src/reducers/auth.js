@@ -8,16 +8,23 @@ import {
   LOGOUT_FAILURE,
 } from '../actions/auth';
 
+import { loadUserProfile } from '../actions/utils';
+
 const initialState = {
-  // user: null,
-  // password: null,
-  // userRole: null,
-  // loggingIn: false,
-  // loggingOut: false,
-  // loginError: null,
+   user: null,
+   password: null,
+   userRole: null,
+   loggingIn: false,
+   loggingOut: false,
+   loginError: null,
 };
 
-export default function auth(state = initialState, action = {}) {
+function initializeState(){
+  const userProfile = loadUserProfile();
+  return Object.assign({}, initialState, userProfile);
+}
+
+export default function auth(state = initializeState(), action = {}) {
   switch (action.type) {
   case LOGIN_REQUEST:
     return Object.assign({}, state, {loggingIn: true});

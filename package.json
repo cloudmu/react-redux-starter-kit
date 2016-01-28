@@ -21,6 +21,8 @@
     "bootstrap",
     "webpack",
     "flux",
+    "jwt",
+    "autho0",
     "dashboard",
     "boilerplate"
   ],
@@ -44,7 +46,9 @@
     "classnames": "^2.2.0",
     "express": "^4.13.3",
     "body-parser": "^1.14.1",
-    "fixed-data-table": "^0.6.0"
+    "fixed-data-table": "^0.6.0",
+    "jsonwebtoken": "^5.5.4",
+    "jwt-decode": "^1.5.1"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",

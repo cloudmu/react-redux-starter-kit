@@ -1,6 +1,6 @@
 'use strict';
 import 'isomorphic-fetch';
-import { checkStatus, parseJSON } from './utils';
+import { ID_TOKEN, checkStatus, parseJSON, setIdToken, removeIdToken, decodeUserProfile } from './utils';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -17,15 +17,18 @@ function loginRequest(user) {
   };
 }
 
-function loginSuccess(user, payload) {
+function loginSuccess(idToken) {
+  setIdToken(idToken);
+  const profile = decodeUserProfile(idToken);
   return {
     type: LOGIN_SUCCESS,
-    user: payload.user,
-    role: payload.role
+    user: profile.user,
+    role: profile.role
   };
 }
 
 function loginFailure(user, error) {
+  removeIdToken();
   return {
     type: LOGIN_FAILURE,
     user,
@@ -49,8 +52,10 @@ export function login(user, password) {
       })
     }).then(checkStatus)
       .then(parseJSON)
-      .then(json => dispatch(loginSuccess(user, json)))
-      .catch((error) => {
+      .then((json) => {
+        const idToken = json[ID_TOKEN];
+        dispatch(loginSuccess(idToken));
+      }).catch((error) => {
         const response = error.response;
         if (response === undefined) {
           dispatch(loginFailure(user, error));
@@ -61,24 +66,26 @@ export function login(user, password) {
               error.statusText = response.statusText;
               error.message = json.message;
               dispatch(loginFailure(user, error));
-            });
+            }
+          );
         }
       });
   };
 }
 
 function logoutRequest(user) {
+  removeIdToken();
   return {
     type: LOGOUT_REQUEST,
     user
   };
 }
 
-function logoutSuccess(user, payload) {
+function logoutSuccess(user) {
+  removeIdToken();
   return {
     type: LOGOUT_SUCCESS,
-    user,
-    payload
+    user
   };
 }
 
@@ -93,7 +100,6 @@ function logoutFailure(user, error) {
 export function logout(user) {
   return dispatch => {
     dispatch(logoutRequest(user));
-
     return fetch('/api/logout', {
       method: 'post',
       headers: {
@@ -101,11 +107,11 @@ export function logout(user) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user: user
+        user
       })
     }).then(checkStatus)
       .then(parseJSON)
-      .then(json => dispatch(logoutSuccess(user, json)))
+      .then(json => dispatch(logoutSuccess(user)))
       .catch((error) => {
         const response = error.response;
         if (response === undefined) {
@@ -116,7 +122,7 @@ export function logout(user) {
               error.status = response.status;
               error.statusText = response.statusText;
               error.message = json.message;
-              dispatch(logout(user, error));
+              dispatch(logoutFailure(user, error));
             });
         }
       });

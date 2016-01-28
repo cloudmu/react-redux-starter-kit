@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class RestrictPage extends Component {
   componentWillMount() {
     const { history, user } = this.props;
+    // const isAuthenticated = localStorage.getItem('id_token');
     if (!user) {
       history.pushState(null, '/login');
     }
@@ -11,6 +12,7 @@ class RestrictPage extends Component {
 
   render() {
     const { user } = this.props;
+    // const isAuthenticated = localStorage.getItem('id_token');
     if (user) {
       return this.props.children;
     }
