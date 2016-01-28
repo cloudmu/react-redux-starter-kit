@@ -16,13 +16,14 @@ export default class Home extends Component {
               <a href="https://github.com/facebook/react" target="_blank"> React</a>,
               <a href="https://github.com/gaearon/redux" target="_blank"> Redux</a>,
               <a href="https://github.com/rackt/react-router" target="_blank"> React-Router</a>,
+              <a href="https:// https://jwt.io" target="_blank"> JSON Web Token</a>,
               <a href="https://github.com/facebook/fixed-data-table" target="_blank"> Fixed-Data-Table</a>,
               <a href="http://babeljs.io" target="_blank"> Babel</a>,
               <a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a>
               , and
               <a href="http://webpack.github.io" target="_blank"> Webpack</a>
             ) used together to develop a more complex web
-            application, with features such as navigation, asynchronous data fetching, error handling, caching and pagination, etc.
+            application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
             </p>
 
             <div className="home-humility">
@@ -43,6 +44,7 @@ export default class Home extends Component {
             <li><a href="https://github.com/facebook/react" target="_blank">React</a></li>
             <li><a href="https://github.com/rackt/redux" target="_blank">Redux</a></li>
             <li><a href="https://github.com/rackt/react-router" target="_blank">React Router</a></li>
+            <li><a href="https:// https://jwt.io" target="_blank">JSON Web Token</a></li>
             <li><a href="https://github.com/facebook/fixed-data-table" target="_blank"> Fixed-Data-Table</a></li>
             <li><a href="https://github.com/webpack/style-loader" target="_blank">style-loader</a></li>
             <li><a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a></li>
@@ -88,12 +90,12 @@ export default class Home extends Component {
             </dd>
             <br/>
 
-            <dt>Page Restrictions</dt>
+            <dt>Authentication and Page Restrictions</dt>
             <dd>
               Certain UI pages (<code>UsersPage</code> and <code>ReposPage</code>) are restricted.  You can only access them after signing in to the
               Application.
               When accessing restricted pages without signing in first, the application would redirect to the <code>Login</code> page.
-              You can log in as user "admin" and password "password".
+              You can log in as user "admin" and password "password".  The authentication is based on JSON Web Token (JWT).
             </dd><br/>
 
             <dt>Non-Univeral</dt>
