@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 
@@ -16,7 +16,7 @@ class App extends Component {
   handleLogout() {
     const { user } = this.props;
     this.props.dispatch(logout(user));
-    this.context.history.pushState(null, '/login');
+    this.context.router.push('/login');
   }
 
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className="container-fluid">
 
-        <Header user={user} handleLogout={() => this.handleLogout()}/>
+        <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
         <div className="appContent">
           {this.props.children}
         </div>
@@ -37,11 +37,12 @@ class App extends Component {
 App.propTypes = {
   user: PropTypes.string,
   children: PropTypes.node.isRequired,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 App.contextTypes = {
-  history: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
 };
 

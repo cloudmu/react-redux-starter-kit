@@ -13,7 +13,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
       // logged in, let's show home
-      this.context.history.replaceState(null, '/');
+      this.context.router.replace('/');
     }
   }
 
@@ -69,7 +69,7 @@ class Login extends Component {
 }
 
 Login.contextTypes = {
-  history: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
 };
 

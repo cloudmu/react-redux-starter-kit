@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 
 class RestrictPage extends Component {
   componentWillMount() {
-    const { history, user } = this.props;
+    const { user } = this.props;
+    const { router } = this.context;
     // const isAuthenticated = localStorage.getItem('id_token');
     if (!user) {
-      history.pushState(null, '/login');
+      router.push('/login');
     }
   }
 
@@ -23,8 +24,11 @@ class RestrictPage extends Component {
 
 RestrictPage.propTypes = {
   user: PropTypes.string,
-  history: PropTypes.object.isRequired,
   children: PropTypes.object
+};
+
+RestrictPage.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {

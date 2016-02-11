@@ -10,7 +10,7 @@ export default class Header extends Component {
 
   render() {
     const { user } = this.props;
-    const pathname = this.context.location.pathname;
+    const pathname = this.props.location.pathname;
     const isLoginPage = pathname.indexOf('login') > -1;
     const isAboutPage = pathname.indexOf('about') > -1;
     const isUsersPage = pathname.indexOf('users') > -1;
@@ -56,9 +56,10 @@ export default class Header extends Component {
 
 Header.propTypes = {
   user: PropTypes.string,
-  handleLogout: PropTypes.func.isRequired
-};
-
-Header.contextTypes = {
+  handleLogout: PropTypes.func.isRequired,
   location: React.PropTypes.object
 };
+
+// Header.contextTypes = {
+//   location: React.PropTypes.object
+// };
