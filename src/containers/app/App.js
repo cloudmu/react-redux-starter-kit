@@ -16,7 +16,7 @@ class App extends Component {
   handleLogout() {
     const { user } = this.props;
     this.props.dispatch(logout(user));
-    this.context.router.push('/login');
+    this.context.router.replace('/login');
   }
 
   render() {
@@ -38,18 +38,18 @@ App.propTypes = {
   user: PropTypes.string,
   children: PropTypes.node.isRequired,
   dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 App.contextTypes = {
   router: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   const { auth } = state;
   return {
-    user: auth ? auth.user : null
+    user: auth ? auth.user : null,
   };
 };
 

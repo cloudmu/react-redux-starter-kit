@@ -108,13 +108,6 @@ export default class Home extends Component {
 
           <h3>Wish List / Known Issues</h3>
           <dl>
-            <dt>Redirect after logging in</dt>
-            <dd>
-              When accessing a restricted page, the application would prompt end user to log in first.  However upon authentication, the default Home page
-              instead of the restricted paged would be shown. The end user has to manually navigate to the restricted page again. <br/>
-              It would be better to re-direct to the restricted page automatically.
-            </dd>
-              <br/>
             <dt>DRY issues in async actions</dt>
             <dd>
               The two sets of aync actions (<code>users</code> and <code>repos</code>) apparently can/should be refactored to extract and re-use the common code.<br/>

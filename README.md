@@ -6,7 +6,7 @@ Yet another React and Redux based web application starter kit. [Demo](http://ec2
 
 This is yet another React and Redux based web application starter kit. However, this one attempts to go beyond the typical simple boilerplates, by showcasing several great technologies (such as [React](https://github.com/facebook/react), [Redux](https://github.com/gaearon/redux), [React-Router](https://github.com/rackt/react-router), [Fixed-Data-Table](https://github.com/facebook/fixed-data-table), [Bootstrap](https://github.com/twbs/bootstrap), [Babel](http://babeljs.io), [Webpack](http://webpack.github.io) and [JWT](https://jwt.io)) used together to develop a more complex web application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
 
-### Install and Run the Dev Server
+### Install and Run the Dev Server (Linux/OSX)
 
 ```
 npm install
@@ -14,7 +14,7 @@ npm start
 ```
 Then open http://localhost:3000
 
-### Build and Run the Production Server
+### Build and Run the Production Server (Linux/OSX)
 
 ```
 npm run build
@@ -33,6 +33,7 @@ A demo of this web application is running on a free [Amazon EC2 Micro Instance](
 * Async Data fetching with caching and pagination
 * Data fetching error handling
 * Authentication and Page Restrictions (based on JWT)
+* Redirection upon logging in
 
 ### Dependencies
 
@@ -49,6 +50,6 @@ A demo of this web application is running on a free [Amazon EC2 Micro Instance](
 
 ### Credits
 
-As a long-time backend developer (who writes obscure number-crunching "optimzation" and "analytics" algorithms in Java), I would never have thought of developing (let alone posting) a web application using javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a 30 minutes [video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/rackt/redux).
+As a long-time backend developer (who writes obscure number-crunching "optimzation" and "analytics" algorithms in Java), I would never have thought of developing (let alone posting) a web application using javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a 30 minutes [video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/reactjs/redux).
 
 Thank you! 

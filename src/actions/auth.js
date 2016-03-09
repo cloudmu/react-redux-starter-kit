@@ -1,6 +1,10 @@
-'use strict';
 import 'isomorphic-fetch';
-import { ID_TOKEN, checkStatus, parseJSON, setIdToken, removeIdToken, decodeUserProfile } from './utils';
+import { ID_TOKEN,
+         checkStatus,
+        parseJSON,
+        setIdToken,
+        removeIdToken,
+        decodeUserProfile } from './utils';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -13,7 +17,7 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 function loginRequest(user) {
   return {
     type: LOGIN_REQUEST,
-    user
+    user,
   };
 }
 
@@ -23,7 +27,7 @@ function loginSuccess(idToken) {
   return {
     type: LOGIN_SUCCESS,
     user: profile.user,
-    role: profile.role
+    role: profile.role,
   };
 }
 
@@ -32,7 +36,7 @@ function loginFailure(user, error) {
   return {
     type: LOGIN_FAILURE,
     user,
-    error
+    error,
   };
 }
 
@@ -43,13 +47,13 @@ export function login(user, password) {
     return fetch('/api/login', {
       method: 'post',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         user,
         password,
-      })
+      }),
     }).then(checkStatus)
       .then(parseJSON)
       .then((json) => {
@@ -77,7 +81,7 @@ function logoutRequest(user) {
   removeIdToken();
   return {
     type: LOGOUT_REQUEST,
-    user
+    user,
   };
 }
 
@@ -85,7 +89,7 @@ function logoutSuccess(user) {
   removeIdToken();
   return {
     type: LOGOUT_SUCCESS,
-    user
+    user,
   };
 }
 
@@ -93,7 +97,7 @@ function logoutFailure(user, error) {
   return {
     type: LOGOUT_FAILURE,
     user,
-    error
+    error,
   };
 }
 
@@ -103,12 +107,12 @@ export function logout(user) {
     return fetch('/api/logout', {
       method: 'post',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        user
-      })
+        user,
+      }),
     }).then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(logoutSuccess(user)))

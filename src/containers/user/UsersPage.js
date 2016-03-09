@@ -92,31 +92,31 @@ UsersPage.propTypes = {
   users: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  error: PropTypes.object
+  error: PropTypes.object,
 };
 
 function mapStateToProps(state) {
   const { selectedUsersPage, usersByPage } = state;
-  const page = selectedUsersPage ? selectedUsersPage : 1;
+  const page = selectedUsersPage || 1;
 
   if (!usersByPage || !usersByPage[page]) {
     return {
-      page: page,
+      page,
       isFetching: false,
       didInvalidate: false,
       totalCount: 0,
       users: [],
-      error: null
+      error: null,
     };
   }
 
   return {
-    page: page,
+    page,
     error: usersByPage[page].error,
     isFetching: usersByPage[page].isFetching,
     didInvalidate: usersByPage[page].didInvalidate,
     totalCount: usersByPage[page].totalCount,
-    users: usersByPage[page].users
+    users: usersByPage[page].users,
   };
 }
 

@@ -3,21 +3,32 @@
   "env": {
     "browser": true,
     "mocha": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
-  "rules": {
-    "valid-jsdoc": 2,
-
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2,
-
-    "no-var": 0,
-    "vars-on-top": 0,
-
-    "comma-dangle": 0
-  },
-  "plugins": [
-    "react"
-  ]
+ "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-const-assign": 1,
+        "no-extra-semi": 0,
+        "semi": 0,
+        "no-fallthrough": 0,
+        "no-empty": 0,
+        "no-mixed-spaces-and-tabs": 0,
+        "no-redeclare": 0,
+        "no-this-before-super": 1,
+        "no-undef": 1,
+        "no-unreachable": 1,
+        "no-unused-vars": 1,
+        "no-use-before-define": 0,
+        "constructor-super": 1,
+        "curly": 0,
+        "eqeqeq": 0,
+        "func-names": 0,
+        "valid-typeof": 1
+    }  
 }

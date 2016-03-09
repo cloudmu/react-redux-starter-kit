@@ -12,8 +12,13 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
-      // logged in, let's show home
-      this.context.router.replace('/');
+      // logged in, let's show redirect if any, or show home
+      try {
+        const redirect = this.props.location.query.redirect;
+        this.context.router.replace(redirect);
+      } catch (err) {
+        this.context.router.replace('/');
+      }
     }
   }
 
@@ -70,13 +75,14 @@ class Login extends Component {
 
 Login.contextTypes = {
   router: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
 };
 
 Login.propTypes = {
   user: PropTypes.string,
   loginError: PropTypes.object,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  location: PropTypes.object,
 };
 
 function mapStateToProps(state) {

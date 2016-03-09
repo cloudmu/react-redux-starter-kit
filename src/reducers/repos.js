@@ -14,7 +14,7 @@ export function repoTableSize(state = { width: 2000, height: 1200 }, action) {
   switch (action.type) {
     case RESIZE_REPO_TABLE:
       return Object.assign({}, state, {
-        width: action.width, height: action.height
+        width: action.width, height: action.height,
       });
     default:
       return state;
@@ -26,17 +26,17 @@ function repos(state = {
   didInvalidate: false,
   totalCount: 0,
   repos: [],
-  error: null
+  error: null,
 }, action) {
   switch (action.type) {
     case INVALIDATE_REPOS_PAGE:
       return Object.assign({}, state, {
-        didInvalidate: true
+        didInvalidate: true,
       });
     case REPOS_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
+        didInvalidate: false,
       });
     case REPOS_SUCCESS:
       return Object.assign({}, state, {
@@ -44,13 +44,13 @@ function repos(state = {
         didInvalidate: false,
         totalCount: action.total_count,
         repos: action.repos,
-        error: null
+        error: null,
       });
     case REPOS_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        error: action.error
+        error: action.error,
       });
     default:
       return state;
@@ -64,7 +64,7 @@ export function reposByPage(state = { }, action) {
     case REPOS_SUCCESS:
     case REPOS_FAILURE:
       return Object.assign({}, state, {
-        [action.page]: repos(state[action.page], action)
+        [action.page]: repos(state[action.page], action),
       });
     default:
       return state;

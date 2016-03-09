@@ -5,15 +5,17 @@ class RestrictPage extends Component {
   componentWillMount() {
     const { user } = this.props;
     const { router } = this.context;
-    // const isAuthenticated = localStorage.getItem('id_token');
+
+    // If this page is restricted, go to loginPage first.
+    // (But pass on this page's path in order to redirect back upon login)
     if (!user) {
-      router.push('/login');
+      const path = this.props.location.pathname;
+      router.push(`/login?redirect=${path}`);
     }
   }
 
   render() {
     const { user } = this.props;
-    // const isAuthenticated = localStorage.getItem('id_token');
     if (user) {
       return this.props.children;
     }
@@ -24,11 +26,12 @@ class RestrictPage extends Component {
 
 RestrictPage.propTypes = {
   user: PropTypes.string,
-  children: PropTypes.object
+  children: PropTypes.object,
+  location: PropTypes.object,
 };
 
 RestrictPage.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {

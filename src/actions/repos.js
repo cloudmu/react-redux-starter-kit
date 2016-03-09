@@ -1,4 +1,3 @@
-'use strict';
 import 'isomorphic-fetch';
 import { checkStatus, parseJSON } from './utils';
 
@@ -15,28 +14,28 @@ export function resizeRepoTable(width, height) {
   return {
     type: RESIZE_REPO_TABLE,
     width,
-    height
+    height,
   };
 }
 
 export function selectReposPage(page) {
   return {
     type: SELECT_REPOS_PAGE,
-    page
+    page,
   };
 }
 
 export function invalidateReposPage(page) {
   return {
     type: INVALIDATE_REPOS_PAGE,
-    page
+    page,
   };
 }
 
 function reposRequest(page) {
   return {
     type: REPOS_REQUEST,
-    page
+    page,
   };
 }
 
@@ -45,7 +44,7 @@ function reposSuccess(page, payload) {
     type: REPOS_SUCCESS,
     page,
     repos: payload.items,
-    totalCount: payload.total_count
+    totalCount: payload.total_count,
   };
 }
 
@@ -53,17 +52,17 @@ function reposFailure(page, error) {
   return {
     type: REPOS_FAILURE,
     page,
-    error
+    error,
   };
 }
 
-const API_ROOT = 'https://api.github.com/';
+const API_ROOT = 'https://api.github.com';
 
 function fetchTopRepos(page) {
   return dispatch => {
     dispatch(reposRequest(page));
 
-    return fetch(API_ROOT + 'search/repositories?q=stars:>10000&order=desc&page=' + page)
+    return fetch(`${API_ROOT}/search/repositories?q=stars:>10000&order=desc&page=${page}`)
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(reposSuccess(page, json)))

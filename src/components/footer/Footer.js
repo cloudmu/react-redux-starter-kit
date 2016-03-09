@@ -2,8 +2,7 @@ import React from 'react';
 
 import './footer.css';
 
-const Footer = () => {
-  return (
+const Footer = () => (
     <footer className="footer">
        <p className="text-xs-center text-muted">
         Have questions or suggestions? Please file them on the
@@ -12,7 +11,6 @@ const Footer = () => {
         <a href="http://www.twitter.com/yunjun_mu" target="_blank"> me</a>.
       </p>
     </footer>
-  );
-};
+);
 
 export default Footer;

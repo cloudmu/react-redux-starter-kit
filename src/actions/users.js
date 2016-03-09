@@ -12,21 +12,21 @@ export const USERS_FAILURE = 'USERS_FAILURE';
 export function selectUsersPage(page) {
   return {
     type: SELECT_USERS_PAGE,
-    page
+    page,
   };
 }
 
 export function invalidateUsersPage(page) {
   return {
     type: INVALIDATE_USERS_PAGE,
-    page
+    page,
   };
 }
 
 function usersRequest(page) {
   return {
     type: USERS_REQUEST,
-    page
+    page,
   };
 }
 
@@ -35,7 +35,7 @@ function usersSuccess(page, payload) {
     type: USERS_SUCCESS,
     page,
     users: payload.items,
-    totalCount: payload.total_count
+    totalCount: payload.total_count,
   };
 }
 
@@ -43,17 +43,17 @@ function usersFailure(page, error) {
   return {
     type: USERS_FAILURE,
     page,
-    error
+    error,
   };
 }
 
-const API_ROOT = 'https://api.github.com/';
+const API_ROOT = 'https://api.github.com';
 
 function fetchTopUsers(page) {
   return dispatch => {
     dispatch(usersRequest(page));
 
-    return fetch(API_ROOT + 'search/users?q=followers:>1000&order=desc&page=' + page)
+    return fetch(`${API_ROOT}/search/users?q=followers:>1000&order=desc&page=${page}`)
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(usersSuccess(page, json)))
