@@ -8,7 +8,7 @@ import {
   LOGOUT_FAILURE,
 } from '../actions/auth';
 
-import { loadUserProfile } from '../actions/utils';
+import { loadUserProfile } from '../utils/utils';
 
 const initialState = {
    user: null,

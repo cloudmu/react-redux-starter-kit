@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { checkStatus, parseJSON } from './utils';
+import { checkStatus, parseJSON } from '../utils/utils';
 
 export const SELECT_USERS_PAGE = 'SELECT_USERS_PAGE';
 export const INVALIDATE_USERS_PAGE = 'INVALIDATE_USERS_PAGE';

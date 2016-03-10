@@ -1,5 +1,9 @@
-'use strict';
-import { SELECT_REPOS_PAGE, RESIZE_REPO_TABLE, INVALIDATE_REPOS_PAGE, REPOS_REQUEST, REPOS_SUCCESS, REPOS_FAILURE } from '../actions/repos';
+import { SELECT_REPOS_PAGE,
+    RESIZE_REPO_TABLE,
+    INVALIDATE_REPOS_PAGE,
+    REPOS_REQUEST,
+    REPOS_SUCCESS,
+    REPOS_FAILURE } from '../actions/repos';
 
 export function selectedReposPage(state = 1, action) {
   switch (action.type) {

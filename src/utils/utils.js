@@ -35,7 +35,14 @@ export function decodeUserProfile(idToken) {
 export function loadUserProfile() {
   try {
     const idToken = localStorage.getItem(ID_TOKEN);
-    return jwt_decode(idToken);
+    const userProfile = jwt_decode(idToken);
+    const now = new Date().getTime() / 1000;   // Date().getTime() returns milliseconds.
+                                               // So divide by 1000 to get seconds
+    if (now > userProfile.exp) {
+      // user profile has expired.
+      return {};
+    }
+    return userProfile;
   } catch (err) {
     return null;
   }

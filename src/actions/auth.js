@@ -4,7 +4,7 @@ import { ID_TOKEN,
         parseJSON,
         setIdToken,
         removeIdToken,
-        decodeUserProfile } from './utils';
+        decodeUserProfile } from '../utils/utils';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

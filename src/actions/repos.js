@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { checkStatus, parseJSON } from './utils';
+import { checkStatus, parseJSON } from '../utils/utils';
 
 export const SELECT_REPOS_PAGE = 'SELECT_REPOS_PAGE';
 export const INVALIDATE_REPOS_PAGE = 'INVALIDATE_REPOS_PAGE';
