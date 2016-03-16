@@ -10,7 +10,7 @@ This is yet another React and Redux based web application starter kit. However, 
 
 ```
 npm install
-npm start
+npm dev
 ```
 Then open http://localhost:3000
 
@@ -18,10 +18,27 @@ Then open http://localhost:3000
 
 ```
 npm run build
-NODE_ENV=production PORT=80 npm start
+npm start
 ```
 Then open http://localhost
+(Note the production port is set to 80 in package.json)
 
+### Install and Run the Dev Server (Windows)
+
+```
+npm install
+npm run dev-win
+```
+Then open http://localhost:3000
+
+### Build and Run the Production Server (Windows)
+
+```
+npm run build-win
+npm run start-win
+```
+Then open http://localhost
+(Note the production port is set to 80 in package.json)
 
 ### Demo
 A demo of this web application is running on a free [Amazon EC2 Micro Instance](http://ec2-52-10-209-45.us-west-2.compute.amazonaws.com/), with very limited resources.
