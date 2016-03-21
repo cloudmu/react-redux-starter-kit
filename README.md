@@ -10,7 +10,7 @@ This is yet another React and Redux based web application starter kit. However, 
 
 ```
 npm install
-npm dev
+npm run dev
 ```
 Then open http://localhost:3000
 
@@ -69,4 +69,4 @@ A demo of this web application is running on a free [Amazon EC2 Micro Instance](
 
 As a long-time backend developer (who writes obscure number-crunching "optimzation" and "analytics" algorithms in Java), I would never have thought of developing (let alone posting) a web application using javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a 30 minutes [video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/reactjs/redux).
 
-Thank you! 
+Thank you!
