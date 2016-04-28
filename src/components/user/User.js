@@ -1,29 +1,31 @@
 import React, { PropTypes } from 'react';
 
-import './user.css';
-
 const User = ({ user }) => {
   const { login, avatar_url, html_url } = user;
+  const src = `https://ghbtns.com/github-btn.html?user=${login}&type=follow&count=true&size=large`;
+  
   return (
     <div className="card">
+      <div className="card-header">
+          <a href={ html_url } target="_blank">
+            <h4>{login}</h4>
+          </a>
+      </div>
+      
       <div className="card-block">
-          <div className="row">
-            <div className="col-xs-6">
-              <a href={ html_url } target="_blank">
-                <img src={ avatar_url } width="96" height="96"/>
-              </a>
-            </div>
-            <div className="col-xs-6">
-              <ul className="list-unstyled">
-                <a href={ html_url } target="_blank">
-                  <li className="user-name m-t-10">{login}</li>
-                </a>
-                <a href={ 'http://github.com/' + login + '/followers'} target="_blank">
-                  <li className="label label-success m-t-20">Followers</li>
-                </a>
-              </ul>
-            </div>
-          </div>
+        <img src={ avatar_url } className="card-img-top" width="120" height="120"/>
+      </div>  
+      
+      <div className="card-footer">
+        <iframe
+          src={src}
+          frameBorder="0"
+          allowTransparency="true"
+          scrolling="0"
+          frameborder="0"
+          width="500"
+          height="30">
+        </iframe>
       </div>
     </div>
   );

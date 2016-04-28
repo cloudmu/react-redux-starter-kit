@@ -3,3 +3,4 @@ dist/
 *.d.ts
 .vscode/
 typings.json
+jsconfig.json

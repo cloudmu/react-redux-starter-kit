@@ -76,7 +76,7 @@ class UsersPage extends Component {
         {users.length > 0 &&
           <div className="row" style={{ opacity: isFetching ? 0.5 : 1 }}>
               {users.map(user =>
-                <div key={user.login} className="col-lg-2 col-md-4 col-sm-6 col-sm-xs-12">
+                <div key={user.login} className="col-md-4">
                   <User key={user.login} user={user} />
                 </div>
               )}
