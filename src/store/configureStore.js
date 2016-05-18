@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import auth from '../reducers/auth';
@@ -6,7 +7,7 @@ import { selectedUsersPage, usersByPage } from '../reducers/users';
 import { selectedReposPage, reposByPage, repoTableSize } from '../reducers/repos';
 
 const logger = createLogger();
-const reducer = combineReducers(
+const rootReducer = combineReducers(
   {
     auth,
     selectedUsersPage,
@@ -14,14 +15,26 @@ const reducer = combineReducers(
     selectedReposPage,
     reposByPage,
     repoTableSize,
+    
+    routing: routerReducer
   }
 );
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunkMiddleware,
-  logger
-)(createStore);
+const initialState = {};
 
-export default function configureStore(initialState) {
-  return createStoreWithMiddleware(reducer, initialState);
+export default function configureStore() {
+  let store;
+  
+  if(module.hot){
+    store = createStore(rootReducer, initialState, compose(
+      applyMiddleware(thunkMiddleware, logger),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    ));
+  }else{
+    store = createStore(rootReducer, initialState, compose(
+      applyMiddleware(thunkMiddleware), f=>f
+    ));
+  }
+  
+  return store;
 }
