@@ -14,6 +14,44 @@ export function parseJSON(response) {
   return response.json();
 }
 
+/**
+ * A utility to call a restful service.
+ *
+ * @param url The restful service end point.
+ * @config The config object of the call. Can be null.
+ * @onRequest The callback function to create request action.
+ * @onRequestSuccess The callback function to create request success action.
+ *                 The function expects response json payload as its argument.
+ * @onRequestFailure The callback function to create request failure action.
+ *                 The function expects error as its argument.
+ */
+export function callApi(url, config, onRequest, onRequestSuccess, onRequestFailure) {
+  return dispatch => {
+    dispatch(onRequest);
+
+    return fetch(url, config)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then((json) => {
+        dispatch(onRequestSuccess(json));
+      }).catch((error) => {
+        const response = error.response;
+        if (response === undefined) {
+          dispatch(onRequestFailure(error));
+        } else {
+          parseJSON(response)
+            .then((json) => {
+              error.status = response.status;
+              error.statusText = response.statusText;
+              error.message = json.message;
+              dispatch(onRequestFailure(error));
+            }
+          );
+        }
+      });
+  };
+}
+
 export const ID_TOKEN = 'id_token';
 
 export function setIdToken(idToken) {
@@ -40,7 +78,8 @@ export function loadUserProfile() {
                                                // So divide by 1000 to get seconds
     if (now > userProfile.exp) {
       // user profile has expired.
-      return {};
+      removeIdToken();
+      return null;
     }
     return userProfile;
   } catch (err) {

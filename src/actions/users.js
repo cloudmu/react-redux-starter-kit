@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { checkStatus, parseJSON } from '../utils/utils';
+import { callApi } from '../utils/utils';
 
 export const SELECT_USERS_PAGE = 'SELECT_USERS_PAGE';
 export const INVALIDATE_USERS_PAGE = 'INVALIDATE_USERS_PAGE';
@@ -30,48 +30,36 @@ function usersRequest(page) {
   };
 }
 
-function usersSuccess(page, payload) {
-  return {
-    type: USERS_SUCCESS,
-    page,
-    users: payload.items,
-    totalCount: payload.total_count,
+// This is a curried function that takes page as argument,
+// and expects payload as argument to be passed upon API call success.
+function usersSuccess(page) {
+  return function (payload) {
+    return {
+      type: USERS_SUCCESS,
+      page,
+      users: payload.items,
+      totalCount: payload.total_count,
+    };
   };
 }
 
-function usersFailure(page, error) {
-  return {
-    type: USERS_FAILURE,
-    page,
-    error,
+// This is a curried function that takes page as argument,
+// and expects error as argument to be passed upon API call failure.
+function usersFailure(page) {
+  return function (error) {
+    return {
+      type: USERS_FAILURE,
+      page,
+      error,
+    };
   };
 }
 
 const API_ROOT = 'https://api.github.com';
 
 function fetchTopUsers(page) {
-  return dispatch => {
-    dispatch(usersRequest(page));
-
-    return fetch(`${API_ROOT}/search/users?q=followers:>1000&order=desc&page=${page}`)
-      .then(checkStatus)
-      .then(parseJSON)
-      .then(json => dispatch(usersSuccess(page, json)))
-      .catch(error => {
-        const response = error.response;
-        if (response === undefined) {
-          dispatch(usersFailure(page, error));
-        } else {
-          parseJSON(response)
-            .then(json => {
-              error.status = response.status;
-              error.statusText = response.statusText;
-              error.message = json.message;
-              dispatch(usersFailure(page, error));
-            });
-        }
-      });
-  };
+  const url = `${API_ROOT}/search/users?q=followers:>1000&order=desc&page=${page}`;
+  return callApi(url, null, usersRequest, usersSuccess(page), usersFailure(page));
 }
 
 function shouldFetchUsers(state, page) {

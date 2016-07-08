@@ -28,10 +28,10 @@ export default class Home extends Component {
 
             <div className="home-humility">
               <a href="https://github.com/cloudmu/react-redux-starter-kit" target="_blank">
-                <i className="fa fa-github"/> View on Github
+                <i className="fa fa-github" /> View on Github
               </a>
               <a href="https://twitter.com/yunjun_mu" target="_blank">
-                 <i className="fa fa-twitter home-fa-twitter"/>yunjun_mu
+                 <i className="fa fa-twitter home-fa-twitter" />yunjun_mu
               </a>
             </div>
           </div>
@@ -67,28 +67,28 @@ export default class Home extends Component {
               to Redux state and dispatch Redux actions, while low level components (such as <code>User</code>,
               <code>Repo</code>, and <code>Header</code>) read data and invoke callbacks passed in as props.
             </dd>
-            <br/>
+            <br />
 
             <dt>Async Data fetching with caching and pagination</dt>
             <dd>
               The <code>UsersPage</code> and <code>ReposPage</code> would show most followed Github users (with 1000+ followers)
               and most starred Github repos (with 10000+ stars).  The async actions (see <code>users</code>, and <code>repos</code>
-                under actions) fetch data from the following Github APIs: <br/>
-              <code>https://api.github.com/search/users?q=followers:>1000&order=desc&page=1</code> <br/>
-              <code>https://api.github.com/search/repositories?q=stars:>10000&order=desc&page=1</code> <br/>
+                under actions) fetch data from the following Github APIs: <br />
+              <code>https://api.github.com/search/users?q=followers:>1000&order=desc&page=1</code> <br />
+              <code>https://api.github.com/search/repositories?q=stars:>10000&order=desc&page=1</code> <br />
               The fetched data are stored with the page number as the lookup key, so that the local copy can be shown without the need
               to re-fetch the same data remotely each time. However cached data can be invalidated if desired.
             </dd>
-            <br/>
+            <br />
 
             <dt>Data fetching error handling</dt>
             <dd>
               You can test this by disabling your internet connection. Or even better, you can page through <code>UsersPage</code> or <code>ReposPage</code>
-              very quickly and hopefully invoke Github's API rate limit for your IP address. <br/>
+              very quickly and hopefully invoke Github's API rate limit for your IP address. <br />
               The application would fail gracefully with the error message if data fetching (for a particular page) fails. However, the application
               can still show cached data for other pages, which is very desirable behavior.
             </dd>
-            <br/>
+            <br />
 
             <dt>Authentication and Page Restrictions</dt>
             <dd>
@@ -96,7 +96,7 @@ export default class Home extends Component {
               Application.
               When accessing restricted pages without signing in first, the application would redirect to the <code>Login</code> page.
               You can log in as user "admin" and password "password".  The authentication is based on JSON Web Token (JWT).
-            </dd><br/>
+            </dd><br />
 
             <dt>Non-Univeral</dt>
             <dd>
@@ -109,12 +109,18 @@ export default class Home extends Component {
           <h3>Wish List / Known Issues</h3>
           <dl>
             <dt>DRY issues in async actions</dt>
-            <dd>
-              The two sets of aync actions (<code>users</code> and <code>repos</code>) apparently can/should be refactored to extract and re-use the common code.<br/>
-              The most obvious is the middleware approach illustrated in the excellent Redux documentation. But I am still digesting it.
-            </dd>
+            <del>
+              <dd>
+                The two sets of aync actions (<code>users</code> and <code>repos</code>) apparently can/should be refactored to extract and re-use the common code.<br />
+                The most obvious is the middleware approach illustrated in the excellent Redux documentation. But I am still digesting it.
+              </dd>
+            </del>
+              <dd>
+                [New]: The async actions (involving restful api calls for authentication and fetching Github users and repos) are now refactored to go through a common
+                utility <code>callApi</code>.
+              </dd>
 
-            <br/>
+            <br />
             <dt>WebSocket</dt>
             <dd>
               It would be interesting to show a use case of WebSocket, which is common for a real-world web application.

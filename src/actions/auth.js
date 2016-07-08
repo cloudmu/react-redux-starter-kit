@@ -1,7 +1,6 @@
 import 'isomorphic-fetch';
 import { ID_TOKEN,
-         checkStatus,
-        parseJSON,
+        callApi,
         setIdToken,
         removeIdToken,
         decodeUserProfile } from '../utils/utils';
@@ -21,7 +20,8 @@ function loginRequest(user) {
   };
 }
 
-function loginSuccess(idToken) {
+function loginSuccess(payload) {
+  const idToken = payload[ID_TOKEN];
   setIdToken(idToken);
   const profile = decodeUserProfile(idToken);
   return {
@@ -31,50 +31,28 @@ function loginSuccess(idToken) {
   };
 }
 
-function loginFailure(user, error) {
+function loginFailure(error) {
   removeIdToken();
   return {
     type: LOGIN_FAILURE,
-    user,
     error,
   };
 }
 
 export function login(user, password) {
-  return dispatch => {
-    dispatch(loginRequest(user));
-
-    return fetch('/api/login', {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user,
-        password,
-      }),
-    }).then(checkStatus)
-      .then(parseJSON)
-      .then((json) => {
-        const idToken = json[ID_TOKEN];
-        dispatch(loginSuccess(idToken));
-      }).catch((error) => {
-        const response = error.response;
-        if (response === undefined) {
-          dispatch(loginFailure(user, error));
-        } else {
-          parseJSON(response)
-            .then((json) => {
-              error.status = response.status;
-              error.statusText = response.statusText;
-              error.message = json.message;
-              dispatch(loginFailure(user, error));
-            }
-          );
-        }
-      });
+  const config = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user,
+      password,
+    }),
   };
+
+  return callApi('/api/login', config, loginRequest(user), loginSuccess, loginFailure);
 }
 
 function logoutRequest(user) {
@@ -102,33 +80,16 @@ function logoutFailure(user, error) {
 }
 
 export function logout(user) {
-  return dispatch => {
-    dispatch(logoutRequest(user));
-    return fetch('/api/logout', {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user,
-      }),
-    }).then(checkStatus)
-      .then(parseJSON)
-      .then(json => dispatch(logoutSuccess(user)))
-      .catch((error) => {
-        const response = error.response;
-        if (response === undefined) {
-          dispatch(logoutFailure(user, error));
-        } else {
-          parseJSON(response)
-            .then((json) => {
-              error.status = response.status;
-              error.statusText = response.statusText;
-              error.message = json.message;
-              dispatch(logoutFailure(user, error));
-            });
-        }
-      });
+  const config = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user,
+    }),
   };
+
+  return callApi('/api/logout', config, logoutRequest, logoutSuccess, logoutSuccess);
 }

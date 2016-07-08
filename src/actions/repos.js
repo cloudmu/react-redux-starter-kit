@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { checkStatus, parseJSON } from '../utils/utils';
+import { callApi } from '../utils/utils';
 
 export const SELECT_REPOS_PAGE = 'SELECT_REPOS_PAGE';
 export const INVALIDATE_REPOS_PAGE = 'INVALIDATE_REPOS_PAGE';
@@ -39,48 +39,36 @@ function reposRequest(page) {
   };
 }
 
-function reposSuccess(page, payload) {
-  return {
-    type: REPOS_SUCCESS,
-    page,
-    repos: payload.items,
-    totalCount: payload.total_count,
+// This is a curried function that takes page as argument,
+// and expects payload as argument to be passed upon API call success.
+function reposSuccess(page) {
+  return function (payload) {
+    return {
+      type: REPOS_SUCCESS,
+      page,
+      repos: payload.items,
+      totalCount: payload.total_count,
+    };
   };
 }
 
-function reposFailure(page, error) {
-  return {
-    type: REPOS_FAILURE,
-    page,
-    error,
+// This is a curried function that takes page as argument,
+// and expects error as argument to be passed upon API call failure.
+function reposFailure(page) {
+  return function (error) {
+    return {
+      type: REPOS_FAILURE,
+      page,
+      error,
+    };
   };
 }
 
 const API_ROOT = 'https://api.github.com';
 
 function fetchTopRepos(page) {
-  return dispatch => {
-    dispatch(reposRequest(page));
-
-    return fetch(`${API_ROOT}/search/repositories?q=stars:>10000&order=desc&page=${page}`)
-      .then(checkStatus)
-      .then(parseJSON)
-      .then(json => dispatch(reposSuccess(page, json)))
-      .catch(error => {
-        const response = error.response;
-        if (response === undefined) {
-          dispatch(reposFailure(page, error));
-        } else {
-          parseJSON(response)
-            .then(json => {
-              error.status = response.status;
-              error.statusText = response.statusText;
-              error.message = json.message;
-              dispatch(reposFailure(page, error));
-            });
-        }
-      });
-  };
+  const url = `${API_ROOT}/search/repositories?q=stars:>10000&order=desc&page=${page}`;
+  return callApi(url, null, reposRequest(page), reposSuccess(page), reposFailure(page));
 }
 
 function shouldFetchRepos(state, page) {
