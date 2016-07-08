@@ -19,8 +19,10 @@ class UsersPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dispatch, page } = nextProps;
-    dispatch(fetchTopUsersIfNeeded(page));
+    if (nextProps.page !== this.props.page) {
+      const { dispatch, page } = nextProps;
+      dispatch(fetchTopUsersIfNeeded(page));
+    }
   }
 
   handleNextPageClick() {
