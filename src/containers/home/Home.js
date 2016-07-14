@@ -30,8 +30,8 @@ export default class Home extends Component {
               <a href="https://github.com/cloudmu/react-redux-starter-kit" target="_blank">
                 <i className="fa fa-github" /> View on Github
               </a>
-              <a href="https://twitter.com/yunjun_mu" target="_blank">
-                 <i className="fa fa-twitter home-fa-twitter" />yunjun_mu
+              <a href="https://twitter.com/_cloudmu" target="_blank">
+                 <i className="fa fa-twitter home-fa-twitter" />_cloudmu
               </a>
             </div>
           </div>

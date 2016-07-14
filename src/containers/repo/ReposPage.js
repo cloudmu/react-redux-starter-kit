@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import {Table, Column, Cell} from 'fixed-data-table';
 
@@ -126,23 +127,24 @@ class ReposPage extends Component {
   }
 
   render() {
-    const controlledScrolling =
-      this.props.left !== undefined || this.props.top !== undefined;
-
+    const controlledScrolling = this.props.left !== undefined || this.props.top !== undefined;
     const { page, error, repos, isFetching, repoTableSize } = this.props;
+    const prevStyles = classNames('pager-prev', { disabled: page <= 1 });
+    const nextStyles = classNames('pager-next', { disabled: repos.length === 0 });
+
     return (
       <div className="container-fluid">
 
         <nav>
           <ul className="pager">
-            <li className={'pager-prev' + (page > 1 ? '' : ' disabled')}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
+            <li className={prevStyles}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
             {!isFetching &&
               <li><a href="#" onClick={this.handleRefreshClick}>Refresh page {page}</a></li>
             }
             {isFetching &&
               <span><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span>
             }
-            <li className={'pager-next' + (repos.length > 0 ? '' : ' disabled')}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
+            <li className={nextStyles}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
           </ul>
         </nav>
 

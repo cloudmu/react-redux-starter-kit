@@ -7,7 +7,7 @@ const About = () => {
 
       <p>
         Thanks for checking this out. This project was created by
-        <a href="https://twitter.com/yunjun_mu" target="_blank"> @yunjun_mu</a>,
+        <a href="https://twitter.com/_cloudmu" target="_blank"> @_cloudmu</a>,
         as a playground to learn and experiment some of the exciting technologies such as
         <a href="https://github.com/facebook/react" target="_blank"> React</a> and
         <a href="https://github.com/rackt/redux" target="_blank"> Redux</a>.

@@ -8,7 +8,7 @@ const Footer = () => (
         Have questions or suggestions? Please file them on the
         <a href="https://github.com/cloudmu/react-redux-starter-kit/issues" target="_blank"> Github </a>
         or tweet
-        <a href="http://www.twitter.com/yunjun_mu" target="_blank"> me</a>.
+        <a href="http://www.twitter.com/_cloudmu" target="_blank"> me</a>.
       </p>
     </footer>
 );

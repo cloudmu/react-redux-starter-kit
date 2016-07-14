@@ -19,15 +19,15 @@ export function parseJSON(response) {
  *
  * @param url The restful service end point.
  * @config The config object of the call. Can be null.
- * @onRequest The callback function to create request action.
+ * @request The request action.
  * @onRequestSuccess The callback function to create request success action.
  *                 The function expects response json payload as its argument.
  * @onRequestFailure The callback function to create request failure action.
  *                 The function expects error as its argument.
  */
-export function callApi(url, config, onRequest, onRequestSuccess, onRequestFailure) {
+export function callApi(url, config, request, onRequestSuccess, onRequestFailure) {
   return dispatch => {
-    dispatch(onRequest);
+    dispatch(request);
 
     return fetch(url, config)
       .then(checkStatus)

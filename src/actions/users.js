@@ -59,7 +59,7 @@ const API_ROOT = 'https://api.github.com';
 
 function fetchTopUsers(page) {
   const url = `${API_ROOT}/search/users?q=followers:>1000&order=desc&page=${page}`;
-  return callApi(url, null, usersRequest, usersSuccess(page), usersFailure(page));
+  return callApi(url, null, usersRequest(page), usersSuccess(page), usersFailure(page));
 }
 
 function shouldFetchUsers(state, page) {
