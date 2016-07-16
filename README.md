@@ -6,7 +6,7 @@ Yet another React and Redux based web application starter kit.
 
 ### Overview
 
-This is yet another React and Redux based web application starter kit. However, this one attempts to go beyond the typical simple boilerplates, by showcasing several great technologies (such as [React](https://github.com/facebook/react), [Redux](https://github.com/gaearon/redux), [React-Router](https://github.com/rackt/react-router), [Fixed-Data-Table](https://github.com/facebook/fixed-data-table), [Bootstrap](https://github.com/twbs/bootstrap), [Babel](http://babeljs.io), [Webpack](http://webpack.github.io) and [JWT](https://jwt.io)) used together to develop a more complex web application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
+This is yet another React and Redux based web application starter kit. However, this one attempts to go beyond the typical simple boilerplates, by showcasing several great technologies (such as [React](https://github.com/facebook/react), [Redux](https://github.com/gaearon/redux), [React-Router](https://github.com/rackt/react-router), [Bootstrap](https://github.com/twbs/bootstrap), [Babel](http://babeljs.io), [Webpack](http://webpack.github.io) and [JWT](https://jwt.io)) used together to develop a more complex web application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
 
 It also integrates Redux DevTools to support hot reloading and action replay.
 
@@ -62,7 +62,6 @@ A demo of this web application is running on a free [Amazon EC2 Micro Instance](
 * Redux
 * React Router
 * JSON Web Tokens (JWT)
-* Fixed-Data-Table
 * style-loader
 * Bootstrap
 * Express

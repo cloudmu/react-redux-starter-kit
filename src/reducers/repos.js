@@ -1,5 +1,4 @@
 import { SELECT_REPOS_PAGE,
-    RESIZE_REPO_TABLE,
     INVALIDATE_REPOS_PAGE,
     REPOS_REQUEST,
     REPOS_SUCCESS,
@@ -9,17 +8,6 @@ export function selectedReposPage(state = 1, action) {
   switch (action.type) {
     case SELECT_REPOS_PAGE:
       return action.page;
-    default:
-      return state;
-  }
-}
-
-export function repoTableSize(state = { width: 2000, height: 1200 }, action) {
-  switch (action.type) {
-    case RESIZE_REPO_TABLE:
-      return Object.assign({}, state, {
-        width: action.width, height: action.height,
-      });
     default:
       return state;
   }

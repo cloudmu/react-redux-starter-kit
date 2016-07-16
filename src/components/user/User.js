@@ -22,7 +22,7 @@ const User = ({ user }) => {
           frameBorder="0"
           allowTransparency="true"
           scrolling="0"
-          frameborder="0"
+          frameBorder="0"
           width="500"
           height="30">
         </iframe>

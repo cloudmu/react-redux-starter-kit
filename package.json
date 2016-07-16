@@ -41,8 +41,9 @@
     "body-parser": "^1.15.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.13.1",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-addons-shallow-compare": "15.2.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.2",
     "redux": "^3.5.2",
@@ -50,8 +51,8 @@
     "redux-thunk": "^2.1.0",
     "react-router-redux": "4.0.5",
     "classnames": "^2.2.5",
-    "fixed-data-table": "^0.6.1",
-    "jsonwebtoken": "^7.0.1",
+    "react-virtualized": "7.12.2",
+    "jsonwebtoken": "^7.1.6",
     "jwt-decode": "^2.0.1"
   },
   "devDependencies": {

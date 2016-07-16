@@ -8,16 +8,6 @@ export const REPOS_REQUEST = 'REPOS_REQUEST';
 export const REPOS_SUCCESS = 'REPOS_SUCCESS';
 export const REPOS_FAILURE = 'REPOS_FAILURE';
 
-export const RESIZE_REPO_TABLE = 'RESIZE_REPO_TABLE';
-
-export function resizeRepoTable(width, height) {
-  return {
-    type: RESIZE_REPO_TABLE,
-    width,
-    height,
-  };
-}
-
 export function selectReposPage(page) {
   return {
     type: SELECT_REPOS_PAGE,

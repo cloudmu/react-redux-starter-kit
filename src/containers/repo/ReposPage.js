@@ -1,44 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare'
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import classNames from 'classnames';
 
-import {Table, Column, Cell} from 'fixed-data-table';
+import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
 
+import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded } from '../../actions/repos';
 
-import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded, resizeRepoTable } from '../../actions/repos';
-
-import './fixed-data-table.css';
-import './repo.css';
-
-const TextCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
-    {data[rowIndex][col]}
-  </Cell>
-);
-
-const LinkCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
-    <a href={data[rowIndex][col]} target="_blank">{data[rowIndex][col]}</a>
-  </Cell>
-);
-
-const OwnerCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
-    <div>
-      <a href={data[rowIndex][col].html_url} target="_blank">
-        <img src={data[rowIndex][col].avatar_url} width="32" height="32"/>
-        <span className="repo_owner">{data[rowIndex][col].login}</span>
-      </a>
-    </div>
-  </Cell>
-);
-
-const StargazersCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
-    <span className="pull-right">{data[rowIndex][col].toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>
-  </Cell>
-);
+import 'react-virtualized/styles.css';
+import './repo.css'
 
 class ReposPage extends Component {
   constructor(props) {
@@ -46,23 +16,13 @@ class ReposPage extends Component {
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
     this.handlePreviousPageClick = this.handlePreviousPageClick.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
-    this.handleWindowResize = this.handleWindowResize.bind(this);
+    this.getNoRowsRenderer = this.getNoRowsRenderer.bind(this);
+    this.getRowClassName = this.getRowClassName.bind(this);
   }
 
   componentDidMount() {
-    const win = window;
-    if (win.addEventListener) {
-      win.addEventListener('resize', _.throttle(this.handleWindowResize, 250), false);
-    } else if (win.attachEvent) {
-      win.attachEvent('onresize', _.throttle(this.handleWindowResize, 250));
-    } else {
-      win.onresize = this.handleWindowResize;
-    }
-
     const { dispatch, page } = this.props;
-
     dispatch(fetchTopReposIfNeeded(page));
-    setTimeout(this.handleWindowResize, 3000); // HACK. delay needed. Otherwise getTableWith and getTableHeight may throw error.
   }
 
   componentWillReceiveProps(nextProps) {
@@ -70,38 +30,23 @@ class ReposPage extends Component {
     dispatch(fetchTopReposIfNeeded(page));
   }
 
-  componentWillUnmount() {
-    const win = window;
-    if (win.removeEventListener) {
-      win.removeEventListener('resize', _.throttle(this.handleWindowResize, 250), false);
-    } else if (win.removeEvent) {
-      win.removeEvent('onresize', _.throttle(this.handleWindowResize, 250), false);
-    } else {
-      win.onresize = null;
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState)
   }
 
-  getTableWidth() {
-    try {
-      const node = this.refs.TABLE_DIV;
-      return node.clientWidth;
-    } catch (err) {
-      return 2000;
-    }
+  getNoRowsRenderer() {
+    return (
+      <div className='noRows'>
+        No rows
+      </div>
+    )
   }
 
-  getTableHeight() {
-    try {
-      const node = this.refs.TABLE_DIV;
-      return node.clientHeight;
-    } catch (err) {
-      return 1200;
+  getRowClassName({ index }) {
+    if (index < 0) {
+      return 'headerRow';
     }
-  }
-
-  handleWindowResize() {
-    const { dispatch } = this.props;
-    dispatch(resizeRepoTable(this.getTableWidth(), this.getTableHeight()));
+    return index % 2 === 0 ? 'evenRow' : 'oddRow';
   }
 
   handleNextPageClick() {
@@ -126,9 +71,23 @@ class ReposPage extends Component {
     dispatch(invalidateReposPage(page));
   }
 
+  ownerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
+    <a href={cellData.html_url} target="_blank">
+      <img src={cellData.avatar_url} width="32" height="32" />
+      <span className="repo_owner">{cellData.login}</span>
+    </a>
+  )
+
+  linkCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
+    <a href={cellData} target="_blank">{cellData}</a>
+  )
+
+  stargazerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
+    <span className="pull-right">{cellData.toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>
+  )
+
   render() {
-    const controlledScrolling = this.props.left !== undefined || this.props.top !== undefined;
-    const { page, error, repos, isFetching, repoTableSize } = this.props;
+    const { page, error, repos, isFetching } = this.props;
     const prevStyles = classNames('pager-prev', { disabled: page <= 1 });
     const nextStyles = classNames('pager-next', { disabled: repos.length === 0 });
 
@@ -160,57 +119,66 @@ class ReposPage extends Component {
         }
 
         {repos.length > 0 &&
-          <div ref="TABLE_DIV" style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <Table
-              rowHeight={50}
-              headerHeight={50}
-              width = {repoTableSize.width}
-              height = {repoTableSize.height}
+          <div ref="TABLE_DIV" style={{ opacity: isFetching ? 0.5 : 1, height: '100%' }}>
+            <AutoSizer>
+              {({ width, height }) => (
+                <FlexTable
+                  headerClassName={'headerColumn'}
+                  noRowsRenderer={this.getNoRowsRenderer}
+                  rowClassName={this.getRowClassName}
+                  width={width}
+                  height={height}
+                  headerHeight={50}
+                  rowHeight={50}
 
-              rowsCount={repos.length}
-              overflowX={controlledScrolling ? 'hidden' : 'auto'}
-              overflowY={controlledScrolling ? 'hidden' : 'auto'}
-              
-              {...this.props}>
+                  rowCount={repos.length}
+                  rowGetter={
+                    ({ index }) => repos[index]
+                  }
+                >
 
-              <Column
-                header={<Cell>Repository</Cell>}
-                cell={<TextCell data={repos} col="name"/>}
-                fixed={true}
-                width={200}
-              />
+                  <FlexColumn
+                    label='Repository'
+                    dataKey='name'
+                    width={200}
+                  />
 
-              <Column
-                header={<Cell>Owner</Cell>}
-                cell={<OwnerCell data={repos} col="owner"/>}
-                width={200}
-              />
+                  <FlexColumn
+                    label='Owner'
+                    dataKey='owner'
+                    cellRenderer={this.ownerCellRenderer}
+                    width={200}
+                  />
 
-              <Column
-                header={<Cell>Stargazers</Cell>}
-                cell={<StargazersCell data={repos} col="stargazers_count"/>}
-                width={150}
-              />
+                  <FlexColumn
+                    label='Stargazers'
+                    dataKey='stargazers_count'
+                    cellRenderer={this.stargazerCellRenderer}
+                    width={120}
+                  />
 
-              <Column
-                header={<Cell>Full Name</Cell>}
-                cell={<TextCell data={repos} col="full_name"/>}
-                width={300}
-              />
+                  <FlexColumn
+                    label='Full Name'
+                    dataKey='full_name'
+                    width={300}
+                  />
 
-               <Column
-                header={<Cell>Repository URL</Cell>}
-                cell={<LinkCell data={repos} col="html_url"/>}
-                width={400}
-              />
+                  <FlexColumn
+                    label='Repository URL'
+                    dataKey='html_url'
+                    cellRenderer={this.linkCellRenderer}
+                    width={400}
+                  />
 
-              <Column
-                header={<Cell>Description</Cell>}
-                cell={<TextCell data={repos} col="description"/>}
-                width={500}
-              />
-
-            </Table>
+                  <FlexColumn
+                    label='Description'
+                    dataKey='description'
+                    width={500}
+                    flexGrow={1}
+                  />
+                </FlexTable>
+              )}
+            </AutoSizer>
           </div>
         }
       </div>
@@ -220,38 +188,35 @@ class ReposPage extends Component {
 
 ReposPage.propTypes = {
   page: PropTypes.number.isRequired,
-  repoTableSize: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   left: PropTypes.number,
-  top: PropTypes.number
+  top: PropTypes.number,
 };
 
 function mapStateToProps(state) {
-  const { selectedReposPage, repoTableSize, reposByPage} = state;
-  const page = selectedReposPage ? selectedReposPage : 1;
+  const { selectedReposPage, reposByPage } = state;
+  const page = selectedReposPage || 1;
   if (!reposByPage[page]) {
     return {
-      page: page,
+      page,
       error: null,
       isFetching: false,
       didInvalidate: false,
       totalCount: 0,
       repos: [],
-      repoTableSize: repoTableSize
     };
   }
 
   return {
-    page: page,
+    page,
     error: reposByPage[page].error,
     isFetching: reposByPage[page].isFetching,
     didInvalidate: reposByPage[page].didInvalidate,
     totalCount: reposByPage[page].totalCount,
     repos: reposByPage[page].repos,
-    repoTableSize: repoTableSize
   };
 }
 

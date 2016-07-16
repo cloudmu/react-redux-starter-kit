@@ -17,7 +17,7 @@ export default class Home extends Component {
               <a href="https://github.com/gaearon/redux" target="_blank"> Redux</a>,
               <a href="https://github.com/rackt/react-router" target="_blank"> React-Router</a>,
               <a href="https:// https://jwt.io" target="_blank"> JSON Web Token</a>,
-              <a href="https://github.com/facebook/fixed-data-table" target="_blank"> Fixed-Data-Table</a>,
+              <a href="https://github.com/bvaughn/react-virtualized" target="_blank"> React-Virtualized</a>,
               <a href="http://babeljs.io" target="_blank"> Babel</a>,
               <a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a>
               , and
@@ -45,7 +45,6 @@ export default class Home extends Component {
             <li><a href="https://github.com/rackt/redux" target="_blank">Redux</a></li>
             <li><a href="https://github.com/rackt/react-router" target="_blank">React Router</a></li>
             <li><a href="https:// https://jwt.io" target="_blank">JSON Web Token</a></li>
-            <li><a href="https://github.com/facebook/fixed-data-table" target="_blank"> Fixed-Data-Table</a></li>
             <li><a href="https://github.com/webpack/style-loader" target="_blank">style-loader</a></li>
             <li><a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a></li>
             <li><a href="http://expressjs.com" target="_blank">Express</a></li>
