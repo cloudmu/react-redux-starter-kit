@@ -1,7 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+/////////////////////////////////////////////////////////////////////////
+// browserHistory would be preferred over hashHistory, but browserHistory 
+// would require configuring the server. So we will use hashHistory here.
+// Please change to browserHistory if you have your own backend serever.
+// import {browserHistory as history} from 'react-router';
+import {hashHistory as history} from 'react-router';
+/////////////////////////////////////////////////////////////////////////
+
+import { Router, Route, IndexRoute} from 'react-router';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
@@ -30,7 +40,7 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="/about" component={About}/>
