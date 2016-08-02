@@ -1,12 +1,13 @@
 # [react-redux-starter-kit](https://github.com/cloudmu/react-redux-starter-kit)
 
 Yet another React and Redux based web application starter kit. 
+
 [Demo](http://ec2-52-10-209-45.us-west-2.compute.amazonaws.com/)
 ![alt text](https://raw.githubusercontent.com/cloudmu/react-redux-starter-kit/master/screenshot.png "Screenshot")
 
 ## What's New
 
-I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app).
+I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app). Enjoy fatigue-free React!
 
 ## Overview
 
