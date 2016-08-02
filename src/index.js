@@ -2,6 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+
+///////////////////////////////////////////
+// jquery and tether for bootstrap to use
+// alternative is to link them in index.html
+window.$ = window.jQuery=require('jquery');
+window.Tether=require('tether');
+require('bootstrap/dist/js/bootstrap');
+/////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
 

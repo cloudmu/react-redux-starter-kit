@@ -119,7 +119,7 @@ class ReposPage extends Component {
         }
 
         {repos &&
-          <div className="container-fluid" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', minHeight: '100%', height: 'auto !important', position: 'absolute' }}>
+          <div className="container-fluid" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', height: '100%', position: 'absolute' }}>
             <AutoSizer>
               {({ width, height }) => (
                 <FlexTable
