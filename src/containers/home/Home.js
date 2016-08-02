@@ -16,12 +16,8 @@ export default class Home extends Component {
               <a href="https://github.com/facebook/react" target="_blank"> React</a>,
               <a href="https://github.com/gaearon/redux" target="_blank"> Redux</a>,
               <a href="https://github.com/rackt/react-router" target="_blank"> React-Router</a>,
-              <a href="https:// https://jwt.io" target="_blank"> JSON Web Token</a>,
-              <a href="https://github.com/bvaughn/react-virtualized" target="_blank"> React-Virtualized</a>,
-              <a href="http://babeljs.io" target="_blank"> Babel</a>,
-              <a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a>
-              , and
-              <a href="http://webpack.github.io" target="_blank"> Webpack</a>
+              <a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a>, and
+              <a href="https:// https://jwt.io" target="_blank"> JSON Web Token</a>
             ) used together to develop a more complex web
             application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
             </p>
@@ -38,22 +34,29 @@ export default class Home extends Component {
         </div>
 
         <div className="container">
+
+          <h3>What's New</h3>
+            <p>
+            When I started the project, I had to wrestle with Webpack and Babel to have the dev/build process work well.  Recently I ported the starter kit 
+            to use <a href="https://github.com/facebookincubator/create-react-app/" target="_blank"> create-react-app</a>. I hope you will enjoy the "zero build
+            configuration" experience as much as I do.
+            </p>
+
           <h3>Technologies used:</h3>
 
           <ul>
             <li><a href="https://github.com/facebook/react" target="_blank">React</a></li>
             <li><a href="https://github.com/rackt/redux" target="_blank">Redux</a></li>
-            <li><a href="https://github.com/rackt/react-router" target="_blank">React Router</a></li>
-            <li><a href="https:// https://jwt.io" target="_blank">JSON Web Token</a></li>
-            <li><a href="https://github.com/webpack/style-loader" target="_blank">style-loader</a></li>
+            <li><a href="https://github.com/rackt/react-router" target="_blank">React Router</a></li>            
             <li><a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a></li>
-            <li><a href="http://expressjs.com" target="_blank">Express</a></li>
-            <li><a href="http://babeljs.io" target="_blank">Babel</a></li>
-            <li><a href="http://webpack.github.io" target="_blank">Webpack</a></li>
+            <li><a href="https://jwt.io" target="_blank">JSON Web Token</a></li>
+            <li><a href="https://github.com/facebookincubator/create-react-app/" target="_blank">create-react-app</a></li>          
+            <li><a href="http://babeljs.io" target="_blank">Babel</a> and <a href="http://webpack.github.io" target="_blank"> Webpack</a> (now behind the scene thanks to create-react-app)</li>
+
           </ul>
 
           <h3>Feature highlights:</h3>
-
+          <br/>
           <dl>
             <dt>Best React practice by separating{' '}
               <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank">

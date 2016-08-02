@@ -1,5 +1,6 @@
 {
   "name": "react-redux-starter-kit",
+  "homepage": "https://github.com/cloudmu/react-redux-starter-kit",
   "version": "0.0.1",
   "description": "Yet another React/Redux Starter Kit",
   "repository": {
@@ -18,14 +19,14 @@
     "jwt",
     "autho0",
     "dashboard",
-    "boilerplate"
+    "boilerplate",
+    "create-react-app"
   ],
   "author": "twitter.com/_cloudmu (http://github.com/cloudmu)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
   },
-  "homepage": "https://github.com/cloudmu/react-redux-starter-kit",
 
   "devDependencies": {
     "react-scripts": "0.2.1"
