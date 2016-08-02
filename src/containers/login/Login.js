@@ -36,7 +36,7 @@ class Login extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-4 col-md-offset-4">
+          <div className="col-md-4" style={{ float: 'none', margin: '0 auto' }}>
             <div className="card">
               <div className="card-header">Please Log in</div>
               <form className="card-block">

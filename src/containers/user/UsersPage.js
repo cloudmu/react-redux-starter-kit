@@ -51,20 +51,22 @@ class UsersPage extends Component {
 
   render() {
     const { page, error, users, isFetching } = this.props;
-    const prevStyles = classNames('pager-prev', { disabled: page <= 1 });
-    const nextStyles = classNames('pager-next', { disabled: users.length === 0 });
+    const prevStyles = classNames('page-item', { disabled: page <= 1 });
+    const nextStyles = classNames('page-item', { disabled: users.length === 0 });
+
     return (
       <div className="container-fluid">
+
         <nav>
-          <ul className="pager">
-            <li className={prevStyles}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
+          <ul className="pagination pagination-sm">
+            <li className={prevStyles}><a className="page-link" href="#" onClick={this.handlePreviousPageClick}><span>Previous</span></a></li>
             {!isFetching &&
-              <li><a href="#" onClick={this.handleRefreshClick}>Refresh page {page}</a></li>
+              <li className="page-item" ><a className="page-link" href="#" onClick={this.handleRefreshClick}><span>Refresh page {page}</span></a></li>
             }
             {isFetching &&
-              <span><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span>
+              <li className="page-item"><span className="page-link"><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span></li>
             }
-            <li className={nextStyles}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
+            <li className={nextStyles}><a className="page-link" href="#" onClick={this.handleNextPageClick}><span>Next</span></a></li>
           </ul>
         </nav>
 

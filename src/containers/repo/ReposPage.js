@@ -73,7 +73,7 @@ class ReposPage extends Component {
 
   ownerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
     <a href={cellData.html_url} target="_blank">
-      <img src={cellData.avatar_url} width="32" height="32" />
+      <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
       <span className="repo_owner">{cellData.login}</span>
     </a>
   )
@@ -88,22 +88,22 @@ class ReposPage extends Component {
 
   render() {
     const { page, error, repos, isFetching } = this.props;
-    const prevStyles = classNames('pager-prev', { disabled: page <= 1 });
-    const nextStyles = classNames('pager-next', { disabled: repos.length === 0 });
+    const prevStyles = classNames('page-item', { disabled: page <= 1 });
+    const nextStyles = classNames('page-item', { disabled: repos.length === 0 });
 
     return (
       <div className="container-fluid">
 
         <nav>
-          <ul className="pager">
-            <li className={prevStyles}><a href="#" onClick={this.handlePreviousPageClick}>Previous</a></li>
+          <ul className="pagination pagination-sm">
+            <li className={prevStyles}><a className="page-link" href="#" onClick={this.handlePreviousPageClick}><span>Previous</span></a></li>
             {!isFetching &&
-              <li><a href="#" onClick={this.handleRefreshClick}>Refresh page {page}</a></li>
+              <li className="page-item" ><a className="page-link" href="#" onClick={this.handleRefreshClick}><span>Refresh page {page}</span></a></li>
             }
             {isFetching &&
-              <span><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span>
+              <li className="page-item"><span className="page-link"><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span></li>
             }
-            <li className={nextStyles}><a href="#" onClick={this.handleNextPageClick}>Next</a></li>
+            <li className={nextStyles}><a className="page-link" href="#" onClick={this.handleNextPageClick}><span>Next</span></a></li>
           </ul>
         </nav>
 
@@ -118,8 +118,8 @@ class ReposPage extends Component {
           <div className="alert alert-warning">Oops, nothing to show.</div>
         }
 
-        {repos.length > 0 &&
-          <div ref="TABLE_DIV" style={{ opacity: isFetching ? 0.5 : 1, height: '100%' }}>
+        {repos &&
+          <div className="container-fluid" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', minHeight: '100%', height: 'auto !important', position: 'absolute' }}>
             <AutoSizer>
               {({ width, height }) => (
                 <FlexTable

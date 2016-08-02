@@ -13,13 +13,12 @@ const User = ({ user }) => {
       </div>
       
       <div className="card-block">
-        <img src={ avatar_url } className="card-img-top" width="120" height="120"/>
+        <img src={ avatar_url } className="card-img-top" width="120" height="120" alt="avatar"/>
       </div>  
       
       <div className="card-footer">
         <iframe
           src={src}
-          frameBorder="0"
           allowTransparency="true"
           scrolling="0"
           frameBorder="0"
