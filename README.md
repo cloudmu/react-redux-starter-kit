@@ -1,6 +1,6 @@
-# [react-redux-starter-kit](https://github.com/cloudmu/react-redux-starter-kit)
+# [react-redux-starter-kit](http://cloudmu.github.io/react-redux-starter-kit/)
 
-Yet another React and Redux based web application starter kit. [Demo](https://github.com/cloudmu/react-redux-starter-kit)
+Yet another React and Redux based web application starter kit. [Demo](http://cloudmu.github.io/react-redux-starter-kit/)
 
 ![alt text](https://raw.githubusercontent.com/cloudmu/react-redux-starter-kit/master/screenshot.png "Screenshot")
 
