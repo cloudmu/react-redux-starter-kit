@@ -49,7 +49,8 @@ class ReposPage extends Component {
     return index % 2 === 0 ? 'evenRow' : 'oddRow';
   }
 
-  handleNextPageClick() {
+  handleNextPageClick(e) {
+    e.preventDefault();
     const { page, repos } = this.props;
     if (repos.length > 0) {
       // go to next page only if more data may be available
@@ -57,15 +58,16 @@ class ReposPage extends Component {
     }
   }
 
-  handlePreviousPageClick() {
+  handlePreviousPageClick(e) {
+    e.preventDefault();
     const page = this.props.page;
     if (page > 1) {
       this.props.dispatch(selectReposPage(page - 1));
     }
   }
 
-  handleRefreshClick(event) {
-    event.preventDefault();
+  handleRefreshClick(e) {
+    e.preventDefault();
 
     const { dispatch, page } = this.props;
     dispatch(invalidateReposPage(page));

@@ -26,7 +26,8 @@ class UsersPage extends Component {
     }
   }
 
-  handleNextPageClick() {
+  handleNextPageClick(e) {
+     e.preventDefault();
     const { page, users } = this.props;
     if (users.length > 0) {
       // go to next page only if more users may be available
@@ -34,15 +35,16 @@ class UsersPage extends Component {
     }
   }
 
-  handlePreviousPageClick() {
+  handlePreviousPageClick(e) {
+     e.preventDefault();
     const page = this.props.page;
     if (page > 1) {
       this.props.dispatch(selectUsersPage(page - 1));
     }
   }
 
-  handleRefreshClick(event) {
-    event.preventDefault();
+  handleRefreshClick(e) {
+    e.preventDefault();
 
     const { dispatch, page } = this.props;
     dispatch(invalidateUsersPage(page));
