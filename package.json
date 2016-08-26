@@ -2,7 +2,7 @@
   "name": "react-redux-starter-kit",
   "homepage": "https://cloudmu.github.com/react-redux-starter-kit",
   "version": "0.0.1",
-  "description": "Yet another React/Redux Starter Kit",
+  "description": "React/Redux Starter Kit with Zero Build Config",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudmu/react-redux-starter-kit.git"
@@ -28,8 +28,10 @@
     "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
   },
 
+  "proxy": "http://localhost:3001/",
+  
   "devDependencies": {
-    "react-scripts": "0.2.1"
+    "react-scripts": "0.2.3"
   },
 
   "dependencies": {
@@ -39,17 +41,17 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "jwt-decode": "^2.1.0",
-    "lodash": "^4.14.1",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-addons-shallow-compare": "15.3.0",
+    "lodash": "^4.15.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-addons-shallow-compare": "15.3.1",
     "react-redux": "^4.4.5",
-    "react-router": "^2.6.1",
+    "react-router": "^2.7.0",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "react-router-redux": "4.0.5",
-    "react-virtualized": "7.17.1"
+    "react-virtualized": "7.19.4"
   },
   
   "scripts": {

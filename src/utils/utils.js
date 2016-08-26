@@ -39,14 +39,17 @@ export function callApi(url, config, request, onRequestSuccess, onRequestFailure
         if (response === undefined) {
           dispatch(onRequestFailure(error));
         } else {
-          parseJSON(response)
-            .then((json) => {
-              error.status = response.status;
-              error.statusText = response.statusText;
+          error.status = response.status;
+          error.statusText = response.statusText;
+          response.text().then( (text) => {
+            try {
+              const json = JSON.parse(text);
               error.message = json.message;
-              dispatch(onRequestFailure(error));
+            } catch (ex) {
+              error.message = text;
             }
-          );
+            dispatch(onRequestFailure(error));
+          });
         }
       });
   };
@@ -60,6 +63,10 @@ export function setIdToken(idToken) {
 
 export function removeIdToken() {
   localStorage.removeItem(ID_TOKEN);
+}
+
+export function loadIdToken() {
+  return localStorage.getItem(ID_TOKEN);
 }
 
 export function decodeUserProfile(idToken) {

@@ -1,6 +1,7 @@
 import 'isomorphic-fetch';
-
-import { ID_TOKEN,
+import { callApi,
+        ID_TOKEN,
+        loadIdToken,
         setIdToken,
         removeIdToken,
         decodeUserProfile } from '../utils/utils';
@@ -40,46 +41,19 @@ function loginFailure(error) {
 }
 
 export function login(user, password) {
-  /******  Uncomment the following rest call if you have a real backend server **************/
-  // const config = {
-  //   method: 'post',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     user,
-  //     password,
-  //   }),
-  // };
+  const config = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user,
+      password,
+    }),
+  };
 
-  // return callApi('/api/login', config, loginRequest(user), loginSuccess, loginFailure);
-  /*******************************************************************************************/
-  
-  /******  After porting to create-react-app, the backend server was removed, *****************/
-  /******  So instead we will call the mockup API on the client side.          ****************/
-  return callMockupLoginApi(user, password, loginRequest(user), loginSuccess, loginFailure);
-}
-
-function callMockupLoginApi(user, password, request, onRequestSuccess, onRequestFailure) {
-  return dispatch => {
-    dispatch(request);
-
-    window.setTimeout(() => {
-      if (user==='admin' && password==='password') {
-        // this id_token would have been generated on the server side.
-        const payload = {
-          "id_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE0NzAwOTQ3MDEsImV4cCI6MTQ3MDA5NTAwMX0.7dXzsGZXDISFShKK9E_Al6AF3aInnWoYh1C8DaWJsk0"
-        };
-        dispatch(onRequestSuccess(payload));
-      } else {
-        const error = {
-          message: 'Bad user/password'
-        };
-        dispatch(onRequestFailure(error));
-      }
-    }, 500); // simulate async login
-  }
+  return callApi('/api/login', config, loginRequest(user), loginSuccess, loginFailure);
 }
 
 function logoutRequest(user) {
@@ -106,40 +80,18 @@ function logoutFailure(error) {
 }
 
 export function logout(user) {
-  /****************  Uncomment following if there is a real backend server  ************/
-  // const config = {
-  //   method: 'post',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     user,
-  //   }),
-  // };
+  const idToken = loadIdToken();
+  const config = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${idToken}`,
+    },
+    body: JSON.stringify({
+      user,
+    }),
+  };
 
-  // return callApi('/api/logout', config, logoutRequest, logoutSuccess, logoutFailure);
-  /*************************************************************************************** */
-
-  /******  After porting to create-react-app, the backend server was removed, *****************/
-  /******  So instead we will call the mockup API on the client side.          ****************/
-  return callMockupLogoutApi(user, logoutRequest(user), logoutSuccess, logoutFailure);
-}
-
-function callMockupLogoutApi(user, request, onRequestSuccess, onRequestFailure) {
-  return dispatch => {
-    dispatch(request);
-
-    window.setTimeout(() => {
-      if (Math.random()>0.1) {
-        const payload = {};
-        dispatch(onRequestSuccess(payload));
-      } else {
-        const error = {
-          message: 'Unknown server error when logging out'
-        };
-        dispatch(onRequestFailure(error));
-      }
-    }, 500); // simulate async logout
-  }
+  return callApi('/api/logout', config, logoutRequest, logoutSuccess, logoutFailure);
 }
