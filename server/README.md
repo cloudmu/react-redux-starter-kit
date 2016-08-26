@@ -16,7 +16,7 @@ In order for the JWT based authentication work, you need to run this API server.
 the API server, thanks to the create-react-app feature [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
 
-In this server directory, you can run (in a separate command line window):
+Under this server directory, you can run (in a separate command line window):
 
 ### `npm i`
 This will install the dependencies for the server side.

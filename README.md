@@ -48,15 +48,15 @@ This project was ported to use [create-react-app](https://github.com/facebookinc
 Please refer its [how-to](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
 
 ## Server Side
-Above description and scripts are for the client side based on the [create-react-app](https://github.com/facebookincubator/create-react-app).  Note certain UI pages will require authentication.
-In order for the JWT based authentication work, you need to run a separate API server.  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
+Above description and scripts are for the client side based on the [create-react-app](https://github.com/facebookincubator/create-react-app).  Note certain UI pages require authentication.
+In order for the JWT based authentication work, you need to run a separate [API server](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server).  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
 [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
-**See the proxy configuration in the packages.json:
+**See the proxy configuration in the packages.json:**
 ```
 "proxy": "http://localhost:3001/",
 ```
-In the server directory, you can run (in a separate command line window):
+Under the [server directory](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server), you can run (in a separate command line window):
 
 ### `npm i`
 This will install the dependencies for the server side.
