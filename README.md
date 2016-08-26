@@ -6,7 +6,8 @@ Yet another React/Redux starter kit, but with zero build config. [Demo](http://c
 
 ## What's New
 
-I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app). Enjoy config-free (fatigue-free) React!
+* I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app). Enjoy config-free (fatigue-free) React!
+* A JWT based API server is added, thanks to the latest create-react-app feature [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
 ## Overview
 
@@ -49,7 +50,7 @@ Please refer its [how-to](https://github.com/facebookincubator/create-react-app/
 ## Server Side
 Above description and scripts are for the client side based on the [create-react-app](https://github.com/facebookincubator/create-react-app).  Note certain UI pages will require authentication.
 In order for the JWT based authentication work, you need to run a separate API server.  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
-[Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development)
+[Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
 **See the proxy configuration in the packages.json:
 ```
