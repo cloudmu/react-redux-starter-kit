@@ -51,7 +51,7 @@ Above description and scripts are for the client side based on the [create-react
 In order for the JWT based authentication work, you need to run a separate API server.  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
 [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development)
 
-** See the proxy configuration in the packages.json:
+**See the proxy configuration in the packages.json:
 ```
 "proxy": "http://localhost:3001/",
 ```
@@ -61,4 +61,4 @@ In the server directory, you can run (in a separate command line window):
 This will install the dependencies for the server side.
 
 ### `npm run server`
-This will run the server on port 3001, which will be listening to the authentication requests (login/logout from the client).
+This will run the API server on port 3001, which will be listening to the authentication requests (login/logout from the client).
