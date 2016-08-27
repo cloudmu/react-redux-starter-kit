@@ -8,6 +8,7 @@ Yet another React/Redux starter kit, but with zero build config. [Demo](http://c
 
 * I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app). Enjoy config-free (fatigue-free) React!
 * A JWT based API server is added, thanks to the latest create-react-app feature [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
+* The async actions (involving restful api calls for authentication and fetching Github users and repos) are now refactored to go through a common utility callApi.
 
 ## Overview
 
