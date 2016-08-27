@@ -19,9 +19,12 @@ by showcasing several great technologies (such as [React](https://github.com/fac
 authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
 
 ## Available Scripts
-Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app) this easily created a base application. First, you must run `npm install` in the `src` directory to install the node_modules. 
+Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app) we get the build configuration and scripts ready out of the box. 
 
-In the project directory, you can run:
+In the project directory, you should install the dependencies first:
+### `npm install`
+
+**You’ll need to have Node installed on your machine**. (Node >= 6 and npm >= 3 are recommended).
 
 ### `npm start`
 
@@ -50,7 +53,7 @@ Please refer its [how-to](https://github.com/facebookincubator/create-react-app/
 
 ## Server Side
 Above description and scripts are for the client side based on the [create-react-app](https://github.com/facebookincubator/create-react-app).  Note certain UI pages require authentication.
-In order for the JWT based authentication work, you need to run a separate [API server](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server).  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
+In order for the JWT based authentication to work, you need to run a separate [API server](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server).  The client login/logout requests will be proxied to the API server, thanks to the create-react-app feature 
 [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
 **See the proxy configuration in the packages.json:**
@@ -59,7 +62,7 @@ In order for the JWT based authentication work, you need to run a separate [API 
 ```
 Under the [server directory](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server), you can run (in a separate command line window):
 
-### `npm i`
+### `npm install`
 This will install the dependencies for the server side.
 
 ### `npm run server`
