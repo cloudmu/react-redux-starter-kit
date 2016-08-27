@@ -18,7 +18,7 @@ by showcasing several great technologies (such as [React](https://github.com/fac
 authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
 
 ## Available Scripts
-Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app)
+Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app) this easily created a base application. First, you must run `npm install` in the `src` directory to install the node_modules. 
 
 In the project directory, you can run:
 

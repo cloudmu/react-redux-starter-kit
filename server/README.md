@@ -1,5 +1,5 @@
 
-## Overview
+## Overview of the Server
 
 This is the API server to provide authentication API (Restful services) based [JWT](https://jwt.io/).
 
@@ -9,7 +9,8 @@ The simple implemenation show cases the following JWT use cases:
   It's expected the jwt token will be included in the subsequent client requests (as authorization header).
 
 * For subsequent client requests, the server will verify the jwt token extracted from the request headers.  
-  Invalid requests are considered unauthorized access and should be rejected.
+  
+* Invalid requests are considered unauthorized access and should be rejected.
 
 ## Server Side Scripts
 In order for the JWT based authentication work, you need to run this API server.  The client login/logout requests will be proxied to

@@ -18,11 +18,11 @@ export function parseJSON(response) {
  * A utility to call a restful service.
  *
  * @param url The restful service end point.
- * @config The config object of the call. Can be null.
- * @request The request action.
- * @onRequestSuccess The callback function to create request success action.
+ * @param config The config object of the call. Can be null.
+ * @param request The request action.
+ * @param onRequestSuccess The callback function to create request success action.
  *                 The function expects response json payload as its argument.
- * @onRequestFailure The callback function to create request failure action.
+ * @param onRequestFailure The callback function to create request failure action.
  *                 The function expects error as its argument.
  */
 export function callApi(url, config, request, onRequestSuccess, onRequestFailure) {
