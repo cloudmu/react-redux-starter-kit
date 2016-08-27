@@ -5,7 +5,7 @@ This is yet another React and Redux based web application starter kit. However, 
 [Webpack](http://webpack.github.io) and [JWT](https://jwt.io)) that are used together to develop a real web application, with features such as 
 authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
 
-But first, the [obligatory demo!](http://cloudmu.github.io/react-redux-starter-kit/)
+But first, the [obligatory demo!](http://cloudmu.github.io/react-redux-starter-kit/) This displays info from github - most followed users, and most starred repo's. Here's a screen shot:
 
 ![alt text](https://raw.githubusercontent.com/cloudmu/react-redux-starter-kit/master/screenshot.png "Screenshot")
 
@@ -34,7 +34,7 @@ The `UsersPage` and `ReposPage` would show most followed Github users (with 1000
 
 The fetched data are stored with the page number as the lookup key, so that the local copy can be shown without the need to re-fetch the same data remotely each time. However cached data can be invalidated if desired.
 
-**Data fetching error handling**
+**Error handling while fetching data**
 
 You can test this by disabling your internet connection. Or even better, you can page through `UsersPage` or `ReposPage` very quickly and hopefully invoke Github's API rate limit for your IP address. 
 The application would fail gracefully with the error message if data fetching (for a particular page) fails. However, the application can still show cached data for other pages, which is very desirable behavior.
@@ -57,11 +57,10 @@ There are many cases where universal (server-side) rendering is simply not usefu
 **WebSocket**
 It would be interesting to show a use case of WebSocket, which is common for a real-world web application.
 
-## Overview
+## Getting Started
+I used [create-react-app](https://github.com/facebookincubator/create-react-app) to easily create a base application. I then added the project specific code for querying github, displaying results, etc. 
 
-
-## Available Scripts
-Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app) we get the build configuration and scripts ready out of the box. 
+To get started, you must run `npm install` one time in the `src` directory to install the node_modules. 
 
 In the project directory, you should install the dependencies first:
 ### `npm install`
