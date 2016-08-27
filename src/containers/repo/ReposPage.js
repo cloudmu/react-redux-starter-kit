@@ -78,15 +78,15 @@ class ReposPage extends Component {
       <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
       <span className="repo_owner">{cellData.login}</span>
     </a>
-  )
+  );
 
   linkCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
     <a href={cellData} target="_blank">{cellData}</a>
-  )
+  );
 
   stargazerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
     <span className="pull-right">{cellData.toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>
-  )
+  );
 
   render() {
     const { page, error, repos, isFetching } = this.props;

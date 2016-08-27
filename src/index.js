@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 /////////////////////////////////////////////////////////////////////////
 // browserHistory would be preferred over hashHistory, but browserHistory 
 // would require configuring the server. So we will use hashHistory here.
-// Please change to browserHistory if you have your own backend serever.
+// Please change to browserHistory if you have your own backend server.
 // import {browserHistory as history} from 'react-router';
 import {hashHistory as history} from 'react-router';
 /////////////////////////////////////////////////////////////////////////
