@@ -6,14 +6,19 @@
  * It's expected the jwt token will be included in the subsequent client requests. The server
  * can then protect the services by verifying the jwt token in the subsequent API requests.
  * 
+ * This server also opens a socket.io socket to allow asynchronous communication with the client.
+ * Note that the Webpack-provided development server automatically proxy's calls 
+ *    to /socket.io/... to this server.
  */
 var express = require('express');
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var port = 3001;
 
+var app = express();  
+var server = require('http').Server(app);       // this is the http listener
+
 // Configure app to use bodyParser to parse json data
-var app = express();                
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -73,6 +78,21 @@ app.post('/api/logout', function(req, res) {
   }
 });
 
+// Set up the Socket.io listener...
+var io = require('socket.io')(server);          // this is the socket.io listener
+io.on('connection', (socket) => {
+  console.log('User connected. Socket id %s', socket.id);
+
+  socket.on('disconnect', function () {
+        console.log('User disconnected. Socket id %s', socket.id);
+    });
+});
+setInterval(()=> {
+  const msg = `Time is: ${new Date()}`;
+  console.log(`Sending to socket.io: ${msg}`);
+  io.emit('time', { text: `${msg}`});
+}, 10000);
+
 // Start ther server
-app.listen(port);
+server.listen(port);
 console.log('Server is listening on port ' + port);
