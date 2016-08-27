@@ -78,21 +78,25 @@ app.post('/api/logout', function(req, res) {
   }
 });
 
-// Set up the Socket.io listener...
-var io = require('socket.io')(server);          // this is the socket.io listener
-io.on('connection', (socket) => {
-  console.log('User connected. Socket id %s', socket.id);
+// Set up the Socket.io listener - it is middleware for the main HTTP server (passed in)
+var io = require('socket.io')(server);                // this is the socket.io listener
+io.on('connection', (socket) => {                     // when we get a connection from a client
+  console.log('User connected. Socket id %s', socket.id);   // log when they connect
 
-  socket.on('disconnect', function () {
+  socket.on('disconnect', function () {                     // log when they go away
         console.log('User disconnected. Socket id %s', socket.id);
     });
 });
-setInterval(()=> {
-  const msg = `Time is: ${new Date()}`;
-  console.log(`Sending to socket.io: ${msg}`);
-  io.emit('time', { text: `${msg}`});
+
+// Send a message to all connected clients every 10 seconds
+setInterval( () => {
+  if (Object.keys(io.sockets.connected).length > 0) {       // if anyone's connected...
+    const msg = `Time is now: ${new Date()}`;               // get the date & time
+    console.log(`Sending via socket.io: ${msg}`);           // log it
+    io.emit('time', { text: `${msg}`});                     // and send to all clients
+  }
 }, 10000);
 
-// Start ther server
+// Start the HTTP server
 server.listen(port);
 console.log('Server is listening on port ' + port);
