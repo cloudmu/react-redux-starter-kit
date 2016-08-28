@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Timebar from '../../components/timebar/timebar';
 import './home.css';
 
 export default class Home extends Component {
@@ -154,6 +154,7 @@ export default class Home extends Component {
               <a href="https://github.com/rackt/redux" target="_blank"> Redux</a>.
             </p>
             <p> Thank you! </p>
+          <Timebar />
         </div>
       </div>
     );
