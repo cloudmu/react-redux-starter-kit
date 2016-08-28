@@ -79,13 +79,15 @@ app.post('/api/logout', function(req, res) {
 });
 
 // Set up the Socket.io listener - it is middleware for the main HTTP server (passed in)
-var io = require('socket.io')(server);                // this is the socket.io listener
-io.on('connection', (socket) => {                     // when we get a connection from a client
-  console.log('User connected. Socket id %s', socket.id);   // log when they connect
+var io = require('socket.io')(server);                                    // this is the socket.io listener
+io.on('connection', (socket) => {                                         // when we get a connection from a client
+  const count = Object.keys(io.sockets.connected).length;
+  console.log('Client connected. Socket id %s, (%s)', socket.id, count);  // log when they connect
 
-  socket.on('disconnect', function () {                     // log when they go away
-        console.log('User disconnected. Socket id %s', socket.id);
-    });
+  socket.on('disconnect', function () {                                   // log when they go away
+    const count = Object.keys(io.sockets.connected).length;
+    console.log('Client disconnected. Socket id %s (%s)', socket.id, count);
+  });
 });
 
 // Send a message to all connected clients every 10 seconds
