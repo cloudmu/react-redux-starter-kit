@@ -17,6 +17,7 @@ Here's a screenshot:
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [JSON Web Token](https://jwt.io/)
 - [create-react-app](https://github.com/facebookincubator/create-react-app/)
+- [Socket.io](http://socket.io/)
 - [Babel](http://babeljs.io/) and [Webpack](http://webpack.github.io/) (now behind the scenes thanks to create-react-app)
 
 ## Feature highlights:
@@ -45,7 +46,7 @@ Certain UI pages (`UsersPage` and `ReposPage`) are only accessible after signing
 
 #### Socket.io Communication Between Web Client and API Server
 
-The Home page has a `<Timebar />` component that creates a Socket.io connection to the API server and updates its content from messages sent from the API server. The server listens for connections from the client page, then io.emit()'s a `time` message every 10 seconds. 
+The Home page has a `<Timebar />` component that creates a Socket.io connection to the API server and updates its content from messages received from the API server. The server listens for connections from the client page, then io.emit()'s a `time` message every 10 seconds. 
 
 ## What's New
 
