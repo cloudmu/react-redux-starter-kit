@@ -3,21 +3,6 @@ import Timebar from '../../components/timebar/timebar';
 import './home.css';
 
 export default class Home extends Component {
-  // the constructor is only necessary to listen for socket.io  
-  constructor(props) {
-    super(props);
-
-    // the io() function call gets the value from the global name space, 
-    // that comes from the <script> tag in index.html
-    this.state = {                       
-      time: 'A while ago, the time was: Wed Aug 24 2016 08:17155 GMT-0400 (EDT)',
-    };
-    this.socket = io();                             // eslint-disable-line no-undef 
-    this.socket.on('time', (msg) => {               // if server emits 'time'
-      console.log(`socket received: ${msg.text}`);  // log the new time
-      this.setState({ time: msg.text });            // set the state; <Home /> updates the time
-    })
-  }
   render() {
     return (
       <div>
@@ -44,7 +29,6 @@ export default class Home extends Component {
               <a href="https://twitter.com/_cloudmu" target="_blank">
                  <i className="fa fa-twitter home-fa-twitter" />_cloudmu
               </a>
-              <p><br />{this.state.time}</p>
             </div>
           </div>
         </div>

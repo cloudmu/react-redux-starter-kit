@@ -27,13 +27,10 @@
   "bugs": {
     "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
   },
-
   "proxy": "http://localhost:3001/",
-  
   "devDependencies": {
     "react-scripts": "0.2.3"
   },
-
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.3",
     "classnames": "^2.2.5",
@@ -43,17 +40,17 @@
     "jwt-decode": "^2.1.0",
     "lodash": "^4.15.0",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1",
     "react-addons-shallow-compare": "15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
+    "react-router-redux": "4.0.5",
+    "react-virtualized": "7.19.4",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "react-router-redux": "4.0.5",
-    "react-virtualized": "7.19.4"
+    "socket.io-client": "^1.4.8"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

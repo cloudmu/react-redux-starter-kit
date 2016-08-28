@@ -91,10 +91,13 @@ io.on('connection', (socket) => {                                         // whe
 });
 
 // Send a message to all connected clients every 10 seconds
+// NB It is OK to io.emit() if no clients are connected,
+//  The test for connected clients simply minimizes excess log messages
 setInterval( () => {
-  if (Object.keys(io.sockets.connected).length > 0) {       // if anyone's connected...
+  const count = Object.keys(io.sockets.connected).length;   // get number of clients
+  if (count > 0) {                                          // if anyone's connected...
     const msg = `Time is now: ${new Date()}`;               // get the date & time
-    console.log(`Sending via socket.io: ${msg}`);           // log it
+    console.log(`Sending to (${count}) clients: ${msg}`);   // log it
     io.emit('time', { text: `${msg}`});                     // and send to all clients
   }
 }, 10000);
