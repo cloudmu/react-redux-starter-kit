@@ -12,7 +12,7 @@ export default class Home extends Component {
     this.state = {                       
       time: 'A while ago, the time was: Wed Aug 24 2016 08:17155 GMT-0400 (EDT)',
     };
-    this.socket = io();                             // listen for socket.io in the Home component
+    this.socket = io();                             // eslint-disable-line no-undef 
     this.socket.on('time', (msg) => {               // if server emits 'time'
       console.log(`socket received: ${msg.text}`);  // log the new time
       this.setState({ time: msg.text });            // set the state; <Home /> updates the time
