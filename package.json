@@ -29,11 +29,10 @@
   },
 
   "proxy": "http://localhost:3001",
-  
+
   "devDependencies": {
     "react-scripts": "0.2.3"
   },
-
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.3",
     "classnames": "^2.2.5",
@@ -43,17 +42,22 @@
     "jwt-decode": "^2.1.0",
     "lodash": "^4.15.0",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1",
     "react-addons-shallow-compare": "15.3.1",
+    "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
+    "react-router-redux": "4.0.5",
+    "react-virtualized": "7.19.4",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
+<<<<<<< d693668fc996a3d4d5ba11bd02ea7bbbb392f664
     "react-router-redux": "4.0.5",
     "react-virtualized": "7.22.1"
+=======
+    "socket.io-client": "^1.4.8"
+>>>>>>> <Timebar /> now receives updates from server via socket.io
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
