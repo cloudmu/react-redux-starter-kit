@@ -2,7 +2,7 @@
   "name": "react-redux-starter-kit",
   "homepage": "https://cloudmu.github.com/react-redux-starter-kit",
   "version": "0.0.1",
-  "description": "React/Redux Starter Kit with Zero Build Config",
+  "description": "React/Redux Starter Kit with Zero Build Configuration",
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudmu/react-redux-starter-kit.git"
@@ -28,7 +28,7 @@
     "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
   },
 
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3001",
   
   "devDependencies": {
     "react-scripts": "0.2.3"
@@ -51,7 +51,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "react-router-redux": "4.0.5",
-    "react-virtualized": "7.19.4"
+    "react-virtualized": "7.22.1"
   },
   
   "scripts": {

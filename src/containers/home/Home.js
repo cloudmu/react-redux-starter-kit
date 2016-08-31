@@ -102,9 +102,9 @@ export default class Home extends Component {
 
             <dt>Non-Univeral</dt>
             <dd>
-              This should probably be listed under "issues" or "wish list" instead, since these days a web application is not "cutting edge"
+              Most people probably would listed this under "issues" or "wish list" instead, since these days a web application is not "cutting edge"
               or "cool" if it's not universal (isomorphic). However there are many cases
-              where universal rendering is simply not applicable or feasible (e.g. due to lack of node.js backend support in my case).
+              where server-side rendering is simply not required or applicable (e.g. Java backend instead of Node).
             </dd>
           </dl>
 
@@ -128,16 +128,6 @@ export default class Home extends Component {
               It would be interesting to show a use case of WebSocket, which is common for a real-world web application.
             </dd>
           </dl>
-
-          <h3>Credits</h3>
-            <p>
-              As a long-time backend developer (who enjoys writing obscure number-crunching "optimzation" algorithms in Java), I would never have thought of
-              developing (let alone posting) a web application using javascript on Github, were it not for the fateful summer 2015 when I stumbled upon
-              <a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank"> a 30 minutes video</a> by
-              <a href="https://twitter.com/dan_abramov" target="_blank"> Dan Abramov</a>, and his inspiring work on
-              <a href="https://github.com/rackt/redux" target="_blank"> Redux</a>.
-            </p>
-            <p> Thank you! </p>
         </div>
       </div>
     );

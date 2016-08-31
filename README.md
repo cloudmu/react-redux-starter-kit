@@ -1,8 +1,10 @@
 # [react-redux-starter-kit](http://cloudmu.github.io/react-redux-starter-kit/)
 
-This is yet another React and Redux based web application starter kit. However, this project attempts to balance simplicity with developing a real web application that actually "does something useful". It demonstrates authentication, navigation, asynchronous data fetching, error handling, and caching and pagination, etc. using the technologies listed below.
+This is yet another React and Redux starter kit. However, this project attempts to balance simplicity with developing a real web application that actually "does something useful". 
+It demonstrates authentication, navigation, asynchronous data fetching, error handling, and caching and pagination, etc. using the technologies listed below.
 
-But first, the [obligatory demo!](http://cloudmu.github.io/react-redux-starter-kit/) This displays information retrieved from the Github API - most followed users and most starred repo's. Credentials are user *admin* and password *password*. Here's a screen shot:
+But first, the [demo!](http://cloudmu.github.io/react-redux-starter-kit/) It displays information retrieved from the Github API - most followed users and most starred repo's. 
+Credentials are user *admin* and password *password*. Here's a screenshot:
 
 ![alt text](https://raw.githubusercontent.com/cloudmu/react-redux-starter-kit/master/screenshot.png "Screenshot")
 
@@ -14,7 +16,7 @@ But first, the [obligatory demo!](http://cloudmu.github.io/react-redux-starter-k
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [JSON Web Token](https://jwt.io/)
 - [create-react-app](https://github.com/facebookincubator/create-react-app/)
-- [Babel](http://babeljs.io/) and [Webpack](http://webpack.github.io/) (now behind the scene thanks to create-react-app)
+- [Babel](http://babeljs.io/) and [Webpack](http://webpack.github.io/) (now behind the scenes thanks to create-react-app)
 
 ## Feature highlights:
 
@@ -47,39 +49,37 @@ Certain UI pages (`UsersPage` and `ReposPage`) are only accessible after signing
 * The async actions for restful API calls for authentication and fetching Github users and repos are now refactored to go through a common utility `callApi()`.
 
 ## Wish List / Known Issues
-
-**Univeral**
-Although it's "cool" to have universal (server-side, isomorphic) rendering these days, there are many situations (like this one) where that complexity is simply not useful or required.
+**Universal**
+Although it's "cool" to have universal (server-side, isomorphic) rendering these days, there are many situations (like this one) where that complexity is simply not useful or applicable (e.g. Java backend).
 
 **WebSocket**
 It would be interesting to show a use case of WebSocket, which is common for a real-world web application.
 
 ## Getting Started
-I used [create-react-app](https://github.com/facebookincubator/create-react-app) to easily create a base application. I then added the project specific code for querying github, displaying results, etc. 
+Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app), we will have a configuration-free dev experience. 
 
-To get started, you must clone this git repository and then run `npm install` for the main directory and the server `server` directory. 
+To get started, please clone this git repository and then run `npm install` once under the project top-level directory. 
 
 ```
 git clone https://github.com/cloudmu/react-redux-starter-kit.git
 cd react-redux-starter-kit
 npm install
-cd server
-npm install
-cd ..                 # to get back to the top-level directory
 ```
+This will install the dependencies for the client side.
 
 **You’ll need to have Node installed on your machine**. (Node >= 6 and npm >= 3 are recommended).
 
 ## While You're Developing...
-Whenever you want to run/test the program, `cd` to the main directory. Use these commands:
+Whenever you want to run/test the program, `cd` to the project top-level directory. Use these commands:
 
 ### `npm start`
 
 Runs the app in the development mode, using the Webpack-provided "development server".<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser. To run the demo, be sure to run the [API Server](#an-api-server) as well.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+**Note** The web app is up and running now, but some features (such as JWT-based authentication) rely on an API Server. Be sure to run the [API Server](#an-api-server) as well.
 
 ### `npm run build`
 
@@ -105,11 +105,20 @@ This project also contains a separate [API server](https://github.com/cloudmu/re
 The client login/logout requests will be proxied to the API server as described in: 
 [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
-To start the api server, a) be sure to use `npm install` once - the **Getting Started** step above does this; b) open a separate command line window, cd to the [server directory](https://github.com/cloudmu/react-redux-starter-kit/tree/master/server) and use this command:
+First you need to open a separate command line window, and run `npm install` under the project's `server` directory. 
+
+```
+cd react-redux-starter-kit
+cd server
+npm install
+```
+
+Then you can start the API server (under the project's server directory):
 
 ### `npm run server`
+
 This starts the API server on port 3001, which listens for authentication (login/logout) requests from the client. At this point, the application is fully operating.
 
 ## Credits
-As a long-time backend developer (who enjoys writing obscure number-crunching "optimization" algorithms in Java), I would never have thought of developing (let alone posting) a web application using Javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a [30 minutes video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/rackt/redux).
-Thanks for reading!
+As a long-time backend developer (who writes preditive analytics and optimization algorithms), I would never have thought of posting a web application using Javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a [30 minutes video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/rackt/redux).
+Thanks you!

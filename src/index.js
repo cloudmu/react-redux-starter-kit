@@ -1,27 +1,27 @@
+///////////////////////////////////////////
+// jquery and tether for bootstrap to use
+// alternative is to link them in index.html
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+window.$ = window.jQuery=require('jquery');
+window.Tether=require('tether');
+require('bootstrap/dist/js/bootstrap');
+/////////////////////////////////////////////
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute} from 'react-router';
 
 /////////////////////////////////////////////////////////////////////////
 // browserHistory would be preferred over hashHistory, but browserHistory 
 // would require configuring the server. So we will use hashHistory here.
 // Please change to browserHistory if you have your own backend server.
 // import {browserHistory as history} from 'react-router';
-import {hashHistory as history} from 'react-router';
-/////////////////////////////////////////////////////////////////////////
-
-import { Router, Route, IndexRoute} from 'react-router';
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
-
-///////////////////////////////////////////
-// jquery and tether for bootstrap to use
-// alternative is to link them in index.html
-window.$ = window.jQuery=require('jquery');
-window.Tether=require('tether');
-require('bootstrap/dist/js/bootstrap');
-/////////////////////////////////////////////
+import { useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history'
+const history = useRouterHistory(createHashHistory)({ queryKey: false });
+//////////////////////////////////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
 

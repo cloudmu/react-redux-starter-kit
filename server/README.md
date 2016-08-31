@@ -19,7 +19,7 @@ the API server, thanks to the create-react-app feature [Proxying API Requests in
 
 Under this server directory, you can run (in a separate command line window):
 
-### `npm i`
+### `npm install`
 This will install the dependencies for the server side.
 
 ### `npm run server`
