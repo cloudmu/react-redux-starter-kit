@@ -4,7 +4,8 @@ This is yet another React and Redux starter kit. However, this project attempts 
 It demonstrates authentication, navigation, asynchronous data fetching, error handling, and caching and pagination, etc. using the technologies listed below.
 
 But first, the [demo!](http://cloudmu.github.io/react-redux-starter-kit/) It displays information retrieved from the Github API - most followed users and most starred repo's. 
-Credentials are user *admin* and password *password*. Here's a screenshot:
+Credentials are user *admin* and password *password*. Note the deployed demo may not always be up to date. Check out the latest project and [run the demo](#getting-started) yourself.
+Here's a screenshot:
 
 ![alt text](https://raw.githubusercontent.com/cloudmu/react-redux-starter-kit/master/screenshot.png "Screenshot")
 
@@ -121,4 +122,4 @@ This starts the API server on port 3001, which listens for authentication (login
 
 ## Credits
 As a long-time backend developer (who writes preditive analytics and optimization algorithms), I would never have thought of posting a web application using Javascript on Github, were it not for the fateful summer 2015 when I stumbled upon a [30 minutes video](https://www.youtube.com/watch?v=xsSnOQynTHs) by [Dan Abramov](https://twitter.com/dan_abramov), and his inspiring work on [Redux](https://github.com/rackt/redux).
-Thanks you!
+Thank you.
