@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Timebar from '../../components/timebar/timebar';
 import './home.css';
 
 export default class Home extends Component {
@@ -128,6 +128,7 @@ export default class Home extends Component {
               It would be interesting to show a use case of WebSocket, which is common for a real-world web application.
             </dd>
           </dl>
+          <Timebar />
         </div>
       </div>
     );

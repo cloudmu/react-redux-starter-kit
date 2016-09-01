@@ -6,14 +6,19 @@
  * It's expected the jwt token will be included in the subsequent client requests. The server
  * can then protect the services by verifying the jwt token in the subsequent API requests.
  * 
+ * This server also opens a socket.io socket to allow asynchronous communication with the client.
+ * Note that the Webpack-provided development server automatically proxy's calls 
+ *    to /socket.io/... to this server.
  */
 var express = require('express');
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var port = 3001;
 
+var app = express();  
+var server = require('http').Server(app);       // this is the http listener
+
 // Configure app to use bodyParser to parse json data
-var app = express();                
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -73,6 +78,30 @@ app.post('/api/logout', function(req, res) {
   }
 });
 
-// Start ther server
-app.listen(port);
+// Set up the Socket.io listener - it is middleware for the main HTTP server (passed in)
+var io = require('socket.io')(server);                                    // this is the socket.io listener
+io.on('connection', (socket) => {                                         // when we get a connection from a client
+  const count = Object.keys(io.sockets.connected).length;
+  console.log('Client connected. Socket id %s, (%s)', socket.id, count);  // log when they connect
+
+  socket.on('disconnect', function () {                                   // log when they go away
+    const count = Object.keys(io.sockets.connected).length;
+    console.log('Client disconnected. Socket id %s (%s)', socket.id, count);
+  });
+});
+
+// Send a message to all connected clients every 10 seconds
+// NB It is OK to io.emit() if no clients are connected,
+//  The test for connected clients simply minimizes excess log messages
+setInterval( () => {
+  const count = Object.keys(io.sockets.connected).length;   // get number of clients
+  if (count > 0) {                                          // if anyone's connected...
+    const msg = `Time is now: ${new Date()}`;               // get the date & time
+    console.log(`Sending to (${count}) clients: ${msg}`);   // log it
+    io.emit('time', { text: `${msg}`});                     // and send to all clients
+  }
+}, 10000);
+
+// Start the HTTP server
+server.listen(port);
 console.log('Server is listening on port ' + port);

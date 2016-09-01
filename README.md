@@ -17,6 +17,7 @@ Here's a screenshot:
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [JSON Web Token](https://jwt.io/)
 - [create-react-app](https://github.com/facebookincubator/create-react-app/)
+- [Socket.io](http://socket.io/)
 - [Babel](http://babeljs.io/) and [Webpack](http://webpack.github.io/) (now behind the scenes thanks to create-react-app)
 
 ## Feature highlights:
@@ -43,18 +44,23 @@ The application would fail gracefully with the error message if data fetching (f
 
 Certain UI pages (`UsersPage` and `ReposPage`) are only accessible after signing in to the application. When accessing restricted pages without signing in first, the application redirects to the `Login` page. The authentication is based on JSON Web Token (JWT).
 
+#### Socket.io Communication Between Web Client and API Server
+
+The Home page has a `<Timebar />` component that creates a Socket.io connection to the API server and updates its content from messages received from the API server. The server listens for connections from the client page, then io.emit()'s a `time` message every 10 seconds. 
+
 ## What's New
 
 * I recently (Aug/2016) ported this project to use [create-react-app](https://github.com/facebookincubator/create-react-app). Enjoy configuration-free (fatigue-free) React!
 * A JWT based API server is added, thanks to the latest create-react-app feature [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 * The async actions for restful API calls for authentication and fetching Github users and repos are now refactored to go through a common utility `callApi()`.
+* Added a socket.io connection between the api server and the Home page. 
 
 ## Wish List / Known Issues
 **Universal**
 Although it's "cool" to have universal (server-side, isomorphic) rendering these days, there are many situations (like this one) where that complexity is simply not useful or applicable (e.g. Java backend).
 
-**WebSocket**
-It would be interesting to show a use case of WebSocket, which is common for a real-world web application.
+~~**WebSocket**
+It would be interesting to show a use case of WebSocket, which is common for a real-world web application.~~
 
 ## Getting Started
 Thanks to [create-react-app](https://github.com/facebookincubator/create-react-app), we will have a configuration-free dev experience. 
