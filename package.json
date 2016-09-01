@@ -51,12 +51,9 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-<<<<<<< d693668fc996a3d4d5ba11bd02ea7bbbb392f664
     "react-router-redux": "4.0.5",
     "react-virtualized": "7.22.1"
-=======
     "socket.io-client": "^1.4.8"
->>>>>>> <Timebar /> now receives updates from server via socket.io
   },
   "scripts": {
     "start": "react-scripts start",
