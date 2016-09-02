@@ -1,7 +1,7 @@
 {
   "name": "react-redux-starter-kit",
   "homepage": "https://cloudmu.github.com/react-redux-starter-kit",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React/Redux Starter Kit with Zero Build Configuration",
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
     "autho0",
     "dashboard",
     "boilerplate",
-    "create-react-app"
+    "create-react-app",
+    "websockets",
+    "socket.io"
   ],
   "author": "twitter.com/_cloudmu (http://github.com/cloudmu)",
   "license": "MIT",
@@ -50,8 +52,9 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "react-router-redux": "4.0.5",
-    "react-virtualized": "7.22.1"
+    "react-router-redux": "^4.0.5",
+    "react-virtualized": "^7.22.1",
+    "socket.io-client": "^1.4.8"
   },
   
   "scripts": {

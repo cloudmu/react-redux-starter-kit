@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
+import UserProfile from './UserProfile';
+import Alerts from './Alerts';
 import './header.css';
 
 export default class Header extends Component {
-  onLogoutClick(event) {
+  onLogoutClick = (event) => {
     event.preventDefault();
     this.props.handleLogout();
   }
@@ -35,16 +37,8 @@ export default class Header extends Component {
               </ul>
 
               <ul className="nav navbar-nav pull-xs-right">
-                <li className="dropdown nav-item">
-                  <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span className="fa fa-user header_fa"></span>{user || 'Anonymous'}<span className="caret"></span>
-                  </a>
-                  <ul className="dropdown-menu">
-                    <a className="dropdown-item" href="#" onClick={ event => this.onLogoutClick(event)}><i className="fa fa-sign-out header_fa"/>Log out</a>
-                    <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="https://github.com/cloudmu/react-redux-starter-kit"target="_blank" title="View on Github"><i className="fa fa-github header_fa"/>Github</a>
-                  </ul>
-                </li>
+                <Alerts />
+                <UserProfile user={user} handleLogout={this.onLogoutClick} />
               </ul>
             </div>
           </div>

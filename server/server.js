@@ -1,10 +1,12 @@
 /** 
  * This is a simple express server, to show basic authentication services (login and logout requests)
- * based JWT.
+ * based JWT, and basic socket.io.
  * 
  * Once a user is authenticated, a jwt token will be returned as response to the client. 
  * It's expected the jwt token will be included in the subsequent client requests. The server
  * can then protect the services by verifying the jwt token in the subsequent API requests.
+ * 
+ * The server will also broadcast the login/logout events to connected clients via socket.io.
  * 
  */
 var express = require('express');
@@ -13,10 +15,13 @@ var jwt = require('jsonwebtoken');
 var port = 3001;
 
 // Configure app to use bodyParser to parse json data
-var app = express();                
+var app = express(); 
+var server = require('http').createServer(app);  
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// and support socket io
+var io = require('socket.io')(server);             
 
 // Test server is working (GET http://localhost:3001/api)
 app.get('/api/', function(req, res) {
@@ -42,10 +47,20 @@ app.post('/api/login', function(req, res) {
     res.status(200).json({
       id_token: jwtToken
     });
+
+    alertClients('info', `User '${credentials.user}' just logged in`);
   }else{
     res.status(401).json({'message': 'Invalid user/password'});
+    
+    alertClients('error', `User '${credentials.user}' just failed to login`);
   }
 });
+
+// Alerts all clents via socket io.
+function alertClients(type, msg) {
+  console.log("SocketIO alerting clients: ", msg);
+  io.sockets.emit('alert', { message: msg, time: new Date(), type}); 
+}
 
 /**
  * Util function to extract jwt token from the authorization header
@@ -67,12 +82,16 @@ app.post('/api/logout', function(req, res) {
   try {
     var profile = jwt.verify(jwtToken, JWT_SECRET);
     res.status(200).json({'message' : `User ${profile.user} logged out`});
+    
+    alertClients('info', `User '${profile.user}' just logged out`);
   } catch(err) {
     console.log("jwt verify error", err);
     res.status(500).json({'message' : 'Invalid jwt token'});
+    
+    alertClients('error', `JWT verify error`);
   }
 });
 
-// Start ther server
-app.listen(port);
+// Start the server
+server.listen(port);
 console.log('Server is listening on port ' + port);
