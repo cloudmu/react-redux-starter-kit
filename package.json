@@ -33,7 +33,7 @@
   "proxy": "http://localhost:3001",
   
   "devDependencies": {
-    "react-scripts": "0.2.3"
+    "react-scripts": "0.4.0"
   },
 
   "dependencies": {
@@ -53,7 +53,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "react-router-redux": "^4.0.5",
-    "react-virtualized": "^7.22.1",
+    "react-virtualized": "^7.22.2",
     "socket.io-client": "^1.4.8"
   },
   

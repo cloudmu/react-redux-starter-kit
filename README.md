@@ -87,7 +87,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.<br>
-**Note** The web app is up and running now, but some features (such as JWT-based authentication) rely on an API Server. Be sure to run the [API Server](#an-api-server) as well.
+**Note The web app is up and running now, but some features (such as JWT-based authentication and server alerts/notifications) rely on an API Server. Be sure to run the [API Server](#an-api-server) as well.**
 
 ### `npm run build`
 
@@ -108,6 +108,8 @@ This project also contains a separate [API server](https://github.com/cloudmu/re
 The client login/logout requests will be proxied to the API server as described in: 
 [Proxying API Requests in Development](https://github.com/facebookincubator/create-react-app/blob/ef94b0561d5afb9b50b905fa5cd3f94e965c69c0/template/README.md#proxying-api-requests-in-development).
 
+In addition, the server will push notifications to the clients via [Socket.IO](http://socket.io/).
+
 First you need to open a separate command line window, and run `npm install` under the project's `server` directory. 
 
 ```
@@ -120,7 +122,7 @@ Then you can start the API server (under the project's server directory):
 
 ### `npm run server`
 
-This starts the API server on port 3001, which listens for authentication (login/logout) requests from the client. At this point, the application is fully operating.
+This starts the API server on port 3001, which listens for authentication (login/logout) requests from the client, and pushes server notifications. At this point, the application is fully operating.
 
 ## How Do I ... ?
 
