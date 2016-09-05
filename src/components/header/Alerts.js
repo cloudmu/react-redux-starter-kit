@@ -1,39 +1,19 @@
-import React, {Component} from 'react';
-import io from 'socket.io-client';
+import React, {PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+import { dismiss } from '../../actions/alerts';
+import connectToAlerts from '../../utils/alertUtils';
 import classNames from 'classnames';
 
 class Alerts extends Component {
-
-  componentWillMount(){
-    this.state = {
-      alerts: []
-    };
-
-    this.socket = io();  
-    this.socket.on('connect_error', () => {    
-      console.log("Socket.io connection error. Disconnecting socket ...");
-      this.socket.disconnect();
-      this.setState(
-        {
-          alerts: [{type: 'error', message: 'Socket.IO connection error. No message from server.', time: new Date().toString()}],
-        }
-      );
-    }); 
-
-    this.socket.on('alert', (data) => {               
-      console.log(`Alert received from server: ${JSON.stringify(data)}`);
-      const alerts = this.state.alerts || [];
-      this.setState({ alerts: [...alerts, data] });
-    });
-  }
-
-  componentWillUnmount(){
-    console.log("Disconnecting socket ...");
-     this.socket.disconnect();
-  }
-
+  
   dismiss = () => {
-    this.setState({ alerts: [] });
+    const { dispatch } = this.props;
+    dispatch(dismiss());
+  }
+
+  reconnect = () => {
+    const { store } = this.context;
+    connectToAlerts(store);
   }
 
   alert = (type, message, time) => {
@@ -42,15 +22,20 @@ class Alerts extends Component {
   }
 
   render() {
-    const { alerts } = this.state;
+    const { alerts, hasError } = this.props;
     const count = (alerts && alerts.length) || 0;
     const badge = count<=1 ? `${count} new message` : `${count} new messages`;
     return (
-    <li className="dropdown nav-item">
+      <li className="dropdown nav-item">
         <a href="#" className="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <i className="fa fa-bell warning" style={{marginRight: '0.5em'}}></i><span className="tag tag-warning">{badge}</span>
         </a>
         <ul className="dropdown-menu" style={{right:0, left: 'auto'}}>
+          <a className="dropdown-item">
+            <span>Alerts as of <span className="tag tag-default">{new Date().toString()}</span></span>
+              <div className="dropdown-divider"></div>
+          </a>
+          
           {count > 0 && (
             alerts.map((alert, i) =>
               <a key={i} className="dropdown-item">
@@ -60,13 +45,29 @@ class Alerts extends Component {
             )
           )}
 
-          {count > 0 &&
-            <button className="dropdown-item" style={{textAlign: 'center'}} href="#" title="Dismiss all" onClick={this.dismiss}>Dismiss all</button>
-          }
+          <div className="dropdown-item" style={{textAlign: 'center'}}>
+            { count>0 && <a className="btn btn-sm btn-default" href="#" title="Dismiss all" onClick={this.dismiss}><i className="fa fa-remove" style={{marginRight: '0.5em'}}></i>Dismiss all</a> }
+            { hasError && <a className="btn btn-sm btn-primary" href="#" title="Reconnect" onClick={this.reconnect}><i className="fa fa-refresh" style={{marginRight: '0.5em'}}></i>Reconnect</a> }
+          </div>
         </ul>
-    </li>
-  );
+      </li>
+    );
   }
 }
 
-export default Alerts;
+Alerts.contextTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+Alerts.propTypes = {
+  alerts: PropTypes.array.isRequired,
+  hasError: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+  const { alerts } = state;
+  return { alerts: alerts.alerts, hasError: alerts.hasError };
+}
+
+export default connect(mapStateToProps)(Alerts);

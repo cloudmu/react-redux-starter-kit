@@ -24,6 +24,7 @@ const history = useRouterHistory(createHashHistory)({ queryKey: false });
 //////////////////////////////////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
+import connectToAlerts from './utils/alertUtils';
 
 import App from './containers/app/App';
 import Login from './containers/login/Login';
@@ -37,6 +38,7 @@ import NotFound from './containers/misc/NotFound';
 import './index.css';
 
 const store = configureStore();
+connectToAlerts(store);
 
 ReactDOM.render(
   <Provider store={store}>
