@@ -14,7 +14,7 @@ export default function alerts(state = initialState, action = {}) {
   switch (action.type) {
   case CONNECT_SUCCESS:
     {
-      const payload = {type: 'info', message: 'Socket connection success. Waiting for alerts ...', time: new Date().toString()};
+      const payload = {type: 'info', message: 'Socket connection success. Waiting for alerts.', time: new Date().toString()};
       const alerts = state.alerts || [];
       return Object.assign({}, state, {hasError: false}, {alerts: [payload, ...alerts]});
     }

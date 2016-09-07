@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { callApi } from '../utils/utils';
+import { callApi } from '../utils/apiUtils';
 
 export const SELECT_USERS_PAGE = 'SELECT_USERS_PAGE';
 export const INVALIDATE_USERS_PAGE = 'INVALIDATE_USERS_PAGE';

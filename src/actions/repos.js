@@ -1,5 +1,5 @@
 import 'isomorphic-fetch';
-import { callApi } from '../utils/utils';
+import { callApi } from '../utils/apiUtils';
 
 export const SELECT_REPOS_PAGE = 'SELECT_REPOS_PAGE';
 export const INVALIDATE_REPOS_PAGE = 'INVALIDATE_REPOS_PAGE';

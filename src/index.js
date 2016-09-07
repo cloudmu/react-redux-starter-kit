@@ -24,7 +24,7 @@ const history = useRouterHistory(createHashHistory)({ queryKey: false });
 //////////////////////////////////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
-import connectToAlerts from './utils/alertUtils';
+import connectToAlerts from './utils/socketUtils';
 
 import App from './containers/app/App';
 import Login from './containers/login/Login';

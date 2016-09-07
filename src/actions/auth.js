@@ -4,7 +4,7 @@ import { callApi,
         loadIdToken,
         setIdToken,
         removeIdToken,
-        decodeUserProfile } from '../utils/utils';
+        decodeUserProfile } from '../utils/apiUtils';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
