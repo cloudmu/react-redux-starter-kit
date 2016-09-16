@@ -14,13 +14,5 @@
     background-size: 90%;
     border-radius:20px;
   }
-  
-  .nav {
-    font-size: 1em;
-    margin-right: 0.5em;
-  }
 
-  .navbar-default .navbar-nav>li>a:focus {
-    outline: none;
-  }
 

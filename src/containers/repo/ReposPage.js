@@ -94,7 +94,7 @@ class ReposPage extends Component {
     const nextStyles = classNames('page-item', { disabled: repos.length === 0 });
 
     return (
-      <div className="container-fluid">
+      <div className="container">
 
         <nav>
           <ul className="pagination pagination-sm">
@@ -121,7 +121,7 @@ class ReposPage extends Component {
         }
 
         {repos &&
-          <div className="container-fluid" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', height: '100%', position: 'absolute' }}>
+          <div className="container" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', height: '80vh', position: 'absolute' }}>
             <AutoSizer>
               {({ width, height }) => (
                 <FlexTable

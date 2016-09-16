@@ -19,10 +19,10 @@ class App extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="container-fluid">
+      <div className="container">
 
         <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
-        <div className="appContent">
+        <div className="container appContent">
           {this.props.children}
         </div>
         <Footer/>

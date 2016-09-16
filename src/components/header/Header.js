@@ -21,8 +21,11 @@ export default class Header extends Component {
     return (
       !isLoginPage &&
       <div className="pos-f-t">
+        <div className="collapse" id="navbar-header">
+          <div className="container bg-inverse p-a-1" />
+        </div>
         <nav className="navbar navbar-light bg-faded navbar-fixed-top">
-          <div className="container-fluid">
+          <div className="container">
             <button type="button" className="navbar-toggle pull-xs-left hidden-sm-up" data-toggle="collapse" data-target="#collapsingNavbar">&#9776;</button>
 
             <div id="collapsingNavbar" className="collapse navbar-toggleable-xs">

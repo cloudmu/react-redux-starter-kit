@@ -57,7 +57,7 @@ class UsersPage extends Component {
     const nextStyles = classNames('page-item', { disabled: users.length === 0 });
 
     return (
-      <div className="container-fluid">
+      <div className="container">
 
         <nav>
           <ul className="pagination pagination-sm">

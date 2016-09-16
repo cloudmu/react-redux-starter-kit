@@ -10,13 +10,11 @@ body {
 }
 .footer {
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 3em;
+  line-height: 3em;
   background-color: #f5f5f5;
-}
-
-.text-muted {
-  padding: 0.5em;
 }
