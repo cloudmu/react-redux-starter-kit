@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import { callApi } from '../utils/apiUtils';
 
 export const SELECT_USERS_PAGE = 'SELECT_USERS_PAGE';

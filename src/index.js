@@ -3,7 +3,8 @@
 // alternative is to link them in index.html
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
-window.$ = window.jQuery=require('jquery');
+import jquery from 'jquery';
+window.$ = window.jQuery=jquery;
 window.Tether=require('tether');
 require('bootstrap/dist/js/bootstrap');
 /////////////////////////////////////////////

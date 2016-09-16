@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import { callApi,
         ID_TOKEN,
         loadIdToken,
