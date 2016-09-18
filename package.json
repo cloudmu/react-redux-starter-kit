@@ -34,7 +34,7 @@
   "proxy": "http://localhost:3001",
   
   "devDependencies": {
-    "react-scripts": "0.4.1"
+    "react-scripts": "0.4.2"
   },
 
   "dependencies": {
