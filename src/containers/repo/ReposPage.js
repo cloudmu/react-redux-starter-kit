@@ -3,7 +3,7 @@ import shallowCompare from 'react-addons-shallow-compare'
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import { AutoSizer, FlexTable, FlexColumn } from 'react-virtualized';
+import { AutoSizer, Table, Column } from 'react-virtualized';
 
 import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded } from '../../actions/repos';
 
@@ -76,7 +76,7 @@ class ReposPage extends Component {
   ownerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
     <a href={cellData.html_url} target="_blank">
       <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
-      <span className="repo_owner">{cellData.login}</span>
+      <span style={{marginLeft: '0.5em'}}>{cellData.login}</span>
     </a>
   );
 
@@ -85,7 +85,7 @@ class ReposPage extends Component {
   );
 
   stargazerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
-    <span className="pull-right">{cellData.toLocaleString()} <i className="fa fa-star repo_fa-star" /> </span>
+    <span className="pull-right">{cellData.toLocaleString()} <i className="fa fa-star" style={{color: 'gold'}} /> </span>
   );
 
   render() {
@@ -124,7 +124,7 @@ class ReposPage extends Component {
           <div className="container" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', height: '80vh', position: 'absolute' }}>
             <AutoSizer>
               {({ width, height }) => (
-                <FlexTable
+                <Table
                   headerClassName={'headerColumn'}
                   noRowsRenderer={this.getNoRowsRenderer}
                   rowClassName={this.getRowClassName}
@@ -139,46 +139,46 @@ class ReposPage extends Component {
                   }
                 >
 
-                  <FlexColumn
+                  <Column
                     label='Repository'
                     dataKey='name'
                     width={200}
                   />
 
-                  <FlexColumn
+                  <Column
                     label='Owner'
                     dataKey='owner'
                     cellRenderer={this.ownerCellRenderer}
                     width={200}
                   />
 
-                  <FlexColumn
+                  <Column
                     label='Stargazers'
                     dataKey='stargazers_count'
                     cellRenderer={this.stargazerCellRenderer}
-                    width={120}
+                    width={150}
                   />
 
-                  <FlexColumn
+                  <Column
                     label='Full Name'
                     dataKey='full_name'
-                    width={300}
+                    width={400}
                   />
 
-                  <FlexColumn
+                  <Column
                     label='Repository URL'
                     dataKey='html_url'
                     cellRenderer={this.linkCellRenderer}
                     width={400}
                   />
 
-                  <FlexColumn
+                  <Column
                     label='Description'
                     dataKey='description'
                     width={500}
                     flexGrow={1}
                   />
-                </FlexTable>
+                </Table>
               )}
             </AutoSizer>
           </div>

@@ -1,15 +1,6 @@
-
-.repo_owner {
-    margin-left: 1em;
-}
-
-.repo_fa-star {
-  color: gold;
-}
-
-.FlexTable {
+.Table {
   width: 100%;
-  margin-top: 0px;
+  margin-top: 15px;
 }
 .headerRow,
 .evenRow,
@@ -21,6 +12,18 @@
 }
 .headerColumn {
   text-transform: none;
+}
+.exampleColumn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.checkboxLabel {
+  margin-left: .5rem;
+}
+.checkboxLabel:first-of-type {
+  margin-left: 0;
 }
 
 .noRows {
@@ -34,24 +37,4 @@
   justify-content: center;
   font-size: 1em;
   color: #bdbdbd;
-}
-
-.cell {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 .5em;
-}
-.cell {
-  border-right: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.uniformSizeCell {
-  padding: 0.5rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }

@@ -34,7 +34,7 @@
   "proxy": "http://localhost:3001",
   
   "devDependencies": {
-    "react-scripts": "0.4.2"
+    "react-scripts": "0.6.0"
   },
 
   "dependencies": {
@@ -42,27 +42,25 @@
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
-    "jquery": "^3.1.0",
+    "jquery": "^3.1.1",
     "jwt-decode": "^2.1.0",
-    "lodash": "^4.15.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-addons-shallow-compare": "15.3.1",
+    "lodash": "^4.16.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-addons-shallow-compare": "15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "react-virtualized": "^7.24.3",
+    "react-virtualized": "^8.0.10",
     "socket.io-client": "^1.4.8"
   },
   
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/react-scripts/config/eslint.js"
   }
 }
