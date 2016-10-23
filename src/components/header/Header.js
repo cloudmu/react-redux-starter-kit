@@ -39,7 +39,7 @@ export default class Header extends Component {
                 <li title="About" className={isAboutPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About Us</Link></li>
               </ul>
 
-              <ul className="nav navbar-nav pull-xs-right">
+              <ul className="nav navbar-nav pull-right">
                 <Alerts />
                 <UserProfile user={user} handleLogout={this.onLogoutClick} />
               </ul>
