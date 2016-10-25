@@ -21,7 +21,7 @@ import { Router, Route, IndexRoute} from 'react-router';
 // import {browserHistory as history} from 'react-router';
 import { useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history'
-const history = useRouterHistory(createHashHistory)({ queryKey: false });
+const history = useRouterHistory(createHashHistory)();
 //////////////////////////////////////////////////////////////////////////
 
 import configureStore from './store/configureStore';
