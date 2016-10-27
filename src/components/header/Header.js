@@ -26,7 +26,7 @@ export default class Header extends Component {
         </div>
         <nav className="navbar navbar-light bg-faded navbar-fixed-top">
           <div className="container">
-            <button type="button" className="navbar-toggle pull-xs-left hidden-sm-up" data-toggle="collapse" data-target="#collapsingNavbar">&#9776;</button>
+            <button type="button" className="navbar-toggle float-xs-left hidden-sm-up" data-toggle="collapse" data-target="#collapsingNavbar">&#9776;</button>
 
             <div id="collapsingNavbar" className="collapse navbar-toggleable-xs">
                <IndexLink to="/" className="navbar-brand">
@@ -39,7 +39,7 @@ export default class Header extends Component {
                 <li title="About" className={isAboutPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About Us</Link></li>
               </ul>
 
-              <ul className="nav navbar-nav pull-right">
+              <ul className="nav navbar-nav float-xs-right">
                 <Alerts />
                 <UserProfile user={user} handleLogout={this.onLogoutClick} />
               </ul>
