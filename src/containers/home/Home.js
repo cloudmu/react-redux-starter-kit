@@ -17,7 +17,7 @@ export default class Home extends Component {
               <a href="https://github.com/gaearon/redux" target="_blank"> Redux</a>,
               <a href="https://github.com/rackt/react-router" target="_blank"> React-Router</a>,
               <a href="https://github.com/twbs/bootstrap " target="_blank"> Bootstrap</a>,
-              <a href="https://https://jwt.io" target="_blank"> JSON Web Token</a>, and
+              <a href="https://jwt.io" target="_blank"> JSON Web Token</a>, and
               <a href="http://socket.io" target="_blank"> Socket.IO</a>
             ) used together to develop a more complex web
             application, with features such as authentication, navigation, asynchronous data fetching, error handling, caching and pagination, etc.
