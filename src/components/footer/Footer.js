@@ -4,7 +4,7 @@ import './footer.css';
 
 const Footer = () => (
     <footer className="footer">
-      <div className="container-fluid">
+      <div className="container">
         <p className="text-xs-center text-muted">
           Have questions or suggestions? Please file them on the
           <a href="https://github.com/cloudmu/react-redux-starter-kit/issues" target="_blank"> Github </a>

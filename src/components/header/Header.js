@@ -20,33 +20,27 @@ export default class Header extends Component {
 
     return (
       !isLoginPage &&
-      <div className="pos-f-t">
-        <div className="collapse" id="navbar-header">
-          <div className="container bg-inverse p-a-1" />
-        </div>
-        <nav className="navbar navbar-light bg-faded navbar-fixed-top">
-          <div className="container">
-            <button type="button" className="navbar-toggle float-xs-left hidden-sm-up" data-toggle="collapse" data-target="#collapsingNavbar">&#9776;</button>
+        <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+          <button type="button" className="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarCollapse">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <IndexLink to="/" className="navbar-brand">
+              <div title="Home" className="brand"/>
+              Home
+          </IndexLink>
+          <div id="navbarCollapse" className="collapse navbar-collapse">
+            <ul className="navbar-nav mr-auto">
+              <li title="Github Users with over 1000 Followers" className={isUsersPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/users">Most Followed Users</Link></li>
+              <li title="Github Repos with over 10000 Stars" className={isReposPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/repos">Most Starred Repos</Link></li>
+              <li title="About" className={isAboutPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About Us</Link></li>
+            </ul>
 
-            <div id="collapsingNavbar" className="collapse navbar-toggleable-xs">
-               <IndexLink to="/" className="navbar-brand">
-                <div title="Home" className="brand"/>
-                Home
-              </IndexLink>
-              <ul className="nav navbar-nav">
-                <li title="Github Users with over 1000 Followers" className={isUsersPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/users">Most Followed Users</Link></li>
-                <li title="Github Repos with over 10000 Stars" className={isReposPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/repos">Most Starred Repos</Link></li>
-                <li title="About" className={isAboutPage ? 'nav-item active' : 'nav-item'}><Link className="nav-link" to="/about">About Us</Link></li>
-              </ul>
-
-              <ul className="nav navbar-nav float-xs-right">
-                <Alerts />
-                <UserProfile user={user} handleLogout={this.onLogoutClick} />
-              </ul>
-            </div>
+            <ul className="navbar-nav mt-2 mt-md-0">
+              <Alerts />
+              <UserProfile user={user} handleLogout={this.onLogoutClick} />
+            </ul>
           </div>
         </nav>
-      </div>
     );
   }
 }
