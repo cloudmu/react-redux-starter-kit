@@ -34,7 +34,7 @@
   "proxy": "http://localhost:3001",
   
   "devDependencies": {
-    "react-scripts": "0.8.4"
+    "react-scripts": "0.8.5"
   },
 
   "dependencies": {
@@ -48,12 +48,12 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-addons-shallow-compare": "15.4.2",
-    "react-redux": "^5.0.1",
-    "react-router": "^3.0.0",
+    "react-redux": "^5.0.2",
+    "react-router": "^3.0.2",
     "redux": "^3.6.0",
-    "redux-logger": "^2.7.4",
-    "redux-thunk": "^2.1.0",
-    "react-virtualized": "^8.9.0",
+    "redux-logger": "^2.8.1",
+    "redux-thunk": "^2.2.0",
+    "react-virtualized": "^8.11.4",
     "socket.io-client": "^1.7.2"
   },
   

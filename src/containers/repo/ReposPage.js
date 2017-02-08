@@ -1,14 +1,18 @@
-import React, { Component, PropTypes } from 'react';
-import shallowCompare from 'react-addons-shallow-compare'
-import { connect } from 'react-redux';
-import classNames from 'classnames';
+import React, { Component, PropTypes } from "react";
+import shallowCompare from "react-addons-shallow-compare";
+import { connect } from "react-redux";
+import classNames from "classnames";
 
-import { AutoSizer, Table, Column } from 'react-virtualized';
+import { AutoSizer, Table, Column } from "react-virtualized";
 
-import { invalidateReposPage, selectReposPage, fetchTopReposIfNeeded } from '../../actions/repos';
+import {
+  invalidateReposPage,
+  selectReposPage,
+  fetchTopReposIfNeeded
+} from "../../actions/repos";
 
-import 'react-virtualized/styles.css';
-import './repo.css'
+import "react-virtualized/styles.css";
+import "./repo.css";
 
 class ReposPage extends Component {
   constructor(props) {
@@ -31,22 +35,22 @@ class ReposPage extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
+    return shallowCompare(this, nextProps, nextState);
   }
 
   getNoRowsRenderer() {
     return (
-      <div className='noRows'>
+      <div className="noRows">
         No rows
       </div>
-    )
+    );
   }
 
   getRowClassName({ index }) {
     if (index < 0) {
-      return 'headerRow';
+      return "headerRow";
     }
-    return index % 2 === 0 ? 'evenRow' : 'oddRow';
+    return index % 2 === 0 ? "evenRow" : "oddRow";
   }
 
   handleNextPageClick(e) {
@@ -73,116 +77,148 @@ class ReposPage extends Component {
     dispatch(invalidateReposPage(page));
   }
 
-  ownerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
+  ownerCellRenderer = (
+    { cellData, cellDataKey, columnData, rowData, rowIndex }
+  ) => (
     <a href={cellData.html_url} target="_blank">
       <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
-      <span style={{marginLeft: '0.5em'}}>{cellData.login}</span>
+      <span style={{ marginLeft: "0.5em" }}>{cellData.login}</span>
     </a>
   );
 
-  linkCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
-    <a href={cellData} target="_blank">{cellData}</a>
-  );
+  linkCellRenderer = (
+    { cellData, cellDataKey, columnData, rowData, rowIndex }
+  ) => <a href={cellData} target="_blank">{cellData}</a>;
 
-  stargazerCellRenderer = ({ cellData, cellDataKey, columnData, rowData, rowIndex }) => (
-    <span className="pull-right">{cellData.toLocaleString()} <i className="fa fa-star" style={{color: 'gold'}} /> </span>
+  stargazerCellRenderer = (
+    { cellData, cellDataKey, columnData, rowData, rowIndex }
+  ) => (
+    <span className="pull-right">
+      {cellData.toLocaleString()}
+      {" "}
+      <i className="fa fa-star" style={{ color: "gold" }} />
+      {" "}
+    </span>
   );
 
   render() {
     const { page, error, repos, isFetching } = this.props;
-    const prevStyles = classNames('page-item', { disabled: page <= 1 });
-    const nextStyles = classNames('page-item', { disabled: repos.length === 0 });
+    const prevStyles = classNames("page-item", { disabled: page <= 1 });
+    const nextStyles = classNames("page-item", {
+      disabled: repos.length === 0
+    });
 
     return (
       <div className="container">
 
         <nav>
           <ul className="pagination pagination-sm">
-            <li className={prevStyles}><a className="page-link" href="#" onClick={this.handlePreviousPageClick}><span>Previous</span></a></li>
+            <li className={prevStyles}>
+              <a
+                className="page-link"
+                href="#"
+                onClick={this.handlePreviousPageClick}
+              >
+                <span>Previous</span>
+              </a>
+            </li>
             {!isFetching &&
-              <li className="page-item" ><a className="page-link" href="#" onClick={this.handleRefreshClick}><span>Refresh page {page}</span></a></li>
-            }
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={this.handleRefreshClick}
+                >
+                  <span>Refresh page {page}</span>
+                </a>
+              </li>}
             {isFetching &&
-              <li className="page-item"><span className="page-link"><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span></li>
-            }
-            <li className={nextStyles}><a className="page-link" href="#" onClick={this.handleNextPageClick}><span>Next</span></a></li>
+              <li className="page-item">
+                <span className="page-link">
+                  <i className="fa fa-refresh fa-spin" /> Refreshing page {page}
+                </span>
+              </li>}
+            <li className={nextStyles}>
+              <a
+                className="page-link"
+                href="#"
+                onClick={this.handleNextPageClick}
+              >
+                <span>Next</span>
+              </a>
+            </li>
           </ul>
         </nav>
 
-        {
-          error &&
-            <div className="alert alert-danger">
-              {error.message || 'Unknown errors.'}
-            </div>
-        }
+        {error &&
+          <div className="alert alert-danger">
+            {error.message || "Unknown errors."}
+          </div>}
 
-        {!isFetching && repos.length === 0 &&
-          <div className="alert alert-warning">Oops, nothing to show.</div>
-        }
+        {!isFetching &&
+          repos.length === 0 &&
+          <div className="alert alert-warning">Oops, nothing to show.</div>}
 
         {repos &&
-          <div className="container" ref="TABLE_DIV" style={ { opacity: isFetching ? 0.5 : 1, width: '100%', height: '80vh', position: 'absolute' }}>
+          <div
+            className="container"
+            ref="TABLE_DIV"
+            style={{
+              opacity: isFetching ? 0.5 : 1,
+              width: "100%",
+              height: "80vh",
+              position: "absolute"
+            }}
+          >
             <AutoSizer>
               {({ width, height }) => (
                 <Table
-                  headerClassName={'headerColumn'}
+                  headerClassName={"headerColumn"}
                   noRowsRenderer={this.getNoRowsRenderer}
                   rowClassName={this.getRowClassName}
                   width={width}
                   height={height}
                   headerHeight={50}
                   rowHeight={50}
-
                   rowCount={repos.length}
-                  rowGetter={
-                    ({ index }) => repos[index]
-                  }
+                  rowGetter={({ index }) => repos[index]}
                 >
 
-                  <Column
-                    label='Repository'
-                    dataKey='name'
-                    width={200}
-                  />
+                  <Column label="Repository" dataKey="name" width={200} />
 
                   <Column
-                    label='Owner'
-                    dataKey='owner'
+                    label="Owner"
+                    dataKey="owner"
                     cellRenderer={this.ownerCellRenderer}
                     width={200}
                   />
 
                   <Column
-                    label='Stargazers'
-                    dataKey='stargazers_count'
+                    label="Stargazers"
+                    dataKey="stargazers_count"
                     cellRenderer={this.stargazerCellRenderer}
                     width={150}
                   />
 
-                  <Column
-                    label='Full Name'
-                    dataKey='full_name'
-                    width={400}
-                  />
+                  <Column label="Full Name" dataKey="full_name" width={400} />
 
                   <Column
-                    label='Repository URL'
-                    dataKey='html_url'
+                    label="Repository URL"
+                    dataKey="html_url"
                     cellRenderer={this.linkCellRenderer}
                     width={400}
                   />
 
                   <Column
-                    label='Description'
-                    dataKey='description'
+                    label="Description"
+                    dataKey="description"
                     width={500}
                     flexGrow={1}
                   />
                 </Table>
               )}
             </AutoSizer>
-          </div>
-        }
+          </div>}
       </div>
     );
   }
@@ -195,7 +231,7 @@ ReposPage.propTypes = {
   error: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   left: PropTypes.number,
-  top: PropTypes.number,
+  top: PropTypes.number
 };
 
 function mapStateToProps(state) {
@@ -208,7 +244,7 @@ function mapStateToProps(state) {
       isFetching: false,
       didInvalidate: false,
       totalCount: 0,
-      repos: [],
+      repos: []
     };
   }
 
@@ -218,7 +254,7 @@ function mapStateToProps(state) {
     isFetching: reposByPage[page].isFetching,
     didInvalidate: reposByPage[page].didInvalidate,
     totalCount: reposByPage[page].totalCount,
-    repos: reposByPage[page].repos,
+    repos: reposByPage[page].repos
   };
 }
 

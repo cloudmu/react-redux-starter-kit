@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { login } from '../../actions/auth';
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
 
-import './login.css';
+import "./login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Login extends Component {
         const redirect = this.props.location.query.redirect;
         this.context.router.replace(redirect);
       } catch (err) {
-        this.context.router.replace('/');
+        this.context.router.replace("/");
       }
     }
   }
@@ -27,8 +27,8 @@ class Login extends Component {
     const username = this.refs.username;
     const password = this.refs.password;
     this.props.dispatch(login(username.value, password.value));
-    username.value = '';
-    password.value = '';
+    username.value = "";
+    password.value = "";
   }
 
   render() {
@@ -36,34 +36,55 @@ class Login extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-4" style={{ float: 'none', margin: '0 auto' }}>
+          <div className="col-md-4" style={{ float: "none", margin: "0 auto" }}>
             <div className="card">
               <div className="card-header">Please Log in</div>
               <form className="card-block">
                 <div className="input-group">
-                  <span className="input-group-addon"><i className="fa fa-user"/></span>
-                  <input type="text" ref="username" className="form-control" placeholder="Username (hint: admin)" required autoFocus/>
+                  <span className="input-group-addon">
+                    <i className="fa fa-user" />
+                  </span>
+                  <input
+                    type="text"
+                    ref="username"
+                    className="form-control"
+                    placeholder="Username (hint: admin)"
+                    required
+                    autoFocus
+                  />
                 </div>
 
                 <div className="input-group">
-                  <span className="input-group-addon"><i className="fa fa-lock"/></span>
-                  <input type="password" ref="password" className="form-control" placeholder="Password (hint: password)" required/>
+                  <span className="input-group-addon">
+                    <i className="fa fa-lock" />
+                  </span>
+                  <input
+                    type="password"
+                    ref="password"
+                    className="form-control"
+                    placeholder="Password (hint: password)"
+                    required
+                  />
                 </div>
 
                 <div className="checkbox">
                   <label>
-                    <input type="checkbox" value="remember-me"/> Remember me
+                    <input type="checkbox" value="remember-me" /> Remember me
                   </label>
                 </div>
 
-                {
-                  !user && loginError &&
+                {!user &&
+                  loginError &&
                   <div className="alert alert-danger">
                     {loginError.message}. Hint: use admin/password to log in.
-                  </div>
-                }
+                  </div>}
 
-                <button className="btn btn-primary btn-block" onClick={this.handleLogin}><i className="fa fa-sign-in"/>{' '}Log in</button>
+                <button
+                  className="btn btn-primary btn-block"
+                  onClick={this.handleLogin}
+                >
+                  <i className="fa fa-sign-in" />{" "}Log in
+                </button>
               </form>
             </div>
           </div>
@@ -75,14 +96,14 @@ class Login extends Component {
 
 Login.contextTypes = {
   router: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 Login.propTypes = {
   user: PropTypes.string,
   loginError: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object,
+  location: PropTypes.object
 };
 
 function mapStateToProps(state) {

@@ -1,43 +1,42 @@
+import { callApi } from "../utils/apiUtils";
 
-import { callApi } from '../utils/apiUtils';
+export const SELECT_REPOS_PAGE = "SELECT_REPOS_PAGE";
+export const INVALIDATE_REPOS_PAGE = "INVALIDATE_REPOS_PAGE";
 
-export const SELECT_REPOS_PAGE = 'SELECT_REPOS_PAGE';
-export const INVALIDATE_REPOS_PAGE = 'INVALIDATE_REPOS_PAGE';
-
-export const REPOS_REQUEST = 'REPOS_REQUEST';
-export const REPOS_SUCCESS = 'REPOS_SUCCESS';
-export const REPOS_FAILURE = 'REPOS_FAILURE';
+export const REPOS_REQUEST = "REPOS_REQUEST";
+export const REPOS_SUCCESS = "REPOS_SUCCESS";
+export const REPOS_FAILURE = "REPOS_FAILURE";
 
 export function selectReposPage(page) {
   return {
     type: SELECT_REPOS_PAGE,
-    page,
+    page
   };
 }
 
 export function invalidateReposPage(page) {
   return {
     type: INVALIDATE_REPOS_PAGE,
-    page,
+    page
   };
 }
 
 function reposRequest(page) {
   return {
     type: REPOS_REQUEST,
-    page,
+    page
   };
 }
 
 // This is a curried function that takes page as argument,
 // and expects payload as argument to be passed upon API call success.
 function reposSuccess(page) {
-  return function (payload) {
+  return function(payload) {
     return {
       type: REPOS_SUCCESS,
       page,
       repos: payload.items,
-      totalCount: payload.total_count,
+      totalCount: payload.total_count
     };
   };
 }
@@ -45,20 +44,26 @@ function reposSuccess(page) {
 // This is a curried function that takes page as argument,
 // and expects error as argument to be passed upon API call failure.
 function reposFailure(page) {
-  return function (error) {
+  return function(error) {
     return {
       type: REPOS_FAILURE,
       page,
-      error,
+      error
     };
   };
 }
 
-const API_ROOT = 'https://api.github.com';
+const API_ROOT = "https://api.github.com";
 
 function fetchTopRepos(page) {
   const url = `${API_ROOT}/search/repositories?q=stars:>10000&order=desc&page=${page}`;
-  return callApi(url, null, reposRequest(page), reposSuccess(page), reposFailure(page));
+  return callApi(
+    url,
+    null,
+    reposRequest(page),
+    reposSuccess(page),
+    reposFailure(page)
+  );
 }
 
 function shouldFetchRepos(state, page) {

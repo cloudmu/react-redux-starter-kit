@@ -2,8 +2,8 @@
   "description": "This is for the api server",
   "name": "server-api",
   "dependencies": {
-      "express": "^4.14.0",
-      "body-parser": "^1.15.2",
+      "express": "^4.14.1",
+      "body-parser": "^1.16.0",
       "jsonwebtoken": "^7.2.1",
       "socket.io": "^1.7.2"
   },

@@ -1,10 +1,14 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import classNames from 'classnames';
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import classNames from "classnames";
 
-import User from '../../components/user/User';
+import User from "../../components/user/User";
 
-import { invalidateUsersPage, selectUsersPage, fetchTopUsersIfNeeded } from '../../actions/users';
+import {
+  invalidateUsersPage,
+  selectUsersPage,
+  fetchTopUsersIfNeeded
+} from "../../actions/users";
 
 class UsersPage extends Component {
   constructor(props) {
@@ -27,7 +31,7 @@ class UsersPage extends Component {
   }
 
   handleNextPageClick(e) {
-     e.preventDefault();
+    e.preventDefault();
     const { page, users } = this.props;
     if (users.length > 0) {
       // go to next page only if more users may be available
@@ -36,7 +40,7 @@ class UsersPage extends Component {
   }
 
   handlePreviousPageClick(e) {
-     e.preventDefault();
+    e.preventDefault();
     const page = this.props.page;
     if (page > 1) {
       this.props.dispatch(selectUsersPage(page - 1));
@@ -53,45 +57,70 @@ class UsersPage extends Component {
 
   render() {
     const { page, error, users, isFetching } = this.props;
-    const prevStyles = classNames('page-item', { disabled: page <= 1 });
-    const nextStyles = classNames('page-item', { disabled: users.length === 0 });
+    const prevStyles = classNames("page-item", { disabled: page <= 1 });
+    const nextStyles = classNames("page-item", {
+      disabled: users.length === 0
+    });
 
     return (
       <div className="container">
 
         <nav>
           <ul className="pagination pagination-sm">
-            <li className={prevStyles}><a className="page-link" href="#" onClick={this.handlePreviousPageClick}><span>Previous</span></a></li>
+            <li className={prevStyles}>
+              <a
+                className="page-link"
+                href="#"
+                onClick={this.handlePreviousPageClick}
+              >
+                <span>Previous</span>
+              </a>
+            </li>
             {!isFetching &&
-              <li className="page-item" ><a className="page-link" href="#" onClick={this.handleRefreshClick}><span>Refresh page {page}</span></a></li>
-            }
+              <li className="page-item">
+                <a
+                  className="page-link"
+                  href="#"
+                  onClick={this.handleRefreshClick}
+                >
+                  <span>Refresh page {page}</span>
+                </a>
+              </li>}
             {isFetching &&
-              <li className="page-item"><span className="page-link"><i className="fa fa-refresh fa-spin"></i> Refreshing page {page}</span></li>
-            }
-            <li className={nextStyles}><a className="page-link" href="#" onClick={this.handleNextPageClick}><span>Next</span></a></li>
+              <li className="page-item">
+                <span className="page-link">
+                  <i className="fa fa-refresh fa-spin" /> Refreshing page {page}
+                </span>
+              </li>}
+            <li className={nextStyles}>
+              <a
+                className="page-link"
+                href="#"
+                onClick={this.handleNextPageClick}
+              >
+                <span>Next</span>
+              </a>
+            </li>
           </ul>
         </nav>
 
-        {
-          error &&
+        {error &&
           <div className="alert alert-danger">
-            {error.message || 'Unknown errors.'}
-          </div>
-        }
+            {error.message || "Unknown errors."}
+          </div>}
 
-        {!isFetching && users.length === 0 &&
-          <div className="alert alert-warning">Oops, nothing to show.</div>
-        }
+        {!isFetching &&
+          users.length === 0 &&
+          <div className="alert alert-warning">Oops, nothing to show.</div>}
 
         {users.length > 0 &&
           <div className="row" style={{ opacity: isFetching ? 0.5 : 1 }}>
-              {users.map(user =>
-                <div key={user.login} className="col-md-4">
-                  <User key={user.login} user={user} />
-                </div>
-              )}
-          </div>
-        }
+            {users.map(user => (
+              <div key={user.login} className="col-md-4">
+                <User key={user.login} user={user} />
+              </div>
+            ))}
+          </div>}
       </div>
     );
   }
@@ -102,7 +131,7 @@ UsersPage.propTypes = {
   users: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.object
 };
 
 function mapStateToProps(state) {
@@ -116,7 +145,7 @@ function mapStateToProps(state) {
       didInvalidate: false,
       totalCount: 0,
       users: [],
-      error: null,
+      error: null
     };
   }
 
@@ -126,7 +155,7 @@ function mapStateToProps(state) {
     isFetching: usersByPage[page].isFetching,
     didInvalidate: usersByPage[page].didInvalidate,
     totalCount: usersByPage[page].totalCount,
-    users: usersByPage[page].users,
+    users: usersByPage[page].users
   };
 }
 

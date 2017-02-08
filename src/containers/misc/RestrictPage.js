@@ -1,5 +1,5 @@
-import { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import { Component, PropTypes } from "react";
+import { connect } from "react-redux";
 
 class RestrictPage extends Component {
   componentWillMount() {
@@ -27,11 +27,11 @@ class RestrictPage extends Component {
 RestrictPage.propTypes = {
   user: PropTypes.string,
   children: PropTypes.object,
-  location: PropTypes.object,
+  location: PropTypes.object
 };
 
 RestrictPage.contextTypes = {
-  router: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
