@@ -7,14 +7,11 @@ const Footer = () => (
     <div className="container">
       <p className="text-xs-center text-muted">
         Have questions or suggestions? Please file them on the
-
-        <a
+        {" "}<a
           href="https://github.com/cloudmu/react-redux-starter-kit/issues"
           target="_blank"
-        >
-           Github
-        </a>
-
+        >Github
+        </a>{" "}
         or tweet
         <a href="http://www.twitter.com/_cloudmu" target="_blank"> me</a>.
       </p>

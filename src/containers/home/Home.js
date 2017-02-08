@@ -13,21 +13,21 @@ export default class Home extends Component {
               This is yet another React based web application starter kit.
               However, this one attempts to go beyond the typical simple boilerplates, 
               by showcasing several great technologies (such as
-
+              {" "}
               <a href="https://github.com/facebook/react" target="_blank">
                 React
               </a>
-              ,
+              ,{" "}
 
-              <a href="https://github.com/gaearon/redux" target="_blank">
+              <a href="https://github.com/reactjs/redux" target="_blank">
                 Redux
               </a>
-              ,
+              ,{" "}
 
               <a href="https://github.com/rackt/react-router" target="_blank">
                 React-Router
               </a>
-              ,
+              ,{" "}
 
               <a href="https://github.com/twbs/bootstrap " target="_blank">
                 Bootstrap
@@ -35,7 +35,7 @@ export default class Home extends Component {
               ,
 
               <a href="https://jwt.io" target="_blank"> JSON Web Token</a>, and
-              <a href="http://socket.io" target="_blank"> Socket.IO</a>
+              {" "}<a href="http://socket.io" target="_blank">Socket.IO</a>
               ) used together to develop a more complex web
               application, with features such as authentication, navigation, asynchronous data fetching, 
               error handling, caching and pagination, etc.
@@ -60,7 +60,8 @@ export default class Home extends Component {
           <h3>What's New</h3>
           <p>
             When I started the project, I had to wrestle with Webpack and Babel to have the dev/build process work well.  
-            Recently I ported the starter kit to use 
+            Recently I ported the starter kit to use
+            {" "} 
             <a
               href="https://github.com/facebookincubator/create-react-app/"
               target="_blank"
@@ -79,10 +80,10 @@ export default class Home extends Component {
               </a>
             </li>
             <li>
-              <a href="https://github.com/rackt/redux" target="_blank">Redux</a>
+              <a href="https://github.com/reactjs/redux" target="_blank">Redux</a>
             </li>
             <li>
-              <a href="https://github.com/rackt/react-router" target="_blank">
+              <a href="https://github.com/ReactTraining/react-router" target="_blank">
                 React Router
               </a>
             </li>
@@ -124,9 +125,11 @@ export default class Home extends Component {
             </dt>
             <dd>
               This design pattern makes even more sense when using React along with Redux, 
-              where top-level smart components (a.k.a. containers in this codebase such as 
-              <code>UsersPage</code> and <code>ReposPage</code>
-              ) subscribe to Redux state and dispatch Redux actions, while low level components (such as 
+              where top-level smart components (a.k.a. containers in this codebase such as
+              {" "}
+              <code>UsersPage</code> and <code>ReposPage</code>) subscribe to Redux state and 
+              dispatch Redux actions, while low level components (such as
+              {" "}
               <code>User</code>, <code>Repo</code>, and <code>Header</code>) read data and invoke 
               callbacks passed in as props.
             </dd>
