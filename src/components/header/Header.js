@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Link, IndexLink } from "react-router";
 import UserProfile from "./UserProfile";
 import Alerts from "./Alerts";
@@ -68,5 +69,5 @@ export default class Header extends Component {
 Header.propTypes = {
   user: PropTypes.string,
   handleLogout: PropTypes.func.isRequired,
-  location: React.PropTypes.object
+  location: PropTypes.object
 };

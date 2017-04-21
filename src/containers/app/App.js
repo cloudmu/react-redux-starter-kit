@@ -1,4 +1,7 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+//import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import Header from "../../components/header/Header";

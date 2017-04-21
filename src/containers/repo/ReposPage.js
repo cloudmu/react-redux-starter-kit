@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from "react";
-import shallowCompare from "react-addons-shallow-compare";
+import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import classNames from "classnames";
 
@@ -14,7 +14,7 @@ import {
 import "react-virtualized/styles.css";
 import "./repo.css";
 
-class ReposPage extends Component {
+class ReposPage extends PureComponent {
   constructor(props) {
     super(props);
     this.handleNextPageClick = this.handleNextPageClick.bind(this);
@@ -34,9 +34,9 @@ class ReposPage extends Component {
     dispatch(fetchTopReposIfNeeded(page));
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return shallowCompare(this, nextProps, nextState);
+  // }
 
   getNoRowsRenderer() {
     return (
