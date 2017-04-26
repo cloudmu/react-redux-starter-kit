@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-//import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Login from "../login/Login";
+import PrivateRoute from "../misc/PrivateRoute";
+import Home from "../home/Home";
+import UsersPage from "../user/UsersPage";
+import ReposPage from "../repo/ReposPage";
+import About from "../about/About";
+import NotFound from "../misc/NotFound";
 
 import { logout } from "../../actions/auth";
 
@@ -15,38 +22,40 @@ class App extends Component {
   handleLogout() {
     const { user } = this.props;
     this.props.dispatch(logout(user));
-    this.context.router.replace("/login");
   }
 
   render() {
     const { user } = this.props;
+    const isAuthenticated = true && user;
     return (
-      <div>
-        <div className="container">
-          <Header
-            location={this.props.location}
-            user={user}
-            handleLogout={() => this.handleLogout()}
-          />
-          <div className="appContent">
-            {this.props.children}
+      <Router>
+        <div>
+          <div className="container">
+            <Header user={user} handleLogout={() => this.handleLogout()} />
+            <div className="appContent">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/login" component={Login} />
+                <PrivateRoute path="/users" isAuthenticated={isAuthenticated} component={UsersPage} />
+                <PrivateRoute path="/repos" isAuthenticated={isAuthenticated} component={ReposPage} />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
   user: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 App.contextTypes = {
-  router: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
 };
 

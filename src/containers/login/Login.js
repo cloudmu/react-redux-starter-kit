@@ -15,10 +15,10 @@ class Login extends Component {
     if (nextProps.user) {
       // logged in, let's show redirect if any, or show home
       try {
-        const redirect = this.props.location.query.redirect;
-        this.context.router.replace(redirect);
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
+        nextProps.history.replace(from);
       } catch (err) {
-        this.context.router.replace("/");
+        nextProps.history.replace("/");
       }
     }
   }
@@ -96,15 +96,13 @@ class Login extends Component {
 }
 
 Login.contextTypes = {
-  router: PropTypes.object.isRequired,
   store: PropTypes.object.isRequired
 };
 
 Login.propTypes = {
   user: PropTypes.string,
   loginError: PropTypes.object,
-  dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object
+  dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

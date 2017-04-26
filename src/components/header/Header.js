@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link, IndexLink } from "react-router";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import UserProfile from "./UserProfile";
 import Alerts from "./Alerts";
 import "./header.css";
 
-export default class Header extends Component {
+class Header extends Component {
   onLogoutClick = event => {
     event.preventDefault();
     this.props.handleLogout();
+    this.props.history.replace("/login");
   };
 
   render() {
     const { user } = this.props;
-    const pathname = this.props.location.pathname;
+    const pathname = this.props.history.location.pathname;
     const isLoginPage = pathname.indexOf("login") > -1;
     const isAboutPage = pathname.indexOf("about") > -1;
     const isUsersPage = pathname.indexOf("users") > -1;
@@ -31,10 +33,10 @@ export default class Header extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <IndexLink to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <div title="Home" className="brand" />
           Home
-        </IndexLink>
+        </Link>
         <div id="navbarCollapse" className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li
@@ -69,5 +71,6 @@ export default class Header extends Component {
 Header.propTypes = {
   user: PropTypes.string,
   handleLogout: PropTypes.func.isRequired,
-  location: PropTypes.object
 };
+
+export default withRouter(Header);
