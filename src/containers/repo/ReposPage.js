@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
 
@@ -77,22 +77,34 @@ class ReposPage extends PureComponent {
     dispatch(invalidateReposPage(page));
   }
 
-  ownerCellRenderer = (
-    { cellData, cellDataKey, columnData, rowData, rowIndex }
-  ) => (
+  ownerCellRenderer = ({
+    cellData,
+    cellDataKey,
+    columnData,
+    rowData,
+    rowIndex
+  }) => (
     <a href={cellData.html_url} target="_blank">
       <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
       <span style={{ marginLeft: "0.5em" }}>{cellData.login}</span>
     </a>
   );
 
-  linkCellRenderer = (
-    { cellData, cellDataKey, columnData, rowData, rowIndex }
-  ) => <a href={cellData} target="_blank">{cellData}</a>;
+  linkCellRenderer = ({
+    cellData,
+    cellDataKey,
+    columnData,
+    rowData,
+    rowIndex
+  }) => <a href={cellData} target="_blank">{cellData}</a>;
 
-  stargazerCellRenderer = (
-    { cellData, cellDataKey, columnData, rowData, rowIndex }
-  ) => (
+  stargazerCellRenderer = ({
+    cellData,
+    cellDataKey,
+    columnData,
+    rowData,
+    rowIndex
+  }) => (
     <span className="pull-right">
       {cellData.toLocaleString()}
       {" "}

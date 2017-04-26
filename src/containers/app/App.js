@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+/////////////////////////////////////////////////////////////////////////
+// BrowserRouter would be preferred over HashRouter, but BrowserRouter
+// would require configuring the server. So we will use HashRouter here.
+// Please change to BrowserRouter if you have your own backend server.
+///////////////////////////////////////////////////////////////////////////
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -37,8 +42,16 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
                 <Route path="/login" component={Login} />
-                <PrivateRoute path="/users" isAuthenticated={isAuthenticated} component={UsersPage} />
-                <PrivateRoute path="/repos" isAuthenticated={isAuthenticated} component={ReposPage} />
+                <PrivateRoute
+                  path="/users"
+                  isAuthenticated={isAuthenticated}
+                  component={UsersPage}
+                />
+                <PrivateRoute
+                  path="/repos"
+                  isAuthenticated={isAuthenticated}
+                  component={ReposPage}
+                />
                 <Route component={NotFound} />
               </Switch>
             </div>

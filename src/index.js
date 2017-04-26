@@ -13,12 +13,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-/////////////////////////////////////////////////////////////////////////
-// browserHistory would be preferred over hashHistory, but browserHistory
-// would require configuring the server. So we will use hashHistory here.
-// Please change to browserHistory if you have your own backend server.
-///////////////////////////////////////////////////////////////////////////
-
 import configureStore from "./store/configureStore";
 import connectToAlerts from "./utils/socketUtils";
 
@@ -29,28 +23,9 @@ import "./index.css";
 const store = configureStore();
 connectToAlerts(store);
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <Router history={history}>
-//       <Route path="/" component={App}>
-//         <IndexRoute component={Home} />
-//         <Route path="/about" component={About} />
-//         <Route path="/login" component={Login} />
-//         <Route component={RestrictPage}>
-//           <Route path="/users" component={UsersPage} />
-//           <Route path="/repos" component={ReposPage} />
-//         </Route>
-
-//         <Route path="*" component={NotFound} />
-//       </Route>
-//     </Router>
-//   </Provider>,
-//   document.getElementById("root")
-// );
-
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

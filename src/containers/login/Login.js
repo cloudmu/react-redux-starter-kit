@@ -15,7 +15,9 @@ class Login extends Component {
     if (nextProps.user) {
       // logged in, let's show redirect if any, or show home
       try {
-        const { from } = this.props.location.state || { from: { pathname: '/' } }
+        const { from } = this.props.location.state || {
+          from: { pathname: "/" }
+        };
         nextProps.history.replace(from);
       } catch (err) {
         nextProps.history.replace("/");

@@ -19,9 +19,14 @@ export default function alerts(state = initialState, action = {}) {
         time: new Date().toString()
       };
       const alerts = state.alerts || [];
-      return Object.assign({}, state, { hasError: false }, {
-        alerts: [payload, ...alerts]
-      });
+      return Object.assign(
+        {},
+        state,
+        { hasError: false },
+        {
+          alerts: [payload, ...alerts]
+        }
+      );
     }
     case CONNECT_ERROR: {
       const payload = {
@@ -30,15 +35,25 @@ export default function alerts(state = initialState, action = {}) {
         time: new Date().toString()
       };
       const alerts = state.alerts || [];
-      return Object.assign({}, state, { hasError: true }, {
-        alerts: [payload, ...alerts]
-      });
+      return Object.assign(
+        {},
+        state,
+        { hasError: true },
+        {
+          alerts: [payload, ...alerts]
+        }
+      );
     }
     case ALERT: {
       const alerts = state.alerts || [];
-      return Object.assign({}, state, { hasError: false }, {
-        alerts: [action.payload, ...alerts]
-      });
+      return Object.assign(
+        {},
+        state,
+        { hasError: false },
+        {
+          alerts: [action.payload, ...alerts]
+        }
+      );
     }
     case DISMISS: {
       return Object.assign({}, state, { alerts: [] });

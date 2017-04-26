@@ -8,10 +8,11 @@ export default class Home extends Component {
       <div>
         <div className="jumbotron">
           <div className="container">
-            <h1 className="display-3">Yet Another Web App Starter Kit</h1>
+            <h1 className="display-3">Single Page Web App Template</h1>
             <p className="lead">
-              This is yet another React based web application starter kit.
-              However, this one attempts to go beyond the typical simple boilerplates, 
+              This is yet another React based single page web application template.
+              However, this one attempts to go beyond the typical simple boilerplates,
+              {" "}
               by showcasing several great technologies (such as
               {" "}
               <a href="https://github.com/facebook/react" target="_blank">
@@ -37,7 +38,8 @@ export default class Home extends Component {
               <a href="https://jwt.io" target="_blank"> JSON Web Token</a>, and
               {" "}<a href="http://socket.io" target="_blank">Socket.IO</a>
               ) used together to develop a more complex web
-              application, with features such as authentication, navigation, asynchronous data fetching, 
+              application, with features such as authentication, navigation, asynchronous data fetching,
+              {" "}
               error handling, caching and pagination, etc.
             </p>
 
@@ -59,9 +61,10 @@ export default class Home extends Component {
 
           <h3>What's New</h3>
           <p>
-            When I started the project, I had to wrestle with Webpack and Babel to have the dev/build process work well.  
+            When I started the project, I had to wrestle with Webpack and Babel to have the dev/build process work well.
+            {" "}
             Recently I ported the starter kit to use
-            {" "} 
+            {" "}
             <a
               href="https://github.com/facebookincubator/create-react-app/"
               target="_blank"
@@ -80,10 +83,15 @@ export default class Home extends Component {
               </a>
             </li>
             <li>
-              <a href="https://github.com/reactjs/redux" target="_blank">Redux</a>
+              <a href="https://github.com/reactjs/redux" target="_blank">
+                Redux
+              </a>
             </li>
             <li>
-              <a href="https://github.com/ReactTraining/react-router" target="_blank">
+              <a
+                href="https://github.com/ReactTraining/react-router"
+                target="_blank"
+              >
                 React Router
               </a>
             </li>
@@ -124,13 +132,28 @@ export default class Home extends Component {
               </a>
             </dt>
             <dd>
-              This design pattern makes even more sense when using React along with Redux, 
+              This design pattern makes even more sense when using React along with Redux,
+              {" "}
               where top-level smart components (a.k.a. containers in this codebase such as
               {" "}
-              <code>UsersPage</code> and <code>ReposPage</code>) subscribe to Redux state and 
+              <code>UsersPage</code>
+              {" "}
+              and
+              {" "}
+              <code>ReposPage</code>
+              ) subscribe to Redux state and
+              {" "}
               dispatch Redux actions, while low level components (such as
               {" "}
-              <code>User</code>, <code>Repo</code>, and <code>Header</code>) read data and invoke 
+              <code>User</code>
+              ,
+              {" "}
+              <code>Repo</code>
+              , and
+              {" "}
+              <code>Header</code>
+              ) read data and invoke
+              {" "}
               callbacks passed in as props.
             </dd>
             <br />
@@ -139,9 +162,16 @@ export default class Home extends Component {
             <dd>
               The <code>UsersPage</code> and <code>ReposPage</code>
               {" "}
-              would show most followed Github users (with 1000+ followers) and most starred 
-              Github repos (with 10000+ stars).  The async actions (see 
-              <code>users</code>, and <code>repos</code> under actions) fetch data from the following Github APIs: 
+              would show most followed Github users (with 1000+ followers) and most starred
+              {" "}
+              Github repos (with 10000+ stars).  The async actions (see
+              <code>users</code>
+              , and
+              {" "}
+              <code>repos</code>
+              {" "}
+              under actions) fetch data from the following Github APIs:
+              {" "}
               <br />
               <code>
                 https://api.github.com/search/users?q=followers:&gt;1000&order=desc&page=1
@@ -152,8 +182,10 @@ export default class Home extends Component {
               </code>
               <br />
 
-              The fetched data are stored with the page number as the lookup key, so that the local copy can be 
-              shown without the need to re-fetch the same data remotely each time. However cached data can be 
+              The fetched data are stored with the page number as the lookup key, so that the local copy can be
+              {" "}
+              shown without the need to re-fetch the same data remotely each time. However cached data can be
+              {" "}
               invalidated if desired.
             </dd>
             <br />
@@ -162,11 +194,19 @@ export default class Home extends Component {
             <dd>
               You can test this by disabling your internet connection. Or even better, you can page through
               {" "}
-              <code>UsersPage</code> or <code>ReposPage</code> very quickly and hopefully invoke Github's API 
+              <code>UsersPage</code>
+              {" "}
+              or
+              {" "}
+              <code>ReposPage</code>
+              {" "}
+              very quickly and hopefully invoke Github's API
+              {" "}
               rate limit for your IP address.
               <br />
 
-              The application would fail gracefully with the error message if data fetching (for a particular page) fails. 
+              The application would fail gracefully with the error message if data fetching (for a particular page) fails.
+              {" "}
               However, the application can still show cached data for other pages, which is very desirable behavior.
             </dd>
             <br />
@@ -174,28 +214,50 @@ export default class Home extends Component {
             <dt>Authentication and Page Restrictions</dt>
             <dd>
               Certain UI pages (
-              <code>UsersPage</code> and <code>ReposPage</code>) are restricted.  You can only access them 
-              after signing in to the Application. When accessing restricted pages without signing in first, 
-              the application would redirect to the <code>Login</code> page. You can log in as user "admin" 
+              <code>UsersPage</code>
+              {" "}
+              and
+              {" "}
+              <code>ReposPage</code>
+              ) are restricted.  You can only access them
+              {" "}
+              after signing in to the Application. When accessing restricted pages without signing in first,
+              {" "}
+              the application would redirect to the
+              {" "}
+              <code>Login</code>
+              {" "}
+              page. You can log in as user "admin"
+              {" "}
               and password "password". The authentication is based on JSON Web Token (JWT).
             </dd><br />
 
             <dt>WebSocket</dt>
             <dd>
-              A "server alerts/notifications" use case is implemented to showcase Socket.IO.  
+              A "server alerts/notifications" use case is implemented to showcase Socket.IO.
+              {" "}
               Whenever a client logs in/out of the application using the API server,
-              the API server will notify currently connected clients via Socket.IO.  
+              the API server will notify currently connected clients via Socket.IO.
+              {" "}
               You can test this use case by opening the the web app in two browsers side by side,
-              and then log in/out the webapp in one browser, and observe the messages in the other browser.  
+              and then log in/out the webapp in one browser, and observe the messages in the other browser.
+              {" "}
               The messages are pushed from the server to the clients in "real time",
-              and show up as <code>Alerts</code> in the header section of the web app.
+              and show up as
+              {" "}
+              <code>Alerts</code>
+              {" "}
+              in the header section of the web app.
             </dd><br />
 
             <dt>Non-Univeral</dt>
             <dd>
-              Most people probably would listed this under "issues" or "wish list" instead, 
-              since these days a web application is not "cutting edge" or "cool" if it's not universal (isomorphic). 
-              However there are many cases where server-side rendering is simply not required or applicable 
+              Most people probably would listed this under "issues" or "wish list" instead,
+              {" "}
+              since these days a web application is not "cutting edge" or "cool" if it's not universal (isomorphic).
+              {" "}
+              However there are many cases where server-side rendering is simply not required or applicable
+              {" "}
               (e.g. Java backend instead of Node).
             </dd>
           </dl>

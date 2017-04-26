@@ -21,10 +21,9 @@ class Header extends Component {
     const isUsersPage = pathname.indexOf("users") > -1;
     const isReposPage = pathname.indexOf("repos") > -1;
 
-    return !isLoginPage &&
-      <nav
-        className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top"
-      >
+    return (
+      !isLoginPage &&
+      <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
         <button
           type="button"
           className="navbar-toggler navbar-toggler-right"
@@ -64,13 +63,14 @@ class Header extends Component {
             <UserProfile user={user} handleLogout={this.onLogoutClick} />
           </ul>
         </div>
-      </nav>;
+      </nav>
+    );
   }
 }
 
 Header.propTypes = {
   user: PropTypes.string,
-  handleLogout: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired
 };
 
 export default withRouter(Header);

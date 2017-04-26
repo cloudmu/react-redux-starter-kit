@@ -1,6 +1,6 @@
 # [react-redux-starter-kit](http://cloudmu.github.io/react-redux-starter-kit/)
 
-This is yet another React and Redux starter kit. However, this project attempts to balance simplicity with developing a real web application that actually "does something useful". 
+This is yet another single page web application template using React. However, this project attempts to balance simplicity with developing a real web application that actually "does something useful". 
 It demonstrates authentication, navigation, asynchronous data fetching, error handling, and caching and pagination, etc. using the technologies listed below.
 
 But first, the [demo!](http://cloudmu.github.io/react-redux-starter-kit/) It displays information retrieved from the Github API - most followed users and most starred repo's. 
