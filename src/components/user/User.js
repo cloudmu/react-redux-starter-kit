@@ -8,7 +8,7 @@ const User = ({ user }) => {
   return (
     <div className="card">
       <div className="card-header">
-        <a href={html_url} target="_blank">
+        <a href={html_url} target="_blank" rel="noopener noreferrer">
           <h4>{login}</h4>
         </a>
       </div>
@@ -25,6 +25,7 @@ const User = ({ user }) => {
 
       <div className="card-footer">
         <iframe
+          title={login}
           src={src}
           allowTransparency="true"
           scrolling="0"

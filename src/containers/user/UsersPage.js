@@ -71,7 +71,7 @@ class UsersPage extends Component {
             <li className={prevStyles}>
               <a
                 className="page-link"
-                href="#"
+                href=""
                 onClick={this.handlePreviousPageClick}
               >
                 <span>Previous</span>
@@ -81,7 +81,7 @@ class UsersPage extends Component {
               <li className="page-item">
                 <a
                   className="page-link"
-                  href="#"
+                  href=""
                   onClick={this.handleRefreshClick}
                 >
                   <span>Refresh page {page}</span>
@@ -96,7 +96,7 @@ class UsersPage extends Component {
             <li className={nextStyles}>
               <a
                 className="page-link"
-                href="#"
+                href=""
                 onClick={this.handleNextPageClick}
               >
                 <span>Next</span>

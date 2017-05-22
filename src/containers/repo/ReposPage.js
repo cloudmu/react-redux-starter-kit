@@ -84,7 +84,7 @@ class ReposPage extends PureComponent {
     rowData,
     rowIndex
   }) => (
-    <a href={cellData.html_url} target="_blank">
+    <a href={cellData.html_url} target="_blank" rel="noopener noreferrer">
       <img src={cellData.avatar_url} width="32" height="32" alt="owner" />
       <span style={{ marginLeft: "0.5em" }}>{cellData.login}</span>
     </a>
@@ -96,7 +96,9 @@ class ReposPage extends PureComponent {
     columnData,
     rowData,
     rowIndex
-  }) => <a href={cellData} target="_blank">{cellData}</a>;
+  }) => (
+    <a href={cellData} target="_blank" rel="noopener noreferrer">{cellData}</a>
+  );
 
   stargazerCellRenderer = ({
     cellData,
@@ -128,7 +130,7 @@ class ReposPage extends PureComponent {
             <li className={prevStyles}>
               <a
                 className="page-link"
-                href="#"
+                href=""
                 onClick={this.handlePreviousPageClick}
               >
                 <span>Previous</span>
@@ -138,7 +140,7 @@ class ReposPage extends PureComponent {
               <li className="page-item">
                 <a
                   className="page-link"
-                  href="#"
+                  href=""
                   onClick={this.handleRefreshClick}
                 >
                   <span>Refresh page {page}</span>
@@ -153,7 +155,7 @@ class ReposPage extends PureComponent {
             <li className={nextStyles}>
               <a
                 className="page-link"
-                href="#"
+                href=""
                 onClick={this.handleNextPageClick}
               >
                 <span>Next</span>

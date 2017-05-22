@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 const Repo = ({ repo, owner }) => (
   <div>
     <div className="Repo">
-      <a href={repo.html_url} target="_blank">{repo.name}</a>
+      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+        {repo.name}
+      </a>
       Stars: {repo.stargazers_count}
     </div>
 
     <div className="User">
-      <a href={owner.html_url} target="_blank">
+      <a href={owner.html_url} target="_blank" rel="noopener noreferrer">
         {owner.login}
         <img src={owner.avatar_url} width="72" height="72" />
       </a>

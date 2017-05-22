@@ -10,11 +10,19 @@ const Footer = () => (
         {" "}<a
           href="https://github.com/cloudmu/react-redux-starter-kit/issues"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Github
         </a>{" "}
         or tweet
-        <a href="http://www.twitter.com/_cloudmu" target="_blank"> me</a>.
+        <a
+          href="http://www.twitter.com/_cloudmu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {" "}me
+        </a>
+        .
       </p>
     </div>
   </footer>

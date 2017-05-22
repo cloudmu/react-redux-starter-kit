@@ -42,7 +42,7 @@ class Alerts extends Component {
     return (
       <li className="dropdown nav-item">
         <a
-          href="#"
+          href=""
           className="nav-link"
           data-toggle="dropdown"
           role="button"
@@ -92,7 +92,7 @@ class Alerts extends Component {
             {count > 0 &&
               <a
                 className="btn btn-sm btn-default"
-                href="#"
+                href=""
                 title="Dismiss all"
                 onClick={this.dismiss}
               >
@@ -102,7 +102,7 @@ class Alerts extends Component {
             {hasError &&
               <a
                 className="btn btn-sm btn-primary"
-                href="#"
+                href=""
                 title="Reconnect"
                 onClick={this.reconnect}
               >

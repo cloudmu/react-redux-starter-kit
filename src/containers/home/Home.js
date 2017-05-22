@@ -15,28 +15,58 @@ export default class Home extends Component {
               {" "}
               by showcasing several great technologies (such as
               {" "}
-              <a href="https://github.com/facebook/react" target="_blank">
+              <a
+                href="https://github.com/facebook/react"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 React
               </a>
               ,{" "}
 
-              <a href="https://github.com/reactjs/redux" target="_blank">
+              <a
+                href="https://github.com/reactjs/redux"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Redux
               </a>
               ,{" "}
 
-              <a href="https://github.com/rackt/react-router" target="_blank">
+              <a
+                href="https://github.com/rackt/react-router"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 React-Router
               </a>
               ,{" "}
 
-              <a href="https://github.com/twbs/bootstrap " target="_blank">
+              <a
+                href="https://github.com/twbs/bootstrap "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Bootstrap
               </a>
               ,
 
-              <a href="https://jwt.io" target="_blank"> JSON Web Token</a>, and
-              {" "}<a href="http://socket.io" target="_blank">Socket.IO</a>
+              <a
+                href="https://jwt.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}JSON Web Token
+              </a>
+              , and
+              {" "}
+              <a
+                href="http://socket.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Socket.IO
+              </a>
               ) used together to develop a more complex web
               application, with features such as authentication, navigation, asynchronous data fetching,
               {" "}
@@ -47,10 +77,15 @@ export default class Home extends Component {
               <a
                 href="https://github.com/cloudmu/react-redux-starter-kit"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fa fa-github" /> View on Github
               </a>
-              <a href="https://twitter.com/_cloudmu" target="_blank">
+              <a
+                href="https://twitter.com/_cloudmu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-twitter home-fa-twitter" />_cloudmu
               </a>
             </div>
@@ -68,6 +103,7 @@ export default class Home extends Component {
             <a
               href="https://github.com/facebookincubator/create-react-app/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               create-react-app
             </a>
@@ -78,12 +114,20 @@ export default class Home extends Component {
 
           <ul>
             <li>
-              <a href="https://github.com/facebook/react" target="_blank">
+              <a
+                href="https://github.com/facebook/react"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 React
               </a>
             </li>
             <li>
-              <a href="https://github.com/reactjs/redux" target="_blank">
+              <a
+                href="https://github.com/reactjs/redux"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Redux
               </a>
             </li>
@@ -91,29 +135,63 @@ export default class Home extends Component {
               <a
                 href="https://github.com/ReactTraining/react-router"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 React Router
               </a>
             </li>
             <li>
-              <a href="https://github.com/twbs/bootstrap " target="_blank">
+              <a
+                href="https://github.com/twbs/bootstrap "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Bootstrap
               </a>
             </li>
-            <li><a href="https://jwt.io" target="_blank">JSON Web Token</a></li>
-            <li><a href="http://socket.io" target="_blank"> Socket.IO</a></li>
+            <li>
+              <a
+                href="https://jwt.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                JSON Web Token
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://socket.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}Socket.IO
+              </a>
+            </li>
             <li>
               <a
                 href="https://github.com/facebookincubator/create-react-app/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 create-react-app
               </a>
             </li>
             <li>
-              <a href="http://babeljs.io" target="_blank">Babel</a>
+              <a
+                href="http://babeljs.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Babel
+              </a>
               {" "}and{" "}
-              <a href="http://webpack.github.io" target="_blank"> Webpack</a>
+              <a
+                href="http://webpack.github.io"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}Webpack
+              </a>
               {" "}(now behind the scenes thanks to create-react-app)
             </li>
 
@@ -127,6 +205,7 @@ export default class Home extends Component {
               <a
                 href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 "smart" and "dumb" components
               </a>

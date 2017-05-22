@@ -1,0 +1,15 @@
+{
+  "short_name": "React Redux Starter Kit",
+  "name": "React Redux Starter Kit",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
