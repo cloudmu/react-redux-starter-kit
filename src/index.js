@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import jquery from "jquery";
 window.$ = window.jQuery = jquery;
-window.Tether = require("tether");
+window.Popper = require("popper.js");
 require("bootstrap/dist/js/bootstrap");
 /////////////////////////////////////////////
 

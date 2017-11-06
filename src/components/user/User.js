@@ -13,16 +13,9 @@ const User = ({ user }) => {
         </a>
       </div>
 
-      <div className="card-block">
-        <img
-          src={avatar_url}
-          className="card-img-top"
-          width="120"
-          height="120"
-          alt="avatar"
-        />
+      <div style={{textAlign:"center"}}>
+        <img src={avatar_url} width="150" height="150" alt="avatar" />
       </div>
-
       <div className="card-footer">
         <iframe
           title={login}

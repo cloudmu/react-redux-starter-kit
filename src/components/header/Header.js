@@ -23,19 +23,21 @@ class Header extends Component {
 
     return (
       !isLoginPage &&
-      <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <Link to="/" className="navbar-brand">
+        <div title="Home" className="brand" />
+        Home
+      </Link>
+      
         <button
           type="button"
-          className="navbar-toggler navbar-toggler-right"
+          className="navbar-toggler"
           data-toggle="collapse"
           data-target="#navbarCollapse"
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <Link to="/" className="navbar-brand">
-          <div title="Home" className="brand" />
-          Home
-        </Link>
+        
         <div id="navbarCollapse" className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li
